@@ -25,10 +25,10 @@ void sierpinski_c    (
 			double coef = aux3/255.0;
 
 			printf("%f \n", coef);
-			dst_matrix[i][j] = src_matrix[i][j] * coef ;
-			dst_matrix[i][j+1] = src_matrix[i][j+1] * coef;
-			dst_matrix[i][j+2] = src_matrix[i][j+2] * coef;
-			dst_matrix[i][j+3] = src_matrix[i][j+3] * coef;
+			dst_matrix[i][j] = src_matrix[i][j]*coef ;
+			dst_matrix[i][j+1] = src_matrix[i][j+1]*coef;
+			dst_matrix[i][j+2] = src_matrix[i][j+2]*coef;
+			dst_matrix[i][j+3] = src_matrix[i][j+3]*coef;
 		}
 
 }

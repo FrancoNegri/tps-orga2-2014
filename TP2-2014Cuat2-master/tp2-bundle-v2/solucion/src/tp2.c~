@@ -59,7 +59,7 @@ filtro_t* detectar_filtro(configuracion_t *config)
 	}
 
 	perror("Filtro desconocido");
-	return NULL; // avoid Csier warning
+	return NULL; // avoid C warning
 }
 
 void correr_filtro_imagen(configuracion_t *config, aplicador_fn_t aplicador)
