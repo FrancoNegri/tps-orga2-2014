@@ -21,9 +21,9 @@ void cropflip_c    (
 		
 	for(int i = 0; i < tamy; i++)
 	{
-		for(int j = 0; j < tamx*4; j ++)
+		for(int j = 0; j < tamx*4; j++)
 		{
-		dst_matrix[i][j] = src_matrix[tamy + offsety - i - 1][offsetx + j] ;
+		dst_matrix[i][j] = src_matrix[tamy + offsety - i - 1][offsetx*4 + j];
 		}
 
 	}

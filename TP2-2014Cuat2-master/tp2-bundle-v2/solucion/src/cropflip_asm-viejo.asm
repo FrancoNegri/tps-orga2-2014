@@ -64,45 +64,67 @@ cropflip_asm:
     xor r13, r13
     xor r14, r14
     xor r15, r15
-    mov dword r12d, [rbp + 16]
-    mov dword r13d, [rbp + 24]
-    mov dword r14d, [rbp + 32]
-    mov dword r15d, [rbp + 40]
-
-    mov rax, offsety
-    add rax, tamy
-    dec rax
-    mul src_row_size
-    add rax, src
-    dec offsetx
-    lea src, [rax + offsetx*4] ;offsetx
-
+    mov r12d, [rbp + 8]
+    mov r13d, [rbp + 16]
+    mov r14d, [rbp + 24]
+    mov r15d, [rbp + 32]
     xor rax, rax
-    mov eax, dst_row_size
-    add eax, src_row_size
-    
-    dec tamx
+    shl cols, 2
+	mov rax, offsety
+	mul cols
+	add rax, src
+    lea rdi, [rax + offsetx*4]
+      
+    xor r10, r10; i
+    xor r11, r11; j
 
-    xor r10, r10
-    xor r11, r11
-
+    dec tamy
+    dec r9    
+    mov r8, tamx
+    dec r8
+    ;seteamos el src en la ultima fila a recorrer
+    ;agarramos 4 pixels y los pegamos en el destino
+    ;sumamos 4 al destino y al src
+    ; cuando llego a offsety paro
 
 
     .loop:
+    xor rax, rax
+	mov eax, cols
+	mul r10
+	add rax, src
+	movdqu xmm0, [rax + r11*4]
 
-    movdqu xmm0, [src]
-    movdqu [dst], xmm0
-    add src, 16
-    add dst, 16
-    add r11, 4
-    cmp r11, tamx
-    jl .loop
-    xor r11, r11
-    sub src, rax ;LE RESTO
-    inc r10
-    cmp r10, tamy
-    jl .loop
+	push r8
+	push r9
+	push r10
+	push r11
+	push rdi
+	push rsi
+	mov rdi, msgsys
+ 	mov rsi, 4
+	call debugPrint
+	pop rsi
+	pop rdi
+	pop r11
+	pop r10
+	pop r9
+	pop r8
 
+	xor rax, rax
+	mov rax, tamx
+	shl rax, 2
+	mul tamy
+	add rax, dst	
+	movdqu [rax + r11*4], xmm0
+	add r11, 4
+	cmp r11, 1 ;me fijo que no me pasé de las columnas
+	jl .loop
+	inc r10
+	dec tamy
+	xor r11, r11
+	cmp r10d, 0 ; y acá me fijo si no me pasé de las filas
+	jle .loop
 	
 
     pop r15
