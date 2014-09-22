@@ -28,30 +28,6 @@ section .text
 %define offsetx r14
 %define offsety r15
 
-
-;void debugPrint(char* c, int long)
-debugPrint:
-	push rbp
-	mov rbp, rsp
-	push rax
-	push rbx 
-	push rcx
-	push rdx
-
-	mov rax, 4     ; funcion 4
-   	mov rbx, 1     ; stdout
-   	mov rcx, rdi
-   	mov rdx, rsi
-   	int 0x80
-
-	pop rdx
-	pop rcx
-	pop rbx
-	pop rax
-	pop rbp
-	ret
-
-
 cropflip_asm:
     push rbp
     mov rbp, rsp

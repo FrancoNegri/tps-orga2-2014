@@ -22,9 +22,8 @@ void sierpinski_c    (
 			
 			int aux3 = aux1 ^ aux2;
 
-			double coef = aux3/255.0;
+			float coef = aux3/255.0;
 
-			printf("%f \n", coef);
 			dst_matrix[i][j] = src_matrix[i][j] * coef ;
 			dst_matrix[i][j+1] = src_matrix[i][j+1] * coef;
 			dst_matrix[i][j+2] = src_matrix[i][j+2] * coef;
