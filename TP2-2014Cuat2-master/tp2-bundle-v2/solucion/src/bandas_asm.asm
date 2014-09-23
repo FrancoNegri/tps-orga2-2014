@@ -3,16 +3,17 @@ global bandas_asm
 
 section .data
 
-mascarita: dd 0xFFF0,0xFFF0,0xFFF0,0xFFF0
-shufflingB: db 0,0,0,8,1,1,1,8,2,2,2,8,3,3,3,8
-mask96: dw 95,95,95,95 
-mask288: dw 287,287,287,287
-mask480: dw 479,479,479,479
-mask672: dw 671,671,671,671
+mascarita: db 0xFF,0xFF,0xFF,0x0,0xFF,0xFF,0xFF,0x0,0xFF,0xFF,0xFF,0x0,0xFF,0xFF,0xFF,0x0
 
-const64: dw 64,64,64,64
-const63: dw 63,63,63,63
-const255: dw 255,255,255,255
+shufflingB: db 0,0,0,8,1,1,1,8,2,2,2,8,3,3,3,8
+mask96: dw 96,96,96,96,0,0,0,0
+mask288: dw 288,288,288,288,0,0,0,0
+mask480: dw 480,480,480,480,0,0,0,0
+mask672: dw 672,672,672,672,0,0,0,0
+
+const64: dw 64,64,64,64,0,0,0,0
+const63: dw 63,63,63,63,0,0,0,0
+const255: dw 255,255,255,255,0,0,0,0
 
 
 section .text
@@ -41,8 +42,8 @@ bandas_asm:
     pxor xmm14, xmm14
 
     movdqu xmm9, [mascarita]
-    movdqu xmm8, xmm9
-    pandn xmm8, xmm8
+    pcmpeqd xmm8, xmm8
+    pxor xmm8, xmm9; aca tenemos la mascarita invertida
 
     movdqu xmm10, [mask672]
     movdqu xmm11, [mask480]
@@ -60,7 +61,7 @@ bandas_asm:
     movdqu xmm0, [src]
     movdqu xmm3, xmm7 ;ACÀ ESTARÀ LA SOLUCIÒN, PERO PRIMERO SETEO TODO EN 255
     movdqu xmm2, xmm0
-    pand xmm2, xmm7 ;ME GUARDO LOS FACTORES SARASA
+    pand xmm2, xmm8 ;ME GUARDO LOS FACTORES SARASA
     pand xmm0, xmm9
     movdqu xmm1,xmm0
     punpcklbw xmm0, xmm14
@@ -69,28 +70,28 @@ bandas_asm:
     phaddw xmm0, xmm0 ;ACÀ TENGO EN CADA WORD, EL "b" DE CADA PIXEL
 
     movdqu xmm4, xmm10
-    pcmpgtq xmm4, xmm0
+    pcmpgtw xmm4, xmm0; si 672 > b entonces le resto 63 al resulutado
     pand xmm4, xmm6
     psubd xmm3, xmm4
 
     movdqu xmm4, xmm11
-    pcmpgtq xmm4, xmm0
+    pcmpgtw xmm4, xmm0; si 480 > b entonces le resto 64
     pand xmm4, xmm5
     psubd xmm3, xmm4
 
     movdqu xmm4, xmm12
-    pcmpgtq xmm4, xmm0
+    pcmpgtw xmm4, xmm0; si 288 > b
     pand xmm4, xmm5
     psubd xmm3, xmm4
 
     movdqu xmm4, xmm13
-    pcmpgtq xmm4, xmm0
+    pcmpgtw xmm4, xmm0 ; si 96 > b
     pand xmm4, xmm5
     psubd xmm3, xmm4
 
     ;ahora empaqueto y brodcasteo
 
-    packusdw xmm3, xmm14
+    ;packusdw xmm3, xmm14
     packuswb xmm3, xmm14
     pshufb xmm3, xmm15
 
