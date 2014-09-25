@@ -32,10 +32,10 @@ int main( int argc, char** argv ) {
 	// Imprimo info
 	if (!config.nombre)
 	{
-		printf ( "Procesando...\n");
-		printf ( "  Filtro             : %s\n", config.nombre_filtro);
-		printf ( "  Implementación     : %s\n", C_ASM( (&config) ) );
-		printf ( "  Archivo de entrada : %s\n", config.archivo_entrada);
+		//printf ( "Procesando...\n");
+		//printf ( "  Filtro             : %s\n", config.nombre_filtro);
+		//printf ( "  Implementación     : %s\n", C_ASM( (&config) ) );
+		//printf ( "  Archivo de entrada : %s\n", config.archivo_entrada);
 	}
 
 	filtro_t *filtro = detectar_filtro(&config);
@@ -59,7 +59,7 @@ filtro_t* detectar_filtro(configuracion_t *config)
 	}
 
 	perror("Filtro desconocido");
-	return NULL; // avoid C warning
+	return NULL; // avoid Csier warning
 }
 
 void correr_filtro_imagen(configuracion_t *config, aplicador_fn_t aplicador)
