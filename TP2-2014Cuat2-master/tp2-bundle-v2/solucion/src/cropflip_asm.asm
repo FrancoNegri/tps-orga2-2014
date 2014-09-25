@@ -50,7 +50,6 @@ cropflip_asm:
     dec rax
     mul src_row_size
     add rax, src
-    dec offsetx
     lea src, [rax + offsetx*4] ;offsetx
 
     xor rax, rax

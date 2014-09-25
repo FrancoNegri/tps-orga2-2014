@@ -27,8 +27,8 @@ section .text
 
 %define src rdi
 %define dst rsi
-%define cols ecx
-%define rows edx
+%define cols edx
+%define rows ecx
 %define dst_row_size r9d
 %define src_row_size r8d
 

@@ -57,7 +57,7 @@ Los otros flags de optimizacion son -O2, -O3, -Og, -Os, -Ofast.
 
 Ademas encontramos los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no es capaz como para utilizar instrucciones simd.
 
-Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants 
+
 
 
 % ------------------------------------------------------------------------------

@@ -12,9 +12,9 @@ void bandas_c (
 	unsigned char (*src_matrix)[src_row_size] = (unsigned char (*)[src_row_size]) src;
 	unsigned char (*dst_matrix)[dst_row_size] = (unsigned char (*)[dst_row_size]) dst;
 
-	for(int i = 0; i < m; i++)
+	for(int i = 0; i < n; i++)
 	{
-		for(int j = 0; j < n*4; j +=4)
+		for(int j = 0; j < m*4; j +=4)
 		{
 			int b = src_matrix[i][j] + src_matrix[i][j+1] + src_matrix[i][j+2];
 			unsigned char rgb;			
