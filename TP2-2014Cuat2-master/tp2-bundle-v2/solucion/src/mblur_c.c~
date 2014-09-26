@@ -42,7 +42,7 @@ void mblur_c    (
 			bgra_t nuevo_valor = { 0.2 *(punto_mod->b + diag_mas_2->b + diag_mas_1->b + diag_menos_1->b + diag_menos_2->b), 
 					       0.2 *(punto_mod->g + diag_mas_2->g + diag_mas_1->g + diag_menos_1->g + diag_menos_2->g), 
 					       0.2 *(punto_mod->r + diag_mas_2->r + diag_mas_1->r + diag_menos_1->r + diag_menos_2->r), 
-					       punto_mod.a};
+					       punto_mod->a};
             		*p_d = nuevo_valor;
 				
 	

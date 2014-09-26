@@ -37,9 +37,9 @@ void mblur_c    (
 			bgra_t *diag_menos_2 = (bgra_t*) &src_matrix[i-2][(j-2) * 4];
 			bgra_t *punto_mod = (bgra_t*) &src_matrix[i][j * 4];
 			
-			
+			float aux1 = 0.2 *(punto_mod->b + diag_mas_2->b + diag_mas_1->b + diag_menos_1->b + diag_menos_2->b);
 
-			bgra_t nuevo_valor = { 0.2 *(punto_mod->b + diag_mas_2->b + diag_mas_1->b + diag_menos_1->b + diag_menos_2->b), 
+			bgra_t nuevo_valor = { , 
 					       0.2 *(punto_mod->g + diag_mas_2->g + diag_mas_1->g + diag_menos_1->g + diag_menos_2->g), 
 					       0.2 *(punto_mod->r + diag_mas_2->r + diag_mas_1->r + diag_menos_1->r + diag_menos_2->r), 
 					       punto_mod->a};
