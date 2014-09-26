@@ -2,9 +2,6 @@ global cropflip_asm
 
 section .rodata
 
-msgsys: db "RDI vale :", 0
-
-
 section .text
 ;void tiles_asm(unsigned char *src,
 ;              unsigned char *dst,
@@ -31,6 +28,7 @@ section .text
 cropflip_asm:
     push rbp
     mov rbp, rsp
+
     push r12
     push r13
     push r14
@@ -50,7 +48,6 @@ cropflip_asm:
     dec rax
     mul src_row_size
     add rax, src
-    dec offsetx
     lea src, [rax + offsetx*4] ;offsetx
 
     xor rax, rax
@@ -79,11 +76,10 @@ cropflip_asm:
     cmp r10, tamy
     jl .loop
 
-	
-
     pop r15
     pop r14
     pop r13
     pop r12
     pop rbp
+
     ret
