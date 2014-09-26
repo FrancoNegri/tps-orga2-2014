@@ -15,10 +15,6 @@ void cropflip_c    (
 	int offsety)
 {
 
-	unsigned long start, end;
-	MEDIR_TIEMPO_START(start);
-
-
 	unsigned char (*src_matrix)[src_row_size] = (unsigned char (*)[src_row_size]) src;
 	unsigned char (*dst_matrix)[dst_row_size] = (unsigned char (*)[dst_row_size]) dst;
 	
@@ -31,12 +27,6 @@ void cropflip_c    (
 		}
 
 	}
-
-	
-
-	MEDIR_TIEMPO_STOP(end);
-	unsigned long delta = end - start;
-	printf("%d \n",delta);
 
 
 }

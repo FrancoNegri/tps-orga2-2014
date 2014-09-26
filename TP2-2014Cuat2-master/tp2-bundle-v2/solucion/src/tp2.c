@@ -41,11 +41,17 @@ int main( int argc, char** argv ) {
 	filtro_t *filtro = detectar_filtro(&config);
 
 	filtro->leer_params(&config, argc, argv);
+	
+
+	
 
 	if (config.es_video)
 		correr_filtro_video(&config, filtro->aplicador);
 	else
 		correr_filtro_imagen(&config, filtro->aplicador);
+	
+
+	
 
 	return 0;
 }
@@ -75,7 +81,12 @@ void correr_filtro_imagen(configuracion_t *config, aplicador_fn_t aplicador)
 	else
 	{
 		opencv_abrir_imagenes(config);
+		unsigned long start, end;
+		MEDIR_TIEMPO_START(start);
 		aplicador(config);
+		MEDIR_TIEMPO_STOP(end);
+		unsigned long delta = end - start;
+		printf("%d \n",delta);
 		opencv_liberar_imagenes(config);
 	}
 }
