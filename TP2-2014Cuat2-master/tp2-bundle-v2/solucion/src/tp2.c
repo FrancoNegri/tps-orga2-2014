@@ -86,7 +86,7 @@ void correr_filtro_imagen(configuracion_t *config, aplicador_fn_t aplicador)
 		aplicador(config);
 		MEDIR_TIEMPO_STOP(end);
 		unsigned long delta = end - start;
-		printf("%d \n",delta);
+		printf("%lu \n",delta);
 		opencv_liberar_imagenes(config);
 	}
 }

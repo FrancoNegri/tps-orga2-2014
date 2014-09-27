@@ -17,7 +17,7 @@ void bandas_c (
 		for(int j = 0; j < m*4; j +=4)
 		{
 			int b = src_matrix[i][j] + src_matrix[i][j+1] + src_matrix[i][j+2];
-			unsigned char rgb;			
+			unsigned char rgb = 0;			
 			if(b < 96)
 			{
 				rgb = 0;

@@ -51,7 +51,7 @@ void procesar_opciones(int argc, char **argv, configuracion_t *config)
 		{ "implementacion", 1, NULL, 'i' },
 		{ "verbose", 0, NULL, 'v' },
 		{ "video", 0, NULL, 'w' },
-		{ "tiempo", 1, NULL, 't' },
+		{ "tiempo", tiempo, NULL, 't' },
 		{ "frames", 0, NULL, 'f' },
 		{ "nombre", 0, NULL, 'n' },
 		{ "output", 1, NULL, 'o' },
@@ -101,6 +101,7 @@ void procesar_opciones(int argc, char **argv, configuracion_t *config)
 				abort ( );
 		}
 	}
+	if(cant_iteraciones){;}
 
 	// Verifico nombre del proceso
 	config->nombre_filtro = argv[optind++];
