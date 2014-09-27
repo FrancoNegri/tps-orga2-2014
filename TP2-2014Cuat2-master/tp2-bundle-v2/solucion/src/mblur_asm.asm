@@ -193,8 +193,8 @@ mblur_asm:
 	cvttps2dq xmm5, xmm5
 	cvttps2dq xmm6, xmm6
 
-	packusdw xmm0,xmm1; p1 p2
-	packusdw xmm5,xmm6; p3 p4
+	packssdw xmm0,xmm1; p1 p2
+	packssdw xmm5,xmm6; p3 p4
 	packuswb xmm0,xmm5
 
 	pand xmm0, xmm12

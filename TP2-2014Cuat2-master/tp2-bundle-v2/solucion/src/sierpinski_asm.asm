@@ -120,8 +120,8 @@ sierpinski_asm:
     cvttps2dq xmm5, xmm5
     cvttps2dq xmm6, xmm6
 
-    packusdw xmm3, xmm4
-    packusdw xmm5, xmm6
+    packssdw xmm3, xmm4
+    packssdw xmm5, xmm6
 
     packuswb xmm3, xmm5
 
