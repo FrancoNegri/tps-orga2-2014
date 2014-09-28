@@ -58,7 +58,12 @@
 \thispagestyle{empty}
 \vfill
 \begin{abstract}
-En el presente trabajo se describe la problemática de ...
+En el presente trabajo se describe la problemática de procesar información de manera eficiente cuando los mismos requieren:
+\begin{enumerate}
+\item Transferir grandes volumenes de datos.
+\item Realizar las mismas instrucciones sobre un set de datos importante.
+\end{enumerate}
+
 \end{abstract}
 
 \thispagestyle{empty}
@@ -66,30 +71,154 @@ En el presente trabajo se describe la problemática de ...
 \tableofcontents
 \newpage
 
-
 %\normalsize
 \newpage
 
 \section{Objetivos generales}
 
-El objetivo de este Trabajo Práctico es ...
+El objetivo de este Trabajo Práctico es mostar las variaciones en la performance que suceden al utilizar instrucciones SIMD en comparacion con codigo C con diversos grados de optimizacion realizados por el compilador.
 
+Para ello se realizaran cuatro filtros de fotos, Cropflip, Bandas, Sierpinski y Motion Blur, tanto en codigo assambler que aproveche las instucciones SSE brindadas para los procesadores de arquitectura Intel como codigo C, al que se le apilcarán los distintos flags de optimizacion -O0, -O1, -O2 y -O3.
 
-\section{Contexto}
+El primer filtro, Cropflip, se utilizará para mostar cuanto mejora la performance al utilizar los registros MMX para transferir grandes cantidades de informacion.
 
-\begin{figure}
+El segundo, tercer y cuarto filtro, se sentrán, en la variacion de performance entre utilizar instrucciones SIMD, para realizar diversos calculos (sumas, multiplicaciones, diviciones) tanto en representacion de enteros como punto flotante.
+
+\section{Enunciado y solucion} 
+
+\subsection{Enunciado}
+
+\input{enunciado}
+\
+\newpage
+
+\subsection{Desensamblado de codigo C y Optimización}
+\\
+Comenzamos analizando el algoritmo el codigo del Cropflip del algormitmo realizado en C.
+
+Este basicamente solo mueve datos de un lugar de la RAM a otros, sin afectar mayormente la imagen.
+
+Realizamos un objdump para ver el codigo que genera el compilador gcc. Al desensamblar el codigo pudimos observar, primero que nada, que C guarda todos los parametros en la pila, lo que es innecesario, esta escribiendo en memoria todas las variables utilizadas.
+
+Tambien notamos que utiliza las variables locales desde memoria en vez de guardarlas en registros.
+
+Tambien puede observarse que C utiliza saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de prediccion de saltos.
+
+Ademas C genera, luego de la función, un monton de secciones que comienzan con debug_xxx. Estas secciones sirven para ser interpretadas por GDB u otros debuggers.
+
+Como ya dijimos, el codigo podria optimizarse para no realizar tantos accesos a memoria innecesarios guardando variables locales por ejemplo en registros, lo cual disminuiria el tiempo de ejecución.
+
+Luego de esto, procedemos a compilar el codigo utilizando el flag -O1, y nuevamente realizamos un objdump para ver el codigo desensamblado. se observa que ahora el mismo solo realiza los accesos a memoria minimos indispensables, lo que tambien implica que ahora utiliza registros para guardar los datos. Ademas el codigo esta mas comprimido, y resulta mas claro de leer.
+
+Ademas precalcula los valores que seran utilizados muchas veces, lo que aumenta la performance, principalmente en casos de instancias grandes.
+
+Los otros flags de optimizacion son -O2, -O3, -Og, -Os, -Ofast.
+
+Ademas encontramos los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no es capaz como para utilizar instrucciones simd.
+
+Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants 
+
+\newpage
+\subsection{Calidad de las Mediciones}
+\\
+Para este experimento vamos ver como se puede ver afectado nuestro programa frente a diversos factores de ruido e interferencias que puedan alterar nuestras mediciones.
+
+Para este experimento se utilizo un procesador Intel Atom, de 4 nucleos a 1.6 GHZ con Hyper-Threading. Por lo que la cantidad de nucleos logicos asciende a 8.
+
+Para que las pruebas sean mas concisas y exactas, se deshabilita el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
+
+Procedemos a tomar 10 mediciones, tanto con 8 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente grafico:
+\\
+\begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{imagenes/logouba.jpg}
-	\caption{Descripcion de la figura}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/PCO.png}
+	\label{fig1}
+  \end{center}
+\end{figure}
+\\
+Realizamos un calculo de la varianza para ver que tan precisos son los resultados y se obtiene esto:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.7]{GraficosTesting/crop/VCO.png}
 	\label{nombreparareferenciar}
   \end{center}
 \end{figure}
 
+La varianza con loops es sustancialmente mayor que sin los mismos, por lo que se estaria inclinado a correr tests sin loops para obtener valores mas fiables.
 
-\paragraph{\textbf{Titulo del parrafo} } Bla bla bla bla.
-Esto se muestra en la figura~\ref{nombreparareferenciar}.
+Ahora consideramos outliers a los dos valores mas grandes y a los dos valores mas chicos y volvemos a graficar los resultados.
 
+Esto es lo que se obtiene al graficar el promedio:
 
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.7]{GraficosTesting/crop/PSO.png}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+En este grafico no se observan cambios significativos. Sin embargo, al calcular nuevamente la varianza, se observa lo siguiente:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.7]{GraficosTesting/crop/VSO.png}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+Las varianzas de los tests con loops, se ven reducidas drasticamente, inculuso por debajo de las varianzas sin los mismos.
+
+De aqui se concluye, que la mejor manera de realizar tests es con loops corriendo en paralelo y luego, cuando estos valores ya han sido obtenidos, quitando los dos valores mas grandes y los dos valores mas chicos.
+
+\newpage
+\subsection{Diferencias de performance en Cropflip}
+\\
+En el siguiente experimento se mediran las performances tanto de nuestro algoritmo en assambler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimizacion a cargo del compilador.
+
+Las pruebas de performance, realizadas de la misma manera en que concluimos la anterior seccion, se realizaron corriendo 8 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
+
+Lo obtenido en los tests puede verse en el siguiente grafico:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.7]{GraficosTesting/crop/PSO.png}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+Y las varianzas son:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.7]{GraficosTesting/crop/VSO.png}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+De aqui puede verse que la implementación en assambler es tan buena, como la implementacion en C con el maximo grado de optimización.
+
+\paragraph{\textbf{cpu vs. bus de memoria en Cropflip} }
+\\
+HACER =)
+
+\paragraph{\textbf{Diferencias de performance en Sierpinski} }
+\\
+
+\paragraph{\textbf{cpu vs. bus de memoria en Sierpinski} }
+\\
+HACER =)
+
+\paragraph{\textbf{Diferencias de performance en Bandas} }
+\\
+\paragraph{\textbf{cpu vs. bus de memoria en Bandas} }
+\\
+HACER =)
+
+\paragraph{\textbf{Diferencias de performance en Motion Blur} }
+\\
+
+\section{Conclusiones y trabajo futuro}
 
 \begin{codesnippet}
 \begin{verbatim}
@@ -100,14 +229,18 @@ struct Pepe {
 
 };
 
+\section{Contexto}
+
+
+
+\paragraph{\textbf{Titulo del parrafo} } Bla bla bla bla.
+Esto se muestra en la figura~\ref{nombreparareferenciar}.
+
+
+
 \end{verbatim}
 \end{codesnippet}
 
-
-\section{Enunciado y solucion} 
-\input{enunciado}
-
-\section{Conclusiones y trabajo futuro}
 
 
 \end{document}

@@ -1,8 +1,16 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Objetivos generales}{3}
-\contentsline {section}{\numberline {2}Contexto}{3}
-\contentsline {paragraph}{\textbf {Titulo del parrafo} }{3}
-\contentsline {section}{\numberline {3}Enunciado y solucion}{3}
-\contentsline {subsection}{\numberline {3.1}Filtro cropflip}{3}
-\contentsline {subsection}{\numberline {3.2}Mediciones}{4}
-\contentsline {section}{\numberline {4}Conclusiones y trabajo futuro}{6}
+\contentsline {section}{\numberline {2}Enunciado y solucion}{3}
+\contentsline {subsection}{\numberline {2.1}Enunciado}{3}
+\contentsline {subsection}{\numberline {2.2}Filtro cropflip}{3}
+\contentsline {subsection}{\numberline {2.3}Mediciones}{3}
+\contentsline {subsection}{\numberline {2.4}Desensamblado de codigo C y Optimizaci\IeC {\'o}n}{7}
+\contentsline {subsection}{\numberline {2.5}Calidad de las Mediciones}{8}
+\contentsline {subsection}{\numberline {2.6}Diferencias de performance en Cropflip}{10}
+\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Cropflip} }{11}
+\contentsline {paragraph}{\textbf {Diferencias de performance en Sierpinski} }{11}
+\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Sierpinski} }{11}
+\contentsline {paragraph}{\textbf {Diferencias de performance en Bandas} }{11}
+\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Bandas} }{11}
+\contentsline {paragraph}{\textbf {Diferencias de performance en Motion Blur} }{11}
+\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{11}

@@ -25,16 +25,6 @@ Indicar
     \item Si le parece que ese código generado podría optimizarse
 \end{inparaenum}
 
-Al desensamblar el codigo pudimos observar, primero que nada, que C guarda todos los parametros en la pila, lo que es innecesario, esta escribiendo en memoria todas las variables utilizadas.
-
-Tambien notamos que utiliza las variables locales desde memoria en vez de guardarlas en registros.
-
-Tambien puede observarse que C utiliza saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de prediccion de saltos.
-
-Ademas C genera, luego de la función, un monton de secciones que comienzan con debug_xxx. Estas secciones sirven para ser interpretadas por GDB u otros debuggers.
-
-Como ya dijimos, el codigo podria optimizarse para no realizar tantos accesos a memoria innecesarios guardando variables locales por ejemplo en registros, lo cual disminuiria el tiempo de ejecución.
-
 % ******************************************************************************
 %\newpage
 \vspace*{0.3cm} \noindent
