@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  28 SEP 2014 02:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  28 SEP 2014 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -363,6 +363,24 @@ LaTeX Warning: Label `nombreparareferenciar' multiply defined.
 
 LaTeX Warning: Label `nombreparareferenciar' multiply defined.
 
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
+
+LaTeX Warning: Label `nombreparareferenciar' multiply defined.
+
 )
 \openout1 = `informe.aux'.
 
@@ -510,156 +528,138 @@ LaTeX Info: Redefining \% on input line 201.
 LaTeX Info: Redefining \. on input line 93.
 LaTeX Info: Redefining \% on input line 93.
  [6]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 C
-      omenzamos analizando el algoritmo el codigo del Cropflip del algormitm...
-
-? 
-LaTeX Info: Redefining \. on input line 121.
-LaTeX Info: Redefining \% on input line 121.
-[7]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.124 P
-       ara este experimento vamos ver como se puede ver afectado nuestro pro...
-
-? 
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
+ [7]
 <GraficosTesting/crop/PCO.png, id=41, 584.1825pt x 341.275pt>
 File: GraficosTesting/crop/PCO.png Graphic file (type png)
 
 <use GraficosTesting/crop/PCO.png>
-Package pdftex.def Info: GraficosTesting/crop/PCO.png used on input line 134.
+Package pdftex.def Info: GraficosTesting/crop/PCO.png used on input line 132.
 (pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
 
 <GraficosTesting/crop/VCO.png, id=42, 584.1825pt x 341.275pt>
 File: GraficosTesting/crop/VCO.png Graphic file (type png)
 
 <use GraficosTesting/crop/VCO.png>
-Package pdftex.def Info: GraficosTesting/crop/VCO.png used on input line 143.
-(pdftex.def)             Requested size: 408.92496pt x 238.89085pt.
-LaTeX Info: Redefining \. on input line 151.
-LaTeX Info: Redefining \% on input line 151.
+Package pdftex.def Info: GraficosTesting/crop/VCO.png used on input line 141.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
  [8 <./GraficosTesting/crop/PCO.png (PNG copy)> <./GraficosTesting/crop/VCO.png
  (PNG copy)>]
 <GraficosTesting/crop/PSO.png, id=46, 584.1825pt x 341.275pt>
 File: GraficosTesting/crop/PSO.png Graphic file (type png)
 
 <use GraficosTesting/crop/PSO.png>
-Package pdftex.def Info: GraficosTesting/crop/PSO.png used on input line 156.
-(pdftex.def)             Requested size: 408.92496pt x 238.89085pt.
+Package pdftex.def Info: GraficosTesting/crop/PSO.png used on input line 154.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
 
 <GraficosTesting/crop/VSO.png, id=47, 584.1825pt x 341.275pt>
 File: GraficosTesting/crop/VSO.png Graphic file (type png)
 
 <use GraficosTesting/crop/VSO.png>
-Package pdftex.def Info: GraficosTesting/crop/VSO.png used on input line 165.
-(pdftex.def)             Requested size: 408.92496pt x 238.89085pt.
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
+Package pdftex.def Info: GraficosTesting/crop/VSO.png used on input line 163.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 172.
+LaTeX Info: Redefining \% on input line 172.
  [9 <./GraficosTesting/crop/PSO.png (PNG copy)> <./GraficosTesting/crop/VSO.png
  (PNG copy)>]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.177 E
-       n el siguiente experimento se mediran las performances tanto de nuest...
-
-? 
 File: GraficosTesting/crop/PSO.png Graphic file (type png)
+
 <use GraficosTesting/crop/PSO.png>
-Package pdftex.def Info: GraficosTesting/crop/PSO.png used on input line 185.
-(pdftex.def)             Requested size: 408.92496pt x 238.89085pt.
+Package pdftex.def Info: GraficosTesting/crop/PSO.png used on input line 186.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
 File: GraficosTesting/crop/VSO.png Graphic file (type png)
  <use GraficosTesting/crop/VSO.png>
-Package pdftex.def Info: GraficosTesting/crop/VSO.png used on input line 194.
-(pdftex.def)             Requested size: 408.92496pt x 238.89085pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.203 H
-       ACER =)
-? 
+Package pdftex.def Info: GraficosTesting/crop/VSO.png used on input line 195.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 201.
+LaTeX Info: Redefining \% on input line 201.
+ [10]
 LaTeX Info: Redefining \. on input line 205.
 LaTeX Info: Redefining \% on input line 205.
-[10]
 
-! LaTeX Error: There's no line here to end.
+[11]
+Overfull \hbox (21.97537pt too wide) in paragraph at lines 234--234
+[]    \OT1/cmtt/m/n/9 Sumo xmm10 y xmm15 para obtener el numero i apropiado par
+a cada pixcel. tendr^^Se (i+0,i+1,i+2,i+3).[] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.207 \paragraph
-                {\textbf{cpu vs. bus de memoria en Sierpinski} }
-? 
 
-! LaTeX Error: There's no line here to end.
+Overfull \hbox (97.5745pt too wide) in paragraph at lines 234--234
+[]    \OT1/cmtt/m/n/9 Multiplico xmm10 y xmm 11 por xmm13, osea multiplico ambo
+s valores por la constante 255 previamente brodcasteada.[] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.209 H
-       ACER =)
-? 
 
-! LaTeX Error: There's no line here to end.
+Overfull \hbox (26.70032pt too wide) in paragraph at lines 234--234
+[]    \OT1/cmtt/m/n/9 Ahora solo resta tomar los 4 pixcels que teniamos en xmm0
+, desempaquetarlos y convertirlos a float[] 
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.213 \paragraph
-                {\textbf{cpu vs. bus de memoria en Bandas} }
-? 
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.215 H
-       ACER =)
-? 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.219 
-      
-? 
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 241--241
+Overfull \hbox (6.0pt too wide) in paragraph at lines 235--235
  [][][][][][] 
  []
 
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
-[11] (./informe.aux
+<GraficosTesting/sie/PSO.png, id=57, 584.1825pt x 341.275pt>
+File: GraficosTesting/sie/PSO.png Graphic file (type png)
+
+<use GraficosTesting/sie/PSO.png>
+Package pdftex.def Info: GraficosTesting/sie/PSO.png used on input line 241.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 246.
+LaTeX Info: Redefining \% on input line 246.
+ [12 <./GraficosTesting/sie/PSO.png (PNG copy)>]
+File: GraficosTesting/sie/PSO.png Graphic file (type png)
+ <use GraficosTesting/sie/PSO.png>
+Package pdftex.def Info: GraficosTesting/sie/PSO.png used on input line 252.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 262.
+LaTeX Info: Redefining \% on input line 262.
+ [13]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 274--274
+ [][][][][][] 
+ []
+
+<GraficosTesting/ban/PSO.png, id=65, 584.1825pt x 341.275pt>
+File: GraficosTesting/ban/PSO.png Graphic file (type png)
+
+<use GraficosTesting/ban/PSO.png>
+Package pdftex.def Info: GraficosTesting/ban/PSO.png used on input line 280.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 285.
+LaTeX Info: Redefining \% on input line 285.
+ [14 <./GraficosTesting/ban/PSO.png (PNG copy)>]
+File: GraficosTesting/ban/PSO.png Graphic file (type png)
+ <use GraficosTesting/ban/PSO.png>
+Package pdftex.def Info: GraficosTesting/ban/PSO.png used on input line 290.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 301.
+LaTeX Info: Redefining \% on input line 301.
+ [15]
+Overfull \hbox (6.0pt too wide) in paragraph at lines 312--312
+ [][][][][][] 
+ []
+
+File: GraficosTesting/ban/PSO.png Graphic file (type png)
+<use GraficosTesting/ban/PSO.png>
+Package pdftex.def Info: GraficosTesting/ban/PSO.png used on input line 318.
+(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
+
+<GraficosTesting/ban/VSO.png, id=72, 583.17876pt x 341.275pt>
+File: GraficosTesting/ban/VSO.png Graphic file (type png)
+
+<use GraficosTesting/ban/VSO.png>
+Package pdftex.def Info: GraficosTesting/ban/VSO.png used on input line 327.
+(pdftex.def)             Requested size: 384.89917pt x 225.24219pt.
+LaTeX Info: Redefining \. on input line 339.
+LaTeX Info: Redefining \% on input line 339.
+ [16 <./GraficosTesting/ban/VSO.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 339.
+LaTeX Info: Redefining \% on input line 339.
+ [17] (./informe.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
@@ -671,13 +671,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3121 strings out of 493304
- 41411 string characters out of 6139871
- 113319 words of memory out of 5000000
- 6489 multiletter control sequences out of 15000+600000
+ 3147 strings out of 493304
+ 42135 string characters out of 6139871
+ 113320 words of memory out of 5000000
+ 6513 multiletter control sequences out of 15000+600000
  31070 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,13n,43p,384b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,43p,409b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/bitstrea/charter/bchbi8a.pfb></usr/share/texlive/texmf-dist/fo
@@ -692,10 +692,10 @@ re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on informe.pdf (11 pages, 573232 bytes).
+Output written on informe.pdf (17 pages, 627605 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 125 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

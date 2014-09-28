@@ -7,10 +7,10 @@
 \contentsline {subsection}{\numberline {2.4}Desensamblado de codigo C y Optimizaci\IeC {\'o}n}{7}
 \contentsline {subsection}{\numberline {2.5}Calidad de las Mediciones}{8}
 \contentsline {subsection}{\numberline {2.6}Diferencias de performance en Cropflip}{10}
-\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Cropflip} }{11}
-\contentsline {paragraph}{\textbf {Diferencias de performance en Sierpinski} }{11}
-\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Sierpinski} }{11}
-\contentsline {paragraph}{\textbf {Diferencias de performance en Bandas} }{11}
-\contentsline {paragraph}{\textbf {cpu vs. bus de memoria en Bandas} }{11}
-\contentsline {paragraph}{\textbf {Diferencias de performance en Motion Blur} }{11}
-\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{11}
+\contentsline {subsection}{\numberline {2.7}cpu vs. bus de memoria en Cropflip}{11}
+\contentsline {subsection}{\numberline {2.8}Diferencias de performance en Sierpinski}{12}
+\contentsline {subsection}{\numberline {2.9}cpu vs. bus de memoria en Sierpinski}{13}
+\contentsline {subsection}{\numberline {2.10}Diferencias de performance en Bandas}{14}
+\contentsline {subsection}{\numberline {2.11}cpu vs. bus de memoria en Bandas}{15}
+\contentsline {subsection}{\numberline {2.12}Diferencias de performance en Motion Blur}{16}
+\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{17}

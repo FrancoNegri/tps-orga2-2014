@@ -93,7 +93,6 @@ El segundo, tercer y cuarto filtro, se sentrán, en la variacion de performance 
 \newpage
 
 \subsection{Desensamblado de codigo C y Optimización}
-\\
 Comenzamos analizando el algoritmo el codigo del Cropflip del algormitmo realizado en C.
 
 Este basicamente solo mueve datos de un lugar de la RAM a otros, sin afectar mayormente la imagen.
@@ -120,7 +119,6 @@ Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-cons
 
 \newpage
 \subsection{Calidad de las Mediciones}
-\\
 Para este experimento vamos ver como se puede ver afectado nuestro programa frente a diversos factores de ruido e interferencias que puedan alterar nuestras mediciones.
 
 Para este experimento se utilizo un procesador Intel Atom, de 4 nucleos a 1.6 GHZ con Hyper-Threading. Por lo que la cantidad de nucleos logicos asciende a 8.
@@ -132,7 +130,7 @@ Procedemos a tomar 10 mediciones, tanto con 8 loops corriendo en paralelo como s
 \begin{figure}[h!]
   \begin{center}
 	\includegraphics[scale=0.66]{GraficosTesting/crop/PCO.png}
-	\label{fig1}
+	\label{nombreparareferenciar1}
   \end{center}
 \end{figure}
 \\
@@ -140,8 +138,8 @@ Realizamos un calculo de la varianza para ver que tan precisos son los resultado
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.7]{GraficosTesting/crop/VCO.png}
-	\label{nombreparareferenciar}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/VCO.png}
+	\label{nombreparareferenciar2}
   \end{center}
 \end{figure}
 
@@ -153,8 +151,8 @@ Esto es lo que se obtiene al graficar el promedio:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.7]{GraficosTesting/crop/PSO.png}
-	\label{nombreparareferenciar}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/PSO.png}
+	\label{nombreparareferenciar3}
   \end{center}
 \end{figure}
 
@@ -162,8 +160,8 @@ En este grafico no se observan cambios significativos. Sin embargo, al calcular 
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.7]{GraficosTesting/crop/VSO.png}
-	\label{nombreparareferenciar}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/VSO.png}
+	\label{nombreparareferenciar4}
   \end{center}
 \end{figure}
 
@@ -173,8 +171,11 @@ De aqui se concluye, que la mejor manera de realizar tests es con loops corriend
 
 \newpage
 \subsection{Diferencias de performance en Cropflip}
-\\
 En el siguiente experimento se mediran las performances tanto de nuestro algoritmo en assambler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimizacion a cargo del compilador.
+
+El algormitmo de cropflip para Cropflip es muy cencillo. Siemplemente movemos 128-bits de la imagen a un mmx y de alli al destino, que previamente a sido seteado para colocar los bits en el lugar correcto. De esta manera, podremos mover de una sola vez, 16 bytes, lo que corresponde a 4 pixels de la imagen.
+
+Dado que la cantidad de columnas es siempre multiplo de 4, osea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
 
 Las pruebas de performance, realizadas de la misma manera en que concluimos la anterior seccion, se realizaron corriendo 8 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
 
@@ -182,8 +183,8 @@ Lo obtenido en los tests puede verse en el siguiente grafico:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.7]{GraficosTesting/crop/PSO.png}
-	\label{nombreparareferenciar}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/PSO.png}
+	\label{nombreparareferenciar5}
   \end{center}
 \end{figure}
 
@@ -191,55 +192,147 @@ Y las varianzas son:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.7]{GraficosTesting/crop/VSO.png}
-	\label{nombreparareferenciar}
+	\includegraphics[scale=0.66]{GraficosTesting/crop/VSO.png}
+	\label{nombreparareferenciar6}
   \end{center}
 \end{figure}
 
 De aqui puede verse que la implementación en assambler es tan buena, como la implementacion en C con el maximo grado de optimización.
 
-\paragraph{\textbf{cpu vs. bus de memoria en Cropflip} }
-\\
+\subsection{cpu vs. bus de memoria en Cropflip}
 HACER =)
 
-\paragraph{\textbf{Diferencias de performance en Sierpinski} }
+\newpage
+\subsection{Diferencias de performance en Sierpinski}
+Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco mas complejo. Necesitamos calcular para cada columna, una constante diferente, que dependerá de cual sea la misma.
 \\
-
-\paragraph{\textbf{cpu vs. bus de memoria en Sierpinski} }
+Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 constantes a la vez y multiplicarlas a sus respectivos pixcels.
 \\
-HACER =)
-
-\paragraph{\textbf{Diferencias de performance en Bandas} }
-\\
-\paragraph{\textbf{cpu vs. bus de memoria en Bandas} }
-\\
-HACER =)
-
-\paragraph{\textbf{Diferencias de performance en Motion Blur} }
-\\
-
-\section{Conclusiones y trabajo futuro}
-
+Luego la idea del algormitmo será algo así:
 \begin{codesnippet}
 \begin{verbatim}
 
-struct Pepe {
-
-    ...
-
-};
-
-\section{Contexto}
-
-
-
-\paragraph{\textbf{Titulo del parrafo} } Bla bla bla bla.
-Esto se muestra en la figura~\ref{nombreparareferenciar}.
-
-
-
+  Pongo r10 y r11 en 0, estos seran la filas (i) y columnas (j) en la que estoy parado.
+  Pongo en xmm8 la cantidad de columnas, lo brodcasteo y lo convierto a float
+  Pongo en xmm9 la cantidad de filas, lo brodcasteo y lo convierto a float
+  Muevo a xmm13 la constante 255 brodcasteada y en formato float
+  Muevo a xmm15 los valores 0,1,2,3 en formato entero.
+  Seteo xmm14 en 0.
+  Luego, para cada paso iterativo:
+    Tomo 4 pixcels de la fuente y los pongo en xmm0.
+    Muevo r10 y r11 a xmm10 y xmm11 respectivamente, los brodcasteo.
+    Sumo xmm10 y xmm15 para obtener el numero i apropiado para cada pixcel. tendré (i+0,i+1,i+2,i+3).
+    Convierto xmm10 y xmm11 a punto flotante.
+    Divido xmm10 por xmm9 y xmm11 por xmm8. (xmm10= i/filas), y (xmm11= j/columnas).
+    Multiplico xmm10 y xmm 11 por xmm13, osea multiplico ambos valores por la constante 255 previamente brodcasteada.
+    Comvierto xmm10 y xmm11 nuevamente a entero y realizo un xor entre ellos.
+    Paso a float xmm10 nuevamente y lo divido por xmm13.
+    Hasta aqui hemos calculado el coeficente $b$ para cada uno de los 4 picels.
+    Ahora solo resta tomar los 4 pixcels que teniamos en xmm0, desempaquetarlos y convertirlos a float
+    Multiplicarlos cada uno de los pixcels por su constante $b$
+    Convertir nuevamente los valores a byte y ponerlos en el destino.
 \end{verbatim}
 \end{codesnippet}
+
+Los resultados comparativos de performance para este algoritmo comparado con uno iterativo desarrollado en C fueron los siguientes:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/sie/PSO.png}
+  \label{nombreparareferenciar7}
+  \end{center}
+\end{figure}
+
+\newpage
+
+Y la varianza:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/sie/PSO.png}
+  \label{nombreparareferenciar8}
+  \end{center}
+\end{figure}
+
+Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixcels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
+
+\subsection{cpu vs. bus de memoria en Sierpinski}
+HACER =)
+
+\newpage
+\subsection{Diferencias de performance en Bandas}
+Para el algoritmo de bandas se nos presenta otro desafío: devemos tomar los tres colores de la imagen(r,g,b), sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
+\\
+Para resolver la primera problematica usaremos las instrucciones $phaddw$, que nos perimitira atravez de una suma orizontal, sumar los valores r,g,b de manera comoda solamente utilizando dos registros.
+\\
+El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querriamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deverá ir en cada pixcel. Esta se resolverá utililizando broadcasting. El algormitmo irá comparando en cada paso contra un valor y en caso de cumplirse una condicion, restará donde corresponda.
+
+\begin{codesnippet}
+\begin{verbatim}
+  Algoritmo
+\end{verbatim}
+\end{codesnippet}
+
+Los resultados de los tiempos comparativos son los siguientes:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \label{nombreparareferenciar9}
+  \end{center}
+\end{figure}
+
+\newpage
+Y la varianza:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \label{nombreparareferenciar10}
+  \end{center}
+\end{figure}
+
+Nuestro algoritmo obtiene una performance mucho mayor a la del codigo sin optimizar, y una performance casi identica al del codigo C con el mayor grado de optimización.
+
+
+\subsection{cpu vs. bus de memoria en Bandas}
+HACER =)
+
+\newpage
+
+\subsection{Diferencias de performance en Motion Blur}
+Para este algoritmo por cada pixcel se deben tomar 5 pixcels, multiplicar cada uno de los colores por 0.2 y luego sumarlos.
+\\
+Para ello devemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
+
+\begin{codesnippet}
+\begin{verbatim}
+  Algoritmo
+\end{verbatim}
+\end{codesnippet}
+
+Al realizar el testing se obtuvieron los siguientes resultados:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \label{nombreparareferenciar11}
+  \end{center}
+\end{figure}
+
+Y la varianza:
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{GraficosTesting/ban/VSO.png}
+  \label{nombreparareferenciar12}
+  \end{center}
+\end{figure}
+
+En este caso nuestro algoritmo supera ampliamente incluso al codigo C con mayor grado de optimización.
+
+
+\section{Conclusiones y trabajo futuro}
 
 
 
