@@ -46,10 +46,49 @@ sierpinski_asm:
     pxor xmm14, xmm14
 
    .loop:
+
+   ;instucciones para limite de performance logico
+;    add rax, rbx
+;    sub rax, rbx
+ ;   add rax, rbx
+  ;  sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+   ; add rax, rbx
+   ; sub rax, rbx
+;instucciones para limite de performance logico
+
+
+  ;instucciones para limite de performance ram
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+;instucciones para limite de performance ram
+
+
+
     movdqu xmm0, [src]
-
-
-
     ; calculo del coeficiente
     movd xmm11, r11d
     pshufd xmm11, xmm11, 0

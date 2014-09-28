@@ -1,0 +1,1107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta name="generator" content="LibreOffice 4.2.6.3 (Linux)">
+	<meta name="created" content="0;0">
+	<meta name="changed" content="20140927;235522286255276">
+	
+	<style type="text/css"><!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:x-small }
+		 -->
+	</style>
+	
+</head>
+
+<body text="#000000">
+<table cellspacing="0" border="0">
+	<colgroup width="75"></colgroup>
+	<colgroup span="12" width="85"></colgroup>
+	<colgroup width="136"></colgroup>
+	<colgroup span="14" width="85"></colgroup>
+	<tr>
+		<td height="17" align="left">Sin Loops</td>
+		<td align="left">Asm</td>
+		<td align="left">O0</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left"><br></td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		<td align="left">ConOutL</td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21045848" sdnum="1033;">21045848</td>
+		<td align="right" sdval="150762200" sdnum="1033;">150762200</td>
+		<td align="right" sdval="78652712" sdnum="1033;">78652712</td>
+		<td align="right" sdval="65783888" sdnum="1033;">65783888</td>
+		<td align="right" sdval="45350992" sdnum="1033;">45350992</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="29422678124.1595" sdnum="1033;">29422678124.1595</td>
+		<td align="right" sdval="6353960755000.99" sdnum="1033;">6353960755000.99</td>
+		<td align="right" sdval="13081320376.9586" sdnum="1033;">13081320376.9586</td>
+		<td align="right" sdval="5623440108.16022" sdnum="1033;">5623440108.16022</td>
+		<td align="right" sdval="92197735424.6382" sdnum="1033;">92197735424.6382</td>
+		<td align="left"><br></td>
+		<td align="left">Promedio Sin Loops</td>
+		<td align="right" sdval="21217378.4" sdnum="1033;">21217378.4</td>
+		<td align="right" sdval="153282906.4" sdnum="1033;">153282906.4</td>
+		<td align="right" sdval="78767085.6" sdnum="1033;">78767085.6</td>
+		<td align="right" sdval="65858877.6" sdnum="1033;">65858877.6</td>
+		<td align="right" sdval="45654632.8" sdnum="1033;">45654632.8</td>
+		<td align="left"><br></td>
+		<td colspan=8 rowspan=21 align="left"><br><img src="res_html_1367dbd9.png" width=604 height=340 hspace=43 vspace=19>
+		</td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21113576" sdnum="1033;">21113576</td>
+		<td align="right" sdval="150849368" sdnum="1033;">150849368</td>
+		<td align="right" sdval="78654976" sdnum="1033;">78654976</td>
+		<td align="right" sdval="65786392" sdnum="1033;">65786392</td>
+		<td align="right" sdval="45420272" sdnum="1033;">45420272</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="10774938245.7597" sdnum="1033;">10774938245.7597</td>
+		<td align="right" sdval="5922109144274.59" sdnum="1033;">5922109144274.59</td>
+		<td align="right" sdval="12568562412.1587" sdnum="1033;">12568562412.1587</td>
+		<td align="right" sdval="5254162207.36022" sdnum="1033;">5254162207.36022</td>
+		<td align="right" sdval="54924984576.6386" sdnum="1033;">54924984576.6386</td>
+		<td align="left"><br></td>
+		<td align="left">Promedio Con Loops</td>
+		<td align="right" sdval="77988592" sdnum="1033;">77988592</td>
+		<td align="right" sdval="508636725.6" sdnum="1033;">508636725.6</td>
+		<td align="right" sdval="298042345.6" sdnum="1033;">298042345.6</td>
+		<td align="right" sdval="223017198.4" sdnum="1033;">223017198.4</td>
+		<td align="right" sdval="194946369.6" sdnum="1033;">194946369.6</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21161336" sdnum="1033;">21161336</td>
+		<td align="right" sdval="150954224" sdnum="1033;">150954224</td>
+		<td align="right" sdval="78661192" sdnum="1033;">78661192</td>
+		<td align="right" sdval="65806528" sdnum="1033;">65806528</td>
+		<td align="right" sdval="45546152" sdnum="1033;">45546152</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="3140750597.75983" sdnum="1033;">3140750597.75983</td>
+		<td align="right" sdval="5422761720069.79" sdnum="1033;">5422761720069.79</td>
+		<td align="right" sdval="11213454520.9587" sdnum="1033;">11213454520.9587</td>
+		<td align="right" sdval="2740480620.16016" sdnum="1033;">2740480620.16016</td>
+		<td align="right" sdval="11768083968.6394" sdnum="1033;">11768083968.6394</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21167712" sdnum="1033;">21167712</td>
+		<td align="right" sdval="151327224" sdnum="1033;">151327224</td>
+		<td align="right" sdval="78683920" sdnum="1033;">78683920</td>
+		<td align="right" sdval="65827648" sdnum="1033;">65827648</td>
+		<td align="right" sdval="45595472" sdnum="1033;">45595472</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="2466751288.95985" sdnum="1033;">2466751288.95985</td>
+		<td align="right" sdval="3824693649669.78" sdnum="1033;">3824693649669.78</td>
+		<td align="right" sdval="6916517023.35901" sdnum="1033;">6916517023.35901</td>
+		<td align="right" sdval="975287916.160093" sdnum="1033;">975287916.160093</td>
+		<td align="right" sdval="3500000256.63965" sdnum="1033;">3500000256.63965</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21215720" sdnum="1033;">21215720</td>
+		<td align="right" sdval="153075008" sdnum="1033;">153075008</td>
+		<td align="right" sdval="78684320" sdnum="1033;">78684320</td>
+		<td align="right" sdval="65831128" sdnum="1033;">65831128</td>
+		<td align="right" sdval="45627056" sdnum="1033;">45627056</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="2750290.55999506" sdnum="1033;">2750290.55999506</td>
+		<td align="right" sdval="43221744722.5625" sdnum="1033;">43221744722.5625</td>
+		<td align="right" sdval="6850144543.35901" sdnum="1033;">6850144543.35901</td>
+		<td align="right" sdval="770040300.160083" sdnum="1033;">770040300.160083</td>
+		<td align="right" sdval="760479898.239836" sdnum="1033;">760479898.239836</td>
+		<td align="left"><br></td>
+		<td align="left">Tiempo</td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21217512" sdnum="1033;">21217512</td>
+		<td align="right" sdval="153523000" sdnum="1033;">153523000</td>
+		<td align="right" sdval="78692824" sdnum="1033;">78692824</td>
+		<td align="right" sdval="65851416" sdnum="1033;">65851416</td>
+		<td align="right" sdval="45656456" sdnum="1033;">45656456</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="17848.9600003982" sdnum="1033;">17848.9600003982</td>
+		<td align="right" sdval="57644936760.9571" sdnum="1033;">57644936760.9571</td>
+		<td align="right" sdval="5514785234.55911" sdnum="1033;">5514785234.55911</td>
+		<td align="right" sdval="55675474.5600222" sdnum="1033;">55675474.5600222</td>
+		<td align="right" sdval="3324058.24001087" sdnum="1033;">3324058.24001087</td>
+		<td align="left"><br></td>
+		<td align="left">Promedio Sin Loops</td>
+		<td align="right" sdval="21203596" sdnum="1033;">21203596</td>
+		<td align="right" sdval="152921481.333333" sdnum="1033;">152921481.333333</td>
+		<td align="right" sdval="78727942.6666667" sdnum="1033;">78727942.6666667</td>
+		<td align="right" sdval="65849976" sdnum="1033;">65849976</td>
+		<td align="right" sdval="45649204" sdnum="1033;">45649204</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21221904" sdnum="1033;">21221904</td>
+		<td align="right" sdval="154257952" sdnum="1033;">154257952</td>
+		<td align="right" sdval="78739056" sdnum="1033;">78739056</td>
+		<td align="right" sdval="65868024" sdnum="1033;">65868024</td>
+		<td align="right" sdval="45660832" sdnum="1033;">45660832</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="20481055.3600135" sdnum="1033;">20481055.3600135</td>
+		<td align="right" sdval="950713922079.348" sdnum="1033;">950713922079.348</td>
+		<td align="right" sdval="785658476.159666" sdnum="1033;">785658476.159666</td>
+		<td align="right" sdval="83656632.9599727" sdnum="1033;">83656632.9599727</td>
+		<td align="right" sdval="38430080.6400369" sdnum="1033;">38430080.6400369</td>
+		<td align="left"><br></td>
+		<td align="left">Promedio Con Loops</td>
+		<td align="right" sdval="74661478.6666667" sdnum="1033;">74661478.6666667</td>
+		<td align="right" sdval="523653848" sdnum="1033;">523653848</td>
+		<td align="right" sdval="311314229.333333" sdnum="1033;">311314229.333333</td>
+		<td align="right" sdval="211787348" sdnum="1033;">211787348</td>
+		<td align="right" sdval="195542256" sdnum="1033;">195542256</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21237392" sdnum="1033;">21237392</td>
+		<td align="right" sdval="154391480" sdnum="1033;">154391480</td>
+		<td align="right" sdval="78906344" sdnum="1033;">78906344</td>
+		<td align="right" sdval="65915112" sdnum="1033;">65915112</td>
+		<td align="right" sdval="45809256" sdnum="1033;">45809256</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="400544184.96006" sdnum="1033;">400544184.96006</td>
+		<td align="right" sdval="1228935426616.95" sdnum="1033;">1228935426616.95</td>
+		<td align="right" sdval="19392901970.5617" sdnum="1033;">19392901970.5617</td>
+		<td align="right" sdval="3162307743.35983" sdnum="1033;">3162307743.35983</td>
+		<td align="right" sdval="23908333978.2409" sdnum="1033;">23908333978.2409</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21302056" sdnum="1033;">21302056</td>
+		<td align="right" sdval="154479608" sdnum="1033;">154479608</td>
+		<td align="right" sdval="78977344" sdnum="1033;">78977344</td>
+		<td align="right" sdval="65935112" sdnum="1033;">65935112</td>
+		<td align="right" sdval="45883560" sdnum="1033;">45883560</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="7170295941.76025" sdnum="1033;">7170295941.76025</td>
+		<td align="right" sdval="1432094719442.55" sdnum="1033;">1432094719442.55</td>
+		<td align="right" sdval="44208594770.5625" sdnum="1033;">44208594770.5625</td>
+		<td align="right" sdval="5811683743.35977" sdnum="1033;">5811683743.35977</td>
+		<td align="right" sdval="52407662899.8414" sdnum="1033;">52407662899.8414</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="21490728" sdnum="1033;">21490728</td>
+		<td align="right" sdval="159209000" sdnum="1033;">159209000</td>
+		<td align="right" sdval="79018168" sdnum="1033;">79018168</td>
+		<td align="right" sdval="65983528" sdnum="1033;">65983528</td>
+		<td align="right" sdval="45996280" sdnum="1033;">45996280</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="74720003820.1608" sdnum="1033;">74720003820.1608</td>
+		<td align="right" sdval="35118585355960.9" sdnum="1033;">35118585355960.9</td>
+		<td align="right" sdval="63042371589.763" sdnum="1033;">63042371589.763</td>
+		<td align="right" sdval="15537722220.1596" sdnum="1033;">15537722220.1596</td>
+		<td align="right" sdval="116722809267.842" sdnum="1033;">116722809267.842</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left">Con Loops</td>
+		<td align="left">Asm</td>
+		<td align="left">O0</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left"><br></td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		<td align="left">ConOutL</td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="47083712" sdnum="1033;">47083712</td>
+		<td align="right" sdval="338475360" sdnum="1033;">338475360</td>
+		<td align="right" sdval="155640448" sdnum="1033;">155640448</td>
+		<td align="right" sdval="170783888" sdnum="1033;">170783888</td>
+		<td align="right" sdval="108827880" sdnum="1033;">108827880</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62941074559185E+020" sdnum="1033;">162941074559185000000</td>
+		<td align="right" sdval="3.64228383194106E+025" sdnum="1033;">36422838319410600000000000</td>
+		<td align="right" sdval="3.31305182642182E+020" sdnum="1033;">331305182642182000000</td>
+		<td align="right" sdval="1.46739698921731E+019" sdnum="1033;">14673969892173100000</td>
+		<td align="right" sdval="1.261269521939E+021" sdnum="1033;">1261269521939000000000</td>
+		<td align="left"><br></td>
+		<td align="left">varianza Sin Loops</td>
+		<td align="right" sdval="12811921139.84" sdnum="1033;">12811921139.84</td>
+		<td align="right" sdval="6035472137459.84" sdnum="1033;">6035472137459.84</td>
+		<td align="right" sdval="18357431091.84" sdnum="1033;">18357431091.84</td>
+		<td align="right" sdval="4001445696.64" sdnum="1033;">4001445696.64</td>
+		<td align="right" sdval="35623184440.96" sdnum="1033;">35623184440.96</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="53030736" sdnum="1033;">53030736</td>
+		<td align="right" sdval="341132568" sdnum="1033;">341132568</td>
+		<td align="right" sdval="216400128" sdnum="1033;">216400128</td>
+		<td align="right" sdval="171053544" sdnum="1033;">171053544</td>
+		<td align="right" sdval="111262392" sdnum="1033;">111262392</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.627892843372E+020" sdnum="1033;">162789284337200000000</td>
+		<td align="right" sdval="3.64228062462068E+025" sdnum="1033;">36422806246206800000000000</td>
+		<td align="right" sdval="3.29097004431002E+020" sdnum="1033;">329097004431002000000</td>
+		<td align="right" sdval="1.46719040430061E+019" sdnum="1033;">14671904043006100000</td>
+		<td align="right" sdval="1.26109660761141E+021" sdnum="1033;">1261096607611410000000</td>
+		<td align="left"><br></td>
+		<td align="left">varianza Con Loops</td>
+		<td align="right" sdval="1.62153578021235E+020" sdnum="1033;">162153578021235000000</td>
+		<td align="right" sdval="3.64207844681415E+025" sdnum="1033;">36420784468141500000000000</td>
+		<td align="right" sdval="3.26146034437362E+020" sdnum="1033;">326146034437362000000</td>
+		<td align="right" sdval="1.42792705224187E+019" sdnum="1033;">14279270522418700000</td>
+		<td align="right" sdval="1.25516358999314E+021" sdnum="1033;">1255163589993140000000</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="62176832" sdnum="1033;">62176832</td>
+		<td align="right" sdval="398766992" sdnum="1033;">398766992</td>
+		<td align="right" sdval="245655848" sdnum="1033;">245655848</td>
+		<td align="right" sdval="174818840" sdnum="1033;">174818840</td>
+		<td align="right" sdval="147183072" sdnum="1033;">147183072</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62555979915298E+020" sdnum="1033;">162555979915298000000</td>
+		<td align="right" sdval="3.642211058693E+025" sdnum="1033;">36422110586930000000000000</td>
+		<td align="right" sdval="3.28036402483376E+020" sdnum="1033;">328036402483376000000</td>
+		<td align="right" sdval="1.46430730999585E+019" sdnum="1033;">14643073099958500000</td>
+		<td align="right" sdval="1.25854667313045E+021" sdnum="1033;">1258546673130450000000</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="64462576" sdnum="1033;">64462576</td>
+		<td align="right" sdval="441542568" sdnum="1033;">441542568</td>
+		<td align="right" sdval="301915504" sdnum="1033;">301915504</td>
+		<td align="right" sdval="180251224" sdnum="1033;">180251224</td>
+		<td align="right" sdval="168197696" sdnum="1033;">168197696</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62497699836818E+020" sdnum="1033;">162497699836818000000</td>
+		<td align="right" sdval="3.64215942812806E+025" sdnum="1033;">36421594281280600000000000</td>
+		<td align="right" sdval="3.26001643142733E+020" sdnum="1033;">326001643142733000000</td>
+		<td align="right" sdval="1.46015271977345E+019" sdnum="1033;">14601527197734500000</td>
+		<td align="right" sdval="1.25705608508529E+021" sdnum="1033;">1257056085085290000000</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="69545264" sdnum="1033;">69545264</td>
+		<td align="right" sdval="510802792" sdnum="1033;">510802792</td>
+		<td align="right" sdval="310050848" sdnum="1033;">310050848</td>
+		<td align="right" sdval="187199072" sdnum="1033;">187199072</td>
+		<td align="right" sdval="187186880" sdnum="1033;">187186880</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62368142961189E+020" sdnum="1033;">162368142961189000000</td>
+		<td align="right" sdval="3.64207583109358E+025" sdnum="1033;">36420758310935800000000000</td>
+		<td align="right" sdval="3.25707933665746E+020" sdnum="1033;">325707933665746000000</td>
+		<td align="right" sdval="1.45484773135776E+019" sdnum="1033;">14548477313577600000</td>
+		<td align="right" sdval="1.25570992314036E+021" sdnum="1033;">1255709923140360000000</td>
+		<td align="left"><br></td>
+		<td align="left">SinOutL</td>
+		<td align="left">asm</td>
+		<td align="left">O1</td>
+		<td align="left">O2</td>
+		<td align="left">O3</td>
+		<td align="left">O4</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="71890264" sdnum="1033;">71890264</td>
+		<td align="right" sdval="563237792" sdnum="1033;">563237792</td>
+		<td align="right" sdval="327411752" sdnum="1033;">327411752</td>
+		<td align="right" sdval="232448096" sdnum="1033;">232448096</td>
+		<td align="right" sdval="192979440" sdnum="1033;">192979440</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62308386717357E+020" sdnum="1033;">162308386717357000000</td>
+		<td align="right" sdval="3.64201254272901E+025" sdnum="1033;">36420125427290100000000000</td>
+		<td align="right" sdval="3.25081597395005E+020" sdnum="1033;">325081597395005000000</td>
+		<td align="right" sdval="1.42053429136301E+019" sdnum="1033;">14205342913630100000</td>
+		<td align="right" sdval="1.25529942641005E+021" sdnum="1033;">1255299426410050000000</td>
+		<td align="left"><br></td>
+		<td align="left">varianza Sin Loops</td>
+		<td align="right" sdval="1.2167844197929E+020" sdnum="1033;">121678441979290000000</td>
+		<td align="right" sdval="2.73154524049387E+025" sdnum="1033;">27315452404938700000000000</td>
+		<td align="right" sdval="2.44247564316341E+020" sdnum="1033;">244247564316341000000</td>
+		<td align="right" sdval="1.07718939857161E+019" sdnum="1033;">10771893985716100000</td>
+		<td align="right" sdval="9.41339241798115E+020" sdnum="1033;">941339241798115000000</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="83915976" sdnum="1033;">83915976</td>
+		<td align="right" sdval="606794024" sdnum="1033;">606794024</td>
+		<td align="right" sdval="337058160" sdnum="1033;">337058160</td>
+		<td align="right" sdval="241935776" sdnum="1033;">241935776</td>
+		<td align="right" sdval="234653480" sdnum="1033;">234653480</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.62002115450738E+020" sdnum="1033;">162002115450738000000</td>
+		<td align="right" sdval="3.6419599713403E+025" sdnum="1033;">36419599713403000000000000</td>
+		<td align="right" sdval="3.24733840602592E+020" sdnum="1033;">324733840602592000000</td>
+		<td align="right" sdval="1.41339148433906E+019" sdnum="1033;">14133914843390600000</td>
+		<td align="right" sdval="1.25234812357482E+021" sdnum="1033;">1252348123574820000000</td>
+		<td align="left"><br></td>
+		<td align="left">varianza Con Loops</td>
+		<td align="right" sdval="753911908.319969" sdnum="1033;">753911908.319969</td>
+		<td align="right" sdval="1440996424989.92" sdnum="1033;">1440996424989.92</td>
+		<td align="right" sdval="6334182721.11965" sdnum="1033;">6334182721.11965</td>
+		<td align="right" sdval="973431085.92002" sdnum="1033;">973431085.92002</td>
+		<td align="right" sdval="4997331530.07998" sdnum="1033;">4997331530.07998</td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="95977960" sdnum="1033;">95977960</td>
+		<td align="right" sdval="620778920" sdnum="1033;">620778920</td>
+		<td align="right" sdval="345793264" sdnum="1033;">345793264</td>
+		<td align="right" sdval="254071080" sdnum="1033;">254071080</td>
+		<td align="right" sdval="243052968" sdnum="1033;">243052968</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.61695210952919E+020" sdnum="1033;">161695210952919000000</td>
+		<td align="right" sdval="3.64194309196701E+025" sdnum="1033;">36419430919670100000000000</td>
+		<td align="right" sdval="3.24419097241277E+020" sdnum="1033;">324419097241277000000</td>
+		<td align="right" sdval="1.40428165174378E+019" sdnum="1033;">14042816517437800000</td>
+		<td align="right" sdval="1.25175370304394E+021" sdnum="1033;">1251753703043940000000</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="111108888" sdnum="1033;">111108888</td>
+		<td align="right" sdval="627724960" sdnum="1033;">627724960</td>
+		<td align="right" sdval="360612456" sdnum="1033;">360612456</td>
+		<td align="right" sdval="293117640" sdnum="1033;">293117640</td>
+		<td align="right" sdval="268453048" sdnum="1033;">268453048</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.61310631856489E+020" sdnum="1033;">161310631856489000000</td>
+		<td align="right" sdval="3.64193470830805E+025" sdnum="1033;">36419347083080500000000000</td>
+		<td align="right" sdval="3.23885481011318E+020" sdnum="1033;">323885481011318000000</td>
+		<td align="right" sdval="1.37516969756634E+019" sdnum="1033;">13751696975663400000</td>
+		<td align="right" sdval="1.24995703186835E+021" sdnum="1033;">1249957031868350000000</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="right" sdval="120693712" sdnum="1033;">120693712</td>
+		<td align="right" sdval="637111280" sdnum="1033;">637111280</td>
+		<td align="right" sdval="379885048" sdnum="1033;">379885048</td>
+		<td align="right" sdval="324492824" sdnum="1033;">324492824</td>
+		<td align="right" sdval="287666840" sdnum="1033;">287666840</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="1.61067253625158E+020" sdnum="1033;">161067253625158000000</td>
+		<td align="right" sdval="3.6419233793207E+025" sdnum="1033;">36419233793207000000000000</td>
+		<td align="right" sdval="3.23192161758387E+020" sdnum="1033;">323192161758387000000</td>
+		<td align="right" sdval="1.35199824276155E+019" sdnum="1033;">13519982427615500000</td>
+		<td align="right" sdval="1.24859880412775E+021" sdnum="1033;">1248598804127750000000</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td colspan=8 rowspan=21 align="left"><br><img src="res_html_3131826c.png" width=604 height=340 hspace=43 vspace=19>
+		</td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+</table>
+<!-- ************************************************************************** -->
+</body>
+
+</html>

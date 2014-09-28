@@ -119,17 +119,17 @@ Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-cons
 
 \newpage
 \subsection{Calidad de las Mediciones}
-Para este experimento vamos ver como se puede ver afectado nuestro programa frente a diversos factores de ruido e interferencias que puedan alterar nuestras mediciones.
+Para este experimento vamos ver como se puede ver afectado nuestros algoritmos frente a diversos factores de ruido e interferencias que puedan alterar nuestras mediciones.
 
 Para este experimento se utilizo un procesador Intel Atom, de 4 nucleos a 1.6 GHZ con Hyper-Threading. Por lo que la cantidad de nucleos logicos asciende a 8.
 
 Para que las pruebas sean mas concisas y exactas, se deshabilita el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
 
-Procedemos a tomar 10 mediciones, tanto con 8 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente grafico:
+Procedemos a tomar 10 mediciones para cada una de las verciones del cropflip, tanto con 8 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente grafico:
 \\
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/PCO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/1.3/PCO.png}
 	\label{nombreparareferenciar1}
   \end{center}
 \end{figure}
@@ -138,7 +138,7 @@ Realizamos un calculo de la varianza para ver que tan precisos son los resultado
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/VCO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/1.3/VCO.png}
 	\label{nombreparareferenciar2}
   \end{center}
 \end{figure}
@@ -151,7 +151,7 @@ Esto es lo que se obtiene al graficar el promedio:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/PSO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/1.3/PSO.png}
 	\label{nombreparareferenciar3}
   \end{center}
 \end{figure}
@@ -160,7 +160,7 @@ En este grafico no se observan cambios significativos. Sin embargo, al calcular 
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/VSO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/1.3/VSO.png}
 	\label{nombreparareferenciar4}
   \end{center}
 \end{figure}
@@ -170,6 +170,7 @@ Las varianzas de los tests con loops, se ven reducidas drasticamente, inculuso p
 De aqui se concluye, que la mejor manera de realizar tests es con loops corriendo en paralelo y luego, cuando estos valores ya han sido obtenidos, quitando los dos valores mas grandes y los dos valores mas chicos.
 
 \newpage
+\section{Cropflip}
 \subsection{Diferencias de performance en Cropflip}
 En el siguiente experimento se mediran las performances tanto de nuestro algoritmo en assambler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimizacion a cargo del compilador.
 
@@ -183,26 +184,61 @@ Lo obtenido en los tests puede verse en el siguiente grafico:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/PSO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/crop/PSO.png}
 	\label{nombreparareferenciar5}
   \end{center}
 \end{figure}
 
+\newpage
 Y las varianzas son:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{GraficosTesting/crop/VSO.png}
+	\includegraphics[scale=0.66]{Graficos1.4/crop/VSO.png}
 	\label{nombreparareferenciar6}
   \end{center}
 \end{figure}
 
 De aqui puede verse que la implementación en assambler es tan buena, como la implementacion en C con el maximo grado de optimización.
 
+\newpage
+
 \subsection{cpu vs. bus de memoria en Cropflip}
 HACER =)
 
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
 \newpage
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/pushpop/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/pushpop/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+
+
+\newpage
+\section{Sierpinski}
 \subsection{Diferencias de performance en Sierpinski}
 Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco mas complejo. Necesitamos calcular para cada columna, una constante diferente, que dependerá de cual sea la misma.
 \\
@@ -238,7 +274,7 @@ Los resultados comparativos de performance para este algoritmo comparado con uno
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/sie/PSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/sie/PSO.png}
   \label{nombreparareferenciar7}
   \end{center}
 \end{figure}
@@ -249,17 +285,51 @@ Y la varianza:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/sie/PSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/sie/PSO.png}
   \label{nombreparareferenciar8}
   \end{center}
 \end{figure}
 
 Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixcels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
 
+\newpage
 \subsection{cpu vs. bus de memoria en Sierpinski}
+
 HACER =)
 
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/addsub/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/ban/addsub/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+
+
 \newpage
+\section{Bandas}
 \subsection{Diferencias de performance en Bandas}
 Para el algoritmo de bandas se nos presenta otro desafío: devemos tomar los tres colores de la imagen(r,g,b), sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 \\
@@ -277,7 +347,7 @@ Los resultados de los tiempos comparativos son los siguientes:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/ban/PSO.png}
   \label{nombreparareferenciar9}
   \end{center}
 \end{figure}
@@ -287,19 +357,50 @@ Y la varianza:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/ban/PSO.png}
   \label{nombreparareferenciar10}
   \end{center}
 \end{figure}
 
 Nuestro algoritmo obtiene una performance mucho mayor a la del codigo sin optimizar, y una performance casi identica al del codigo C con el mayor grado de optimización.
 
-
+\newpage
 \subsection{cpu vs. bus de memoria en Bandas}
+
 HACER =)
 
-\newpage
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/ban/addsub/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
 
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/ban/addsub/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/per.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/var.png}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+
+
+\newpage
+\subsection{Motion Blur}
 \subsection{Diferencias de performance en Motion Blur}
 Para este algoritmo por cada pixcel se deben tomar 5 pixcels, multiplicar cada uno de los colores por 0.2 y luego sumarlos.
 \\
@@ -315,7 +416,7 @@ Al realizar el testing se obtuvieron los siguientes resultados:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/ban/PSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/ban/PSO.png}
   \label{nombreparareferenciar11}
   \end{center}
 \end{figure}
@@ -324,7 +425,7 @@ Y la varianza:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{GraficosTesting/ban/VSO.png}
+  \includegraphics[scale=0.66]{Graficos1.4/ban/VSO.png}
   \label{nombreparareferenciar12}
   \end{center}
 \end{figure}

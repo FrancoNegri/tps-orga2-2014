@@ -129,6 +129,27 @@ mblur_asm:
 	movdqu xmm3, [src + r14]
 	movdqu xmm4, [src + r15]
 
+
+  ;instucciones para limite de performance ram
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+;instucciones para limite de performance ram
+
+
 	movdqu xmm10, xmm2
 	pand xmm10, xmm13
 

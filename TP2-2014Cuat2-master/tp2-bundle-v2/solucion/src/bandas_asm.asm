@@ -58,6 +58,28 @@ bandas_asm:
 
 
     .loop:
+
+  ;instucciones para limite de performance ram
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+  push rax
+  pop rax
+;instucciones para limite de performance ram
+
+
+
     movdqu xmm0, [src]
     movdqu xmm3, xmm7 ;ACÀ ESTARÀ LA SOLUCIÒN, PERO PRIMERO SETEO TODO EN 255
     movdqu xmm2, xmm0
