@@ -76,15 +76,15 @@ En el presente trabajo se describe la problemática de procesar información de 
 
 \section{Objetivos generales}
 
-El objetivo de este Trabajo Práctico es mostar las variaciones en la performance que suceden al utilizar instrucciones SIMD en comparacion con codigo C con diversos grados de optimizacion realizados por el compilador.
+El objetivo de este Trabajo Práctico es mostrar las variaciones en la performance que suceden al utilizar instrucciones SIMD en comparación con código C con diversos grados de optimización realizados por el compilador.
 
-Para ello se realizaran cuatro filtros de fotos, Cropflip, Bandas, Sierpinski y Motion Blur, tanto en codigo assambler que aproveche las instucciones SSE brindadas para los procesadores de arquitectura Intel como codigo C, al que se le apilcarán los distintos flags de optimizacion -O0, -O1, -O2 y -O3.
+Para ello se realizarán cuatro filtros de fotos, Cropflip, Bandas, Sierpinski y Motion Blur, tanto en código assembler, que aproveche las instrucciones SSE brindadas para los procesadores de arquitectura Intel, como en código C, al que se le aplicarán los distintos flags de optimización -O0 (predeterminado), -O1, -O2 y -O3.
 
-El primer filtro, Cropflip, se utilizará para mostar cuanto mejora la performance al utilizar los registros MMX para transferir grandes cantidades de informacion.
+El primer filtro, Cropflip, se utilizará para mostrar cuanto mejora la performance al utilizar los registros XMM para transferir grandes cantidades de información.
 
-El segundo, tercer y cuarto filtro, se sentrán, en la variacion de performance entre utilizar instrucciones SIMD, para realizar diversos calculos (sumas, multiplicaciones, diviciones) tanto en representacion de enteros como punto flotante.
+El segundo, tercer y cuarto filtro, se centrarán en la variación de performance (en comparación al código en C) al utilizar instrucciones SIMD, no sólo para transferir grandes volúmenes de datos sino también para procesarlos en forma paralela, es decir, realizar diversos cálculos (sumas, multiplicaciones, divisiones) tanto en representación de enteros como punto flotante.
 
-\section{Enunciado y solucion} 
+\section{Enunciado y solución} 
 
 \subsection{Enunciado}
 
@@ -92,40 +92,32 @@ El segundo, tercer y cuarto filtro, se sentrán, en la variacion de performance 
 \
 \newpage
 
-\subsection{Desensamblado de codigo C y Optimización}
-Comenzamos analizando el algoritmo el codigo del Cropflip del algormitmo realizado en C.
+\subsection{Desensamblado de código C y Optimización}
+Comenzamos analizando el código de Cropflip realizado en C.
 
-Este basicamente solo mueve datos de un lugar de la RAM a otros, sin afectar mayormente la imagen.
+Este básicamente solo mueve datos de un lugar de la RAM a otros, sin afectar mayormente la imagen.
 
-Realizamos un objdump para ver el codigo que genera el compilador gcc. Al desensamblar el codigo pudimos observar, primero que nada, que C guarda todos los parametros en la pila, lo que es innecesario, esta escribiendo en memoria todas las variables utilizadas.
+Realizamos un objdump para ver el código que genera el compilador gcc. Al desensamblar el código pudimos observar, primero que nada, que C guarda todos los parámetros en la pila y además está escribiendo en memoria todas las variables locales utilizadas, lo cual es innecesario ya que pueden ser almacenadas en registros.
 
-Tambien notamos que utiliza las variables locales desde memoria en vez de guardarlas en registros.
+También puede observarse que C utiliza saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de predicción de saltos.
 
-Tambien puede observarse que C utiliza saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de prediccion de saltos.
+Ademas C genera, luego de la función, un montón de secciones que comienzan con debug_xxx. Estas secciones sirven para ser interpretadas por GDB u otros debuggers.
 
-Ademas C genera, luego de la función, un monton de secciones que comienzan con debug_xxx. Estas secciones sirven para ser interpretadas por GDB u otros debuggers.
+Como ya dijimos, el código podría optimizarse para no realizar tantos accesos a memoria innecesarios guardando variables locales por ejemplo en registros, lo cual disminuiría el tiempo de ejecución.
 
-Como ya dijimos, el codigo podria optimizarse para no realizar tantos accesos a memoria innecesarios guardando variables locales por ejemplo en registros, lo cual disminuiria el tiempo de ejecución.
+Luego de esto, procedemos a compilar el código utilizando el flag -O1, y nuevamente realizamos un objdump para ver el código desensamblado. Se observa que ahora el mismo solo realiza los accesos a memoria mínimos indispensables, utilizando los registros para guardar los datos. Además el código es más compacto, y resulta mas claro de leer. Además precalcula los valores que serán utilizados muchas veces, lo que aumenta la performance, principalmente en casos de instancias grandes.
 
-Luego de esto, procedemos a compilar el codigo utilizando el flag -O1, y nuevamente realizamos un objdump para ver el codigo desensamblado. se observa que ahora el mismo solo realiza los accesos a memoria minimos indispensables, lo que tambien implica que ahora utiliza registros para guardar los datos. Ademas el codigo esta mas comprimido, y resulta mas claro de leer.
+Los otros flags de optimización son -O2, -O3, -Og, -Os, -Ofast. También podemos encontrar los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no utilizó instrucciones SIMD.
 
-Ademas precalcula los valores que seran utilizados muchas veces, lo que aumenta la performance, principalmente en casos de instancias grandes.
-
-Los otros flags de optimizacion son -O2, -O3, -Og, -Os, -Ofast.
-
-Ademas encontramos los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no es capaz como para utilizar instrucciones simd.
-
-Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants 
+Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants .
 
 \newpage
 \subsection{Calidad de las Mediciones}
-Para este experimento vamos ver como se puede ver afectado nuestros algoritmos frente a diversos factores de ruido e interferencias que puedan alterar nuestras mediciones.
+Para este experimento vamos a ver cómo se pueden ver afectados nuestros algoritmos frente a diversos factores de ruido e interferencias que podrían alterar nuestras mediciones.
 
-Para este experimento se utilizo un procesador Intel Atom, de 4 nucleos a 1.6 GHZ con Hyper-Threading. Por lo que la cantidad de nucleos logicos asciende a 8.
+Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
 
-Para que las pruebas sean mas concisas y exactas, se deshabilita el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
-
-Procedemos a tomar 10 mediciones para cada una de las verciones del cropflip, tanto con 8 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente grafico:
+Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente gráfico:
 \\
 \begin{figure}[h!]
   \begin{center}
@@ -134,7 +126,7 @@ Procedemos a tomar 10 mediciones para cada una de las verciones del cropflip, ta
   \end{center}
 \end{figure}
 \\
-Realizamos un calculo de la varianza para ver que tan precisos son los resultados y se obtiene esto:
+Realizamos un cálculo de la varianza para ver qué tan precisos son los resultados y se obtiene esto:
 
 \begin{figure}[h!]
   \begin{center}
@@ -143,7 +135,7 @@ Realizamos un calculo de la varianza para ver que tan precisos son los resultado
   \end{center}
 \end{figure}
 
-La varianza con loops es sustancialmente mayor que sin los mismos, por lo que se estaria inclinado a correr tests sin loops para obtener valores mas fiables.
+La varianza con loops es sustancialmente mayor que sin los mismos, por lo que se estaría inclinado a correr tests sin loops para obtener valores mas fiables.
 
 Ahora consideramos outliers a los dos valores mas grandes y a los dos valores mas chicos y volvemos a graficar los resultados.
 
@@ -156,7 +148,7 @@ Esto es lo que se obtiene al graficar el promedio:
   \end{center}
 \end{figure}
 
-En este grafico no se observan cambios significativos. Sin embargo, al calcular nuevamente la varianza, se observa lo siguiente:
+En este gráfico no se observan cambios significativos. Sin embargo, al calcular nuevamente la varianza, se observa lo siguiente:
 
 \begin{figure}[h!]
   \begin{center}
@@ -165,22 +157,22 @@ En este grafico no se observan cambios significativos. Sin embargo, al calcular 
   \end{center}
 \end{figure}
 
-Las varianzas de los tests con loops, se ven reducidas drasticamente, inculuso por debajo de las varianzas sin los mismos.
+Las varianzas de los tests con loops, se ven reducidas dramáticamente, incluso por debajo de las varianzas sin los mismos.
 
-De aqui se concluye, que la mejor manera de realizar tests es con loops corriendo en paralelo y luego, cuando estos valores ya han sido obtenidos, quitando los dos valores mas grandes y los dos valores mas chicos.
+De aquí se concluye, que la mejor manera de realizar tests es con loops corriendo en paralelo y luego, cuando estos valores ya han sido obtenidos, quitando los dos valores mas grandes y los dos valores mas chicos.
 
 \newpage
 \section{Cropflip}
 \subsection{Diferencias de performance en Cropflip}
-En el siguiente experimento se mediran las performances tanto de nuestro algoritmo en assambler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimizacion a cargo del compilador.
+En el siguiente experimento se medirán las performances tanto de nuestro algoritmo en assembler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimización a cargo del compilador.
 
-El algormitmo de cropflip para Cropflip es muy cencillo. Siemplemente movemos 128-bits de la imagen a un mmx y de alli al destino, que previamente a sido seteado para colocar los bits en el lugar correcto. De esta manera, podremos mover de una sola vez, 16 bytes, lo que corresponde a 4 pixels de la imagen.
+El algoritmo de Cropflip en assembler es muy sencillo. Simplemente movemos 128-bits de la imagen a un xmm y de allí al destino, que previamente ha sido seteado para colocar los bits en el lugar correcto. De esta manera, podremos mover de una sola vez, 16 bytes, lo que corresponde a 4 pixels de la imagen.
 
-Dado que la cantidad de columnas es siempre multiplo de 4, osea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
+Dado que la cantidad de columnas es siempre múltiplo de 4, o sea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
 
-Las pruebas de performance, realizadas de la misma manera en que concluimos la anterior seccion, se realizaron corriendo 8 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
+Las pruebas de performance, realizadas de la misma manera en que concluimos la anterior sección, se realizaron corriendo 4 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
 
-Lo obtenido en los tests puede verse en el siguiente grafico:
+Lo obtenido en los tests puede verse en el siguiente gráfico:
 
 \begin{figure}[h!]
   \begin{center}
@@ -199,7 +191,7 @@ Y las varianzas son:
   \end{center}
 \end{figure}
 
-De aqui puede verse que la implementación en assambler es tan buena, como la implementacion en C con el maximo grado de optimización.
+De aquí puede verse que la implementación en assembler es tan buena como la implementación en C con el máximo grado de optimización.
 
 \newpage
 
@@ -240,32 +232,32 @@ HACER =)
 \newpage
 \section{Sierpinski}
 \subsection{Diferencias de performance en Sierpinski}
-Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco mas complejo. Necesitamos calcular para cada columna, una constante diferente, que dependerá de cual sea la misma.
+Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco más complejo. Necesitamos calcular para cada columna un valor constante diferente, que dependerá de cuál sea la misma.
 \\
-Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 constantes a la vez y multiplicarlas a sus respectivos pixcels.
+Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 constantes a la vez y multiplicárselas a sus respectivos pixels.
 \\
-Luego la idea del algormitmo será algo así:
+Luego la idea del algoritmo será algo así:
 \begin{codesnippet}
 \begin{verbatim}
 
-  Pongo r10 y r11 en 0, estos seran la filas (i) y columnas (j) en la que estoy parado.
+  Pongo r10 y r11 en 0, estos serán la fila (i) y columna (j) en la que estoy parado.
   Pongo en xmm8 la cantidad de columnas, lo brodcasteo y lo convierto a float
   Pongo en xmm9 la cantidad de filas, lo brodcasteo y lo convierto a float
   Muevo a xmm13 la constante 255 brodcasteada y en formato float
   Muevo a xmm15 los valores 0,1,2,3 en formato entero.
   Seteo xmm14 en 0.
   Luego, para cada paso iterativo:
-    Tomo 4 pixcels de la fuente y los pongo en xmm0.
+    Tomo 4 pixels de la fuente y los pongo en xmm0.
     Muevo r10 y r11 a xmm10 y xmm11 respectivamente, los brodcasteo.
-    Sumo xmm10 y xmm15 para obtener el numero i apropiado para cada pixcel. tendré (i+0,i+1,i+2,i+3).
+    Sumo xmm10 y xmm15 para obtener el numero i apropiado para cada pixel, tendré (i+0,i+1,i+2,i+3).
     Convierto xmm10 y xmm11 a punto flotante.
     Divido xmm10 por xmm9 y xmm11 por xmm8. (xmm10= i/filas), y (xmm11= j/columnas).
-    Multiplico xmm10 y xmm 11 por xmm13, osea multiplico ambos valores por la constante 255 previamente brodcasteada.
-    Comvierto xmm10 y xmm11 nuevamente a entero y realizo un xor entre ellos.
+    Multiplico xmm10 y xmm11 por xmm13, o sea multiplico ambos valores por la constante 255 previamente brodcasteada.
+    Convierto xmm10 y xmm11 nuevamente a entero y realizo un xor entre ellos.
     Paso a float xmm10 nuevamente y lo divido por xmm13.
-    Hasta aqui hemos calculado el coeficente $b$ para cada uno de los 4 picels.
-    Ahora solo resta tomar los 4 pixcels que teniamos en xmm0, desempaquetarlos y convertirlos a float
-    Multiplicarlos cada uno de los pixcels por su constante $b$
+    Hasta aquí hemos calculado el coeficiente $b$ para cada uno de los 4 pixels.
+    Ahora solo resta tomar los 4 pixels que teníamos en xmm0, desempaquetarlos y convertirlos a float
+    Multiplicarlos cada uno de los pixels por su constante $b$
     Convertir nuevamente los valores a byte y ponerlos en el destino.
 \end{verbatim}
 \end{codesnippet}
@@ -290,7 +282,7 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixcels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
+Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
 
 \newpage
 \subsection{cpu vs. bus de memoria en Sierpinski}
@@ -331,11 +323,11 @@ HACER =)
 \newpage
 \section{Bandas}
 \subsection{Diferencias de performance en Bandas}
-Para el algoritmo de bandas se nos presenta otro desafío: devemos tomar los tres colores de la imagen(r,g,b), sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
+Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tres colores de la imagen(r,g,b), sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 \\
-Para resolver la primera problematica usaremos las instrucciones $phaddw$, que nos perimitira atravez de una suma orizontal, sumar los valores r,g,b de manera comoda solamente utilizando dos registros.
+Para resolver la primera problemática usaremos las instrucciones $phaddw$, que nos permitirá a través de una suma horizontal, sumar los valores r,g,b de manera cómoda solamente utilizando dos registros.
 \\
-El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querriamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deverá ir en cada pixcel. Esta se resolverá utililizando broadcasting. El algormitmo irá comparando en cada paso contra un valor y en caso de cumplirse una condicion, restará donde corresponda.
+El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querríamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deberá ir en cada pixel. Esta se resolverá utilizando broadcasting. El algoritmo irá comparando en cada paso contra un valor y en caso de cumplirse una condición, restará donde corresponda.
 
 \begin{codesnippet}
 \begin{verbatim}
@@ -362,7 +354,7 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-Nuestro algoritmo obtiene una performance mucho mayor a la del codigo sin optimizar, y una performance casi identica al del codigo C con el mayor grado de optimización.
+Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optimizar, y una performance casi idéntica al del código C con el mayor grado de optimización.
 
 \newpage
 \subsection{saltos condicionales}
@@ -386,9 +378,9 @@ HACER =)
 \newpage
 \subsection{Motion Blur}
 \subsection{Diferencias de performance en Motion Blur}
-Para este algoritmo por cada pixcel se deben tomar 5 pixcels, multiplicar cada uno de los colores por 0.2 y luego sumarlos.
+Para este algoritmo por cada pixel se deben tomar 5 pixels, multiplicar cada uno de los colores por 0.2 y luego sumarlos.
 \\
-Para ello devemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
+Para ello debemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
 
 \begin{codesnippet}
 \begin{verbatim}
@@ -414,7 +406,7 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-En este caso nuestro algoritmo supera ampliamente incluso al codigo C con mayor grado de optimización.
+En este caso nuestro algoritmo supera ampliamente incluso al código C con mayor grado de optimización.
 
 
 \section{Conclusiones y trabajo futuro}
