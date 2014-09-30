@@ -9,12 +9,12 @@
 \contentsline {section}{\numberline {3}Cropflip}{10}
 \contentsline {subsection}{\numberline {3.1}Diferencias de performance en Cropflip}{10}
 \contentsline {subsection}{\numberline {3.2}cpu vs. bus de memoria en Cropflip}{12}
-\contentsline {section}{\numberline {4}Sierpinski}{14}
-\contentsline {subsection}{\numberline {4.1}Diferencias de performance en Sierpinski}{14}
-\contentsline {subsection}{\numberline {4.2}cpu vs. bus de memoria en Sierpinski}{16}
-\contentsline {section}{\numberline {5}Bandas}{17}
-\contentsline {subsection}{\numberline {5.1}Diferencias de performance en Bandas}{17}
-\contentsline {subsection}{\numberline {5.2}saltos condicionales}{20}
-\contentsline {subsection}{\numberline {5.3}Motion Blur}{21}
-\contentsline {subsection}{\numberline {5.4}Diferencias de performance en Motion Blur}{21}
-\contentsline {section}{\numberline {6}Conclusiones y trabajo futuro}{21}
+\contentsline {section}{\numberline {4}Sierpinski}{13}
+\contentsline {subsection}{\numberline {4.1}Diferencias de performance en Sierpinski}{13}
+\contentsline {subsection}{\numberline {4.2}cpu vs. bus de memoria en Sierpinski}{15}
+\contentsline {section}{\numberline {5}Bandas}{16}
+\contentsline {subsection}{\numberline {5.1}Diferencias de performance en Bandas}{16}
+\contentsline {subsection}{\numberline {5.2}saltos condicionales}{18}
+\contentsline {subsection}{\numberline {5.3}Motion Blur}{19}
+\contentsline {subsection}{\numberline {5.4}Diferencias de performance en Motion Blur}{19}
+\contentsline {section}{\numberline {6}Conclusiones y trabajo futuro}{19}
