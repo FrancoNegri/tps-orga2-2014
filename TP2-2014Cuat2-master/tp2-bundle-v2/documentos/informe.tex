@@ -196,38 +196,30 @@ De aquí puede verse que la implementación en assembler es tan buena como la im
 \newpage
 
 \subsection{cpu vs. bus de memoria en Cropflip}
-HACER =)
+
+Para este experimento lo que hicimos fue agregar instrucciones aritméticas y ver como esto influía en el tiempo de ejecución.
+
+Tambien hicimos lo mismo pero con instucciones de lectura-escritura en memoria. 
+
+Probamos agregando $4$, $8$ y $16$ instrucciones de cada una por separado y comparamos las performance entre sí y con la versión original.
+
+Lo que obtuvimos fue lo siguiente:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/per.png}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/per.jpg}
   \label{nombreparareferenciar1}
   \end{center}
 \end{figure}
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/var.png}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/addsub/var.jpg}
   \label{nombreparareferenciar1}
   \end{center}
 \end{figure}
 
-\newpage
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/pushpop/per.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/pushpop/var.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-
+==conculsión!!!==
 
 \newpage
 \section{Sierpinski}
@@ -237,30 +229,21 @@ Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es u
 Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 constantes a la vez y multiplicárselas a sus respectivos pixels.
 \\
 Luego la idea del algoritmo será algo así:
-\begin{codesnippet}
-\begin{verbatim}
 
-  Pongo r10 y r11 en 0, estos serán la fila (i) y columna (j) en la que estoy parado.
-  Pongo en xmm8 la cantidad de columnas, lo brodcasteo y lo convierto a float
-  Pongo en xmm9 la cantidad de filas, lo brodcasteo y lo convierto a float
-  Muevo a xmm13 la constante 255 brodcasteada y en formato float
-  Muevo a xmm15 los valores 0,1,2,3 en formato entero.
-  Seteo xmm14 en 0.
-  Luego, para cada paso iterativo:
-    Tomo 4 pixels de la fuente y los pongo en xmm0.
-    Muevo r10 y r11 a xmm10 y xmm11 respectivamente, los brodcasteo.
-    Sumo xmm10 y xmm15 para obtener el numero i apropiado para cada pixel, tendré (i+0,i+1,i+2,i+3).
-    Convierto xmm10 y xmm11 a punto flotante.
-    Divido xmm10 por xmm9 y xmm11 por xmm8. (xmm10= i/filas), y (xmm11= j/columnas).
-    Multiplico xmm10 y xmm11 por xmm13, o sea multiplico ambos valores por la constante 255 previamente brodcasteada.
-    Convierto xmm10 y xmm11 nuevamente a entero y realizo un xor entre ellos.
-    Paso a float xmm10 nuevamente y lo divido por xmm13.
-    Hasta aquí hemos calculado el coeficiente $b$ para cada uno de los 4 pixels.
-    Ahora solo resta tomar los 4 pixels que teníamos en xmm0, desempaquetarlos y convertirlos a float
-    Multiplicarlos cada uno de los pixels por su constante $b$
-    Convertir nuevamente los valores a byte y ponerlos en el destino.
-\end{verbatim}
-\end{codesnippet}
+\begin{itemize}
+\item En la seccion data guardamos una constante con el valor 255 brodcasteado en punto flotante.
+\item Previo al ciclo, guardamos este valor en un registro.
+\item Ya dentro del ciclo, leemos 4 pixels y los guardamos en un xmm.
+\item A continuación calculamos de manera paralela para cada pixel el coeficiente correspondiente.
+\item Primero, realizamos la división de i por la cantidad de filas y j por la cantidad de columnas, para la cual previamente pasamos de entero a punto flotante.
+\item Multiplicamos ambos valores por 255 y luego convertimos a entero con truncamiento.
+\item Realizamos un xor entre ambos y despues, volvemos a convertir a punto flotante para dividir por 255.
+\item Ya con los coeficientes calculados, solo nos resta multiplicar cada uno por el pixel correspondiente.
+\item Para ello desempaquetamos cada byte de cada pixel leido a word, y luego de word a dword, para así convertirlo a punto flotante.
+\item Una vez hecha la conversión, brodcasteamos cada coeficiente para poder multiplicarlo por el pixel correspondiente.
+\item Luego convertimos a entero nuevamente y empaquetamos todo de dword a word y de word a byte.
+\item Y finalmente movemos los pixels procesados al destino.
+\end{itemize}
 
 Los resultados comparativos de performance para este algoritmo comparado con uno iterativo desarrollado en C fueron los siguientes:
 
@@ -287,7 +270,9 @@ Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixels uti
 \newpage
 \subsection{cpu vs. bus de memoria en Sierpinski}
 
-HACER =)
+Realizamos el mismo experimento que hicimos para cropflip, es decir, agregando instrucciones aritmeticas y de lectura escritura y comparando las performances.
+
+Graficando lo obtenido:
 
 \begin{figure}[h!]
   \begin{center}
@@ -303,22 +288,7 @@ HACER =)
   \end{center}
 \end{figure}
 
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/per.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/sie/pushpop/var.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-
+==CONCLUSIÓN==
 
 \newpage
 \section{Bandas}
@@ -329,11 +299,19 @@ Para resolver la primera problemática usaremos las instrucciones $phaddw$, que 
 \\
 El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querríamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deberá ir en cada pixel. Esta se resolverá utilizando broadcasting. El algoritmo irá comparando en cada paso contra un valor y en caso de cumplirse una condición, restará donde corresponda.
 
-\begin{codesnippet}
-\begin{verbatim}
-  Algoritmo
-\end{verbatim}
-\end{codesnippet}
+
+\begin{itemize}
+\item  En la sección data tenemos mascaras y constantes brodcasteadas que utilizaremos para hacer las comparaciones.
+\item  Ademas en esta sección tenemos una doble qword la cual usaremos para el shuffle final.
+\item  Previo al ciclo donde procesamos los pixels, movemos estos datos a registros xmm.
+\item  Ya una vez dentro del ciclo, leemos 4 pixels y los guardamos en un xmm.
+\item  Desempaquetamos los bytes a word para poder hacer la suma de las componentes de cada pixel sin irnos de la representación.
+\item  Hacemos dos sumas horizontales para obtener los cuatro valores  de b.
+\item  Luego utilizamos las mascaras para comparar en paralelo cada pixel con el b correspondiente y asignando el valor de rgb segun corresponda.
+\item  Nos queda en cada word de la parte baja de un xmm, los 4 valores que se asignaran a cada rgb de cada pixel.
+\item  Finalmente, empaquetamos estos valores para volver a byte y los shuffleamos para dejarlos en los lugares correspondiente y lo asignamos en el destino.
+\end{itemize}
+
 
 Los resultados de los tiempos comparativos son los siguientes:
 
@@ -359,7 +337,7 @@ Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optim
 \newpage
 \subsection{saltos condicionales}
 
-HACER =)
+En este experimento veremos como afectan los saltos condicionales a la performance del codigo C compilado con -O1. Para ello lo que haremos es quitar los IFs del codigo dejando solo una banda, luego medir la performance y compararla con la version con saltos.
 
 \begin{figure}[h!]
   \begin{center}
@@ -378,15 +356,22 @@ HACER =)
 \newpage
 \subsection{Motion Blur}
 \subsection{Diferencias de performance en Motion Blur}
-Para este algoritmo por cada pixel se deben tomar 5 pixels, multiplicar cada uno de los colores por 0.2 y luego sumarlos.
+Para este algoritmo por cada pixel se deben tomar 5 pixels, multiplicar cada uno de los colores por $0.2$ y luego sumarlos.
 \\
 Para ello debemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
+\\
+Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 
-\begin{codesnippet}
-\begin{verbatim}
-  Algoritmo
-\end{verbatim}
-\end{codesnippet}
+\begin{itemize}
+\item  Tenemos, en la sección datos, el valor $0.2$ brodcasteado que utilizaremos para realizar la multiplicación.
+\item  Previo al procesamiento de datos, guardamos en un xmm este valor.
+\item  Dentro del ciclo, para procesar el pixel (i,j) tomamos los 4 pixels de las filas $i-2$, $i-1$, $i$, $i+1$ e $i+2$ a partir de la columna $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente, y almacenamos todo en registros.
+\item  Desempaquetamos todo a word para poder hacer la suma sin desbordar.
+\item  Luego de realizar las sumas, desempaquetamos a dwords para así poder convertir a punto flotante.
+\item  Con la conversión ya hecha, podemos multiplicar cada valor por $0.2$.
+\item  Convertimos a entero nuevamente y empaquetamos de dword a word y de word a byte.
+\item  Finalmente, copiamos los 4 pixels resultantes al destino.
+\end{itemize}
 
 Al realizar el testing se obtuvieron los siguientes resultados:
 

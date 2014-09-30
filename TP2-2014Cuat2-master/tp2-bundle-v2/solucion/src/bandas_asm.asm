@@ -60,22 +60,22 @@ bandas_asm:
     .loop:
 
   ;instucciones para limite de performance ram
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
+  ; push rax
+  ; pop rax
 ;instucciones para limite de performance ram
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.16)  29 SEP 2014 20:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.16)  29 SEP 2014 20:52
 entering extended mode
  %&-line parsing enabled.
 **informe.tex
@@ -337,38 +337,8 @@ Cargando package 'caratula' v0.3 (2005/08/09)
 ) (/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
-) (./informe.aux
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
 )
+No file informe.aux.
 \openout1 = `informe.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
@@ -384,7 +354,7 @@ LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Try loading font information for OT1+bch on input line 44.
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1bch.fd
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
 )
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
@@ -429,11 +399,24 @@ Overfull \hbox (22.76358pt too wide) in paragraph at lines 55--55
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/logodc.jpg> <./
-imagenes/logouba.jpg>] (./informe.toc)
+imagenes/logouba.jpg>]
+No file informe.toc.
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
- [2] (./enunciado.tex
+[2]
+File: imagenes/logouba.jpg Graphic file (type jpg)
+ <use imagenes/logouba.jpg>
+
+LaTeX Warning: Reference `nombreparareferenciar' on page 3 undefined on input l
+ine 90.
+
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 104--104
+ [][][][][][] 
+ []
+
+(./enunciado.tex
 Overfull \hbox (6.0pt too wide) in paragraph at lines 18--18
  [][][][][][] 
  []
@@ -445,130 +428,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [3]
 Missing character: There is no Ã in font cmtt8!
 Missing character: There is no ­ in font cmtt8!
- [4] [5]) [6] [7] <Graficos1.4/1.3/PCO.png, id=40, 584.1825pt x 341.275pt>
-File: Graficos1.4/1.3/PCO.png Graphic file (type png)
-
-<use Graficos1.4/1.3/PCO.png>
-<Graficos1.4/1.3/VCO.png, id=41, 584.1825pt x 341.275pt>
-File: Graficos1.4/1.3/VCO.png Graphic file (type png)
-
-<use Graficos1.4/1.3/VCO.png> [8 <./Graficos1.4/1.3/PCO.png (PNG copy)> <./Graf
-icos1.4/1.3/VCO.png (PNG copy)>]
-<Graficos1.4/1.3/PSO.png, id=45, 584.1825pt x 341.275pt>
-File: Graficos1.4/1.3/PSO.png Graphic file (type png)
-
-<use Graficos1.4/1.3/PSO.png>
-<Graficos1.4/1.3/VSO.png, id=46, 584.1825pt x 341.275pt>
-File: Graficos1.4/1.3/VSO.png Graphic file (type png)
-
-<use Graficos1.4/1.3/VSO.png> [9 <./Graficos1.4/1.3/PSO.png (PNG copy)> <./Graf
-icos1.4/1.3/VSO.png (PNG copy)>]
-<Graficos1.4/crop/PSO.png, id=50, 584.1825pt x 341.275pt>
-File: Graficos1.4/crop/PSO.png Graphic file (type png)
-
-<use Graficos1.4/crop/PSO.png> [10 <./Graficos1.4/crop/PSO.png (PNG copy)>]
-<Graficos1.4/crop/VSO.png, id=54, 584.1825pt x 341.275pt>
-File: Graficos1.4/crop/VSO.png Graphic file (type png)
-
-<use Graficos1.4/crop/VSO.png> [11 <./Graficos1.4/crop/VSO.png (PNG copy)>]
-<Graficos1.5/crop/addsub/per.jpg, id=58, 585.18625pt x 342.27875pt>
-File: Graficos1.5/crop/addsub/per.jpg Graphic file (type jpg)
-
-<use Graficos1.5/crop/addsub/per.jpg>
-<Graficos1.5/crop/addsub/var.jpg, id=59, 585.18625pt x 342.27875pt>
-File: Graficos1.5/crop/addsub/var.jpg Graphic file (type jpg)
-
-<use Graficos1.5/crop/addsub/var.jpg> [12 <./Graficos1.5/crop/addsub/per.jpg> <
-./Graficos1.5/crop/addsub/var.jpg>]
-<Graficos1.5/crop/pushpop/per.png, id=63, 584.1825pt x 341.275pt>
-File: Graficos1.5/crop/pushpop/per.png Graphic file (type png)
-
-<use Graficos1.5/crop/pushpop/per.png>
-<Graficos1.5/crop/pushpop/var.png, id=64, 584.1825pt x 341.275pt>
-File: Graficos1.5/crop/pushpop/var.png Graphic file (type png)
-
-<use Graficos1.5/crop/pushpop/var.png> [13 <./Graficos1.5/crop/pushpop/per.png 
-(PNG copy)> <./Graficos1.5/crop/pushpop/var.png (PNG copy)>]
-<Graficos1.4/sie/PSO.png, id=69, 583.17876pt x 341.275pt>
-File: Graficos1.4/sie/PSO.png Graphic file (type png)
-
-<use Graficos1.4/sie/PSO.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14]
-File: Graficos1.4/sie/PSO.png Graphic file (type png)
- <use Graficos1.4/sie/PSO.png> [15 <./Graficos1.4/sie/PSO.png (PNG copy)>]
-<Graficos1.5/sie/addsub/per.png, id=76, 583.17876pt x 341.275pt>
-File: Graficos1.5/sie/addsub/per.png Graphic file (type png)
-
-<use Graficos1.5/sie/addsub/per.png>
-<Graficos1.5/sie/addsub/var.png, id=77, 584.1825pt x 341.275pt>
-File: Graficos1.5/sie/addsub/var.png Graphic file (type png)
-
-<use Graficos1.5/sie/addsub/var.png>
-<Graficos1.5/sie/pushpop/per.png, id=78, 584.1825pt x 341.275pt>
-File: Graficos1.5/sie/pushpop/per.png Graphic file (type png)
-
-<use Graficos1.5/sie/pushpop/per.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<Graficos1.5/sie/pushpop/var.png, id=79, 584.1825pt x 341.275pt>
-File: Graficos1.5/sie/pushpop/var.png Graphic file (type png)
-
-<use Graficos1.5/sie/pushpop/var.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[16 <./Graficos1.5/sie/addsub/per.png (PNG copy)> <./Graficos1.5/sie/addsub/var
-.png (PNG copy)>]
-Overfull \hbox (9.80513pt too wide) in paragraph at lines 317--322
-\OT1/bch/m/n/10 El se-gun-do pro-ble-ma ser[]a com-pa-rar es-tos va-lo-res ob-t
-e-ni-dos en la su-ma de una ma-ne-ra efi-cien-te. Querr[]^^Pamos
- []
-
-[17 <./Graficos1.5/sie/pushpop/per.png (PNG copy)> <./Graficos1.5/sie/pushpop/v
-ar.png (PNG copy)>] <Graficos1.4/ban/PSO.png, id=86, 584.1825pt x 341.275pt>
-File: Graficos1.4/ban/PSO.png Graphic file (type png)
-
-<use Graficos1.4/ban/PSO.png> [18 <./Graficos1.4/ban/PSO.png (PNG copy)>]
-File: Graficos1.4/ban/PSO.png Graphic file (type png)
-
-<use Graficos1.4/ban/PSO.png> [19]
-<Graficos3.1/per.png, id=94, 586.19pt x 341.275pt>
-File: Graficos3.1/per.png Graphic file (type png)
- <use Graficos3.1/per.png>
-<Graficos3.1/var.png, id=95, 586.19pt x 341.275pt>
-File: Graficos3.1/var.png Graphic file (type png)
- <use Graficos3.1/var.png>
-[20 <./Graficos3.1/per.png (PNG copy)> <./Graficos3.1/var.png (PNG copy)>]
-File: Graficos1.4/ban/PSO.png Graphic file (type png)
-
-<use Graficos1.4/ban/PSO.png>
-<Graficos1.4/ban/VSO.png, id=99, 583.17876pt x 341.275pt>
-File: Graficos1.4/ban/VSO.png Graphic file (type png)
-
-<use Graficos1.4/ban/VSO.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[21] [22 <./Graficos1.4/ban/VSO.png (PNG copy)>] (./informe.aux)
+ [4] [5]) [6] (./informe.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2547 strings out of 494999
- 32276 string characters out of 1180816
- 92208 words of memory out of 3000000
- 5672 multiletter control sequences out of 15000+50000
+ 2441 strings out of 494999
+ 29361 string characters out of 1180816
+ 92040 words of memory out of 3000000
+ 5586 multiletter control sequences out of 15000+50000
  31070 words of font info for 52 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 31i,13n,43p,515b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,13n,43p,353b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texmf-texlive/fonts/type
 1/bitstrea/charter/bchbi8a.pfb></usr/share/texmf-texlive/fonts/type1/bitstrea/c
@@ -582,9 +460,9 @@ blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
 hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on informe.pdf (22 pages, 814726 bytes).
+Output written on informe.pdf (6 pages, 516313 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
+ 80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
