@@ -39,17 +39,6 @@ Indicar
     \item Los nombres de tres optimizaciones que realizan los compiladores.
 \end{inparaenum}
 
-Luego de optimizar el codigo, se observa que ahora el mismo solo realiza los accesos a memoria minimos indispensables, lo que tambien implica que ahora utiliza registros para guardar los datos. Ademas el codigo esta mas comprimido, y resulta mas claro de leer.
-
-Ademas precalcula los valores que seran utilizados muchas veces, lo que aumenta la performance, principalmente en casos de instancias grandes.
-
-Los otros flags de optimizacion son -O2, -O3, -Og, -Os, -Ofast.
-
-Ademas encontramos los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no es capaz como para utilizar instrucciones simd.
-
-Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants 
-
-
 % ------------------------------------------------------------------------------
 % ------------------------------------------------------------------------------
 

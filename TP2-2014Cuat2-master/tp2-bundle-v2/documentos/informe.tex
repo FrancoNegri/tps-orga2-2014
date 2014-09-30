@@ -93,6 +93,7 @@ El segundo, tercer y cuarto filtro, se centrarán en la variación de performanc
 \newpage
 
 \subsection{Desensamblado de código C y Optimización}
+
 Comenzamos analizando el código de Cropflip realizado en C.
 
 Este básicamente solo mueve datos de un lugar de la RAM a otros, sin afectar mayormente la imagen.
@@ -157,16 +158,13 @@ En este gráfico no se observan cambios significativos. Sin embargo, al calcular
   \end{center}
 \end{figure}
 
-Las varianzas de los tests con loops, se ven reducidas dramáticamente, incluso por debajo de las varianzas sin los mismos.
-
-De aquí se concluye, que la mejor manera de realizar tests es con loops corriendo en paralelo y luego, cuando estos valores ya han sido obtenidos, quitando los dos valores mas grandes y los dos valores mas chicos.
 
 \newpage
 \section{Cropflip}
 \subsection{Diferencias de performance en Cropflip}
 En el siguiente experimento se medirán las performances tanto de nuestro algoritmo en assembler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimización a cargo del compilador.
 
-El algoritmo de Cropflip en assembler es muy sencillo. Simplemente movemos 128-bits de la imagen a un xmm y de allí al destino, que previamente ha sido seteado para colocar los bits en el lugar correcto. De esta manera, podremos mover de una sola vez, 16 bytes, lo que corresponde a 4 pixels de la imagen.
+El algoritmo de Cropflip en assembler es muy sencillo. Simplemente movemos 128-bits de la imagen a un xmm y de allí al destino, que previamente ha sido seteado para colocar los bits en el lugar correcto. De esta manera, podremos mover de una sola vez, 16 bytes, lo que corresponde a 4 píxels de la imagen.
 
 Dado que la cantidad de columnas es siempre múltiplo de 4, o sea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
 
@@ -224,28 +222,28 @@ Lo que obtuvimos fue lo siguiente:
 \newpage
 \section{Sierpinski}
 \subsection{Diferencias de performance en Sierpinski}
-Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco más complejo. Necesitamos calcular para cada columna un valor constante diferente, que dependerá de cuál sea la misma.
+Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco más complejo. Necesitamos calcular para cada píxel un coeficiente diferente, que dependerá de la posición (i,j) de cada píxel.
 \\
-Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 constantes a la vez y multiplicárselas a sus respectivos pixels.
+Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 coeficientes a la vez y multiplicárselos a sus respectivos píxels.
 \\
 Luego la idea del algoritmo será algo así:
 
 \begin{itemize}
-\item En la seccion data guardamos una constante con el valor 255 brodcasteado en punto flotante.
+\item En la sección data guardamos una constante con el valor 255 brodcasteado en punto flotante.
 \item Previo al ciclo, guardamos este valor en un registro.
-\item Ya dentro del ciclo, leemos 4 pixels y los guardamos en un xmm.
-\item A continuación calculamos de manera paralela para cada pixel el coeficiente correspondiente.
+\item Ya dentro del ciclo, leemos 4 píxels y los guardamos en un xmm.
+\item A continuación calculamos de manera paralela para cada píxel el coeficiente correspondiente.
 \item Primero, realizamos la división de i por la cantidad de filas y j por la cantidad de columnas, para la cual previamente pasamos de entero a punto flotante.
 \item Multiplicamos ambos valores por 255 y luego convertimos a entero con truncamiento.
 \item Realizamos un xor entre ambos y despues, volvemos a convertir a punto flotante para dividir por 255.
-\item Ya con los coeficientes calculados, solo nos resta multiplicar cada uno por el pixel correspondiente.
-\item Para ello desempaquetamos cada byte de cada pixel leido a word, y luego de word a dword, para así convertirlo a punto flotante.
-\item Una vez hecha la conversión, brodcasteamos cada coeficiente para poder multiplicarlo por el pixel correspondiente.
+\item Ya con los coeficientes calculados, solo nos resta multiplicar cada uno por el píxel correspondiente.
+\item Para ello desempaquetamos cada byte de cada píxel leido a word, y luego de word a dword, para así convertirlo a punto flotante.
+\item Una vez hecha la conversión, brodcasteamos cada coeficiente para poder multiplicarlo por el píxel correspondiente.
 \item Luego convertimos a entero nuevamente y empaquetamos todo de dword a word y de word a byte.
-\item Y finalmente movemos los pixels procesados al destino.
+\item Y finalmente movemos los píxels procesados al destino.
 \end{itemize}
 
-Los resultados comparativos de performance para este algoritmo comparado con uno iterativo desarrollado en C fueron los siguientes:
+Los resultados comparativos de performance para este algoritmo comparado con uno desarrollado en C fueron los siguientes:
 
 \begin{figure}[h!]
   \begin{center}
@@ -265,7 +263,7 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-Puede verse que en este caso nuestro modelo que toma y calcula de a 4 pixels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
+Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
 
 \newpage
 \subsection{cpu vs. bus de memoria en Sierpinski}
@@ -297,18 +295,18 @@ Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tre
 \\
 Para resolver la primera problemática usaremos las instrucciones $phaddw$, que nos permitirá a través de una suma horizontal, sumar los valores r,g,b de manera cómoda solamente utilizando dos registros.
 \\
-El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querríamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deberá ir en cada pixel. Esta se resolverá utilizando broadcasting. El algoritmo irá comparando en cada paso contra un valor y en caso de cumplirse una condición, restará donde corresponda.
+El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querríamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deberá ir en cada píxel. Esta se resolverá utilizando broadcasting. El algoritmo irá comparando en cada paso contra un valor y en caso de cumplirse una condición, restará donde corresponda.
 
 
 \begin{itemize}
 \item  En la sección data tenemos mascaras y constantes brodcasteadas que utilizaremos para hacer las comparaciones.
 \item  Ademas en esta sección tenemos una doble qword la cual usaremos para el shuffle final.
-\item  Previo al ciclo donde procesamos los pixels, movemos estos datos a registros xmm.
-\item  Ya una vez dentro del ciclo, leemos 4 pixels y los guardamos en un xmm.
-\item  Desempaquetamos los bytes a word para poder hacer la suma de las componentes de cada pixel sin irnos de la representación.
+\item  Previo al ciclo donde procesamos los píxels, movemos estos datos a registros xmm.
+\item  Ya una vez dentro del ciclo, leemos 4 píxels y los guardamos en un xmm.
+\item  Desempaquetamos los bytes a word para poder hacer la suma de las componentes de cada píxel sin irnos de la representación.
 \item  Hacemos dos sumas horizontales para obtener los cuatro valores  de b.
-\item  Luego utilizamos las mascaras para comparar en paralelo cada pixel con el b correspondiente y asignando el valor de rgb segun corresponda.
-\item  Nos queda en cada word de la parte baja de un xmm, los 4 valores que se asignaran a cada rgb de cada pixel.
+\item  Luego utilizamos las mascaras para comparar en paralelo cada píxel con el b correspondiente y asignando el valor de rgb segun corresponda.
+\item  Nos queda en cada word de la parte baja de un xmm, los 4 valores que se asignaran a cada rgb de cada píxel.
 \item  Finalmente, empaquetamos estos valores para volver a byte y los shuffleamos para dejarlos en los lugares correspondiente y lo asignamos en el destino.
 \end{itemize}
 
@@ -358,7 +356,7 @@ Como se puede ver en el gráfico del promedio, la versión de una sola banda tar
 \newpage
 \subsection{Motion Blur}
 \subsection{Diferencias de performance en Motion Blur}
-Para este algoritmo por cada pixel se deben tomar 5 pixels, multiplicar cada uno de los colores por $0.2$ y luego sumarlos.
+Para este algoritmo por cada píxel se deben tomar 5 píxels, multiplicar cada uno de los colores por $0.2$ y luego sumarlos.
 \\
 Para ello debemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
 \\
@@ -367,13 +365,13 @@ Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 \begin{itemize}
 \item  Tenemos, en la sección datos, el valor $0.2$ brodcasteado que utilizaremos para realizar la multiplicación.
 \item  Previo al procesamiento de datos, guardamos en un xmm este valor.
-\item  Dentro del ciclo, para procesar el pixel (i,j) tomamos los 4 pixels de las filas $i-2$, $i-1$, $i$, $i+1$ e $i+2$ a partir de la columna $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente, y almacenamos todo en registros.
+\item  Dentro del ciclo, para procesar el píxel (i,j) tomamos los 4 píxels de las filas $i-2$, $i-1$, $i$, $i+1$ e $i+2$ a partir de la columna $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente, y almacenamos todo en registros.
 \item  Desempaquetamos todo a word para poder hacer la suma sin desbordar.
 \item  Luego de realizar las sumas, desempaquetamos a dwords para así poder convertir a punto flotante.
 \item  Con la conversión ya hecha, podemos multiplicar cada valor por $0.2$.
 \item  Convertimos a entero nuevamente y empaquetamos de dword a word y de word a byte.
-\item  Finalmente, copiamos los 4 pixels resultantes al destino. 
-\item  Cada vez que termino de recorrer una fila, pongo en negro los siguientes 4 pixels, y las dos primeras y últimas filas las pongo en negro aparte, fuera del ciclo.
+\item  Finalmente, copiamos los 4 píxels resultantes al destino. 
+\item  Cada vez que termino de recorrer una fila, pongo en negro los siguientes 4 píxels, y las dos primeras y últimas filas las pongo en negro aparte, fuera del ciclo.
 \end{itemize}
 
 Al realizar el testing se obtuvieron los siguientes resultados:
