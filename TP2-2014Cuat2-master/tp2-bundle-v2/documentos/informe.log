@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  30 SEP 2014 14:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.9.30)  30 SEP 2014 14:20
 entering extended mode
- restricted \write18 enabled.
  %&-line parsing enabled.
 **informe.tex
 (./informe.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -23,38 +23,43 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2013/12/03 3.9h The Babel package
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
-Language: spanish.ldf 2014/01/29 v5.0m Spanish support from the babel system
+(/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2013/12/03 3.9h Babel common definitions
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Spanish'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@spanish = a dialect from \language0
 \es@datefmt=\count88
 \es@quottoks=\toks14
 \es@quotdepth=\count89
-Package babel Info: Making " an active character on input line 496.
-Package babel Info: Making . an active character on input line 599.
-Package babel Info: Making < an active character on input line 644.
-Package babel Info: Making > an active character on input line 644.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+)) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texmf-texlive/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -204,7 +209,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -235,7 +240,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+(/usr/share/texmf-texlive/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -259,61 +264,54 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/charter.sty
+(/usr/share/texmf-texlive/tex/latex/psnfss/charter.sty
 Package: charter 2005/04/12 PSNFSS-v9.2a (P.Dyballa) 
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
 \Gread@gobject=\count90
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
-Package: paralist 2013/06/09 v2.4 Extended list environments
+(/usr/share/texmf-texlive/tex/latex/paralist/paralist.sty
+Package: paralist 2002/03/18 v2.3b Extended list environments (BS)
 \pltopsep=\skip43
 \plpartopsep=\skip44
 \plitemsep=\skip45
 \plparsep=\skip46
 \pl@lab=\toks18
-)
-(./codesnippet.tex (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+) (./codesnippet.tex
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+(/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
-Package: fancybox 2010/05/15 1.4
+(/usr/share/texmf-texlive/tex/latex/fancybox/fancybox.sty
+Package: fancybox 2000/09/19 1.3
 
-Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+Style option: `fancybox' v1.3 <2000/09/19> (tvz)
 \@fancybox=\box26
 \shadowsize=\dimen106
 \@Sbox=\box27
@@ -323,8 +321,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \EndVerbatimTokens=\toks22
 \Verbatim@Outfile=\write3
 \Verbatim@Infile=\read1
-)) (./page.layout.tex
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+)) (./page.layout.tex (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip47
 \f@ncyO@elh=\skip48
 \f@ncyO@erh=\skip49
@@ -334,23 +331,18 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \f@ncyO@erf=\skip53
 \f@ncyO@olf=\skip54
 \f@ncyO@orf=\skip55
-))
-(/usr/share/texlive/texmf-dist/tex/latex/underscore/underscore.sty
+)) (/usr/share/texmf-texlive/tex/latex/ltxmisc/underscore.sty
 Package: underscore 2006/09/13
 LaTeX Info: Redefining \_ on input line 42.
-)
-(./caratula.sty
+) (./caratula.sty
 Package: caratula 2005/08/09 v0.3 Para componer caratulas de TPs del DC
 
 Cargando package 'caratula' v0.3 (2005/08/09)
 \intlist=\toks23
-) (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+) (/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip10
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 ) (./informe.aux
-LaTeX Info: Redefining \. on input line 7.
-LaTeX Info: Redefining \% on input line 7.
-
 
 LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
 
@@ -385,13 +377,10 @@ LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Try loading font information for OT1+bch on input line 44.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1bch.fd
+ (/usr/share/texmf-texlive/tex/latex/psnfss/ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
 )
-LaTeX Info: Redefining \. on input line 44.
-LaTeX Info: Redefining \% on input line 44.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen107
@@ -402,61 +391,11 @@ LaTeX Info: Redefining \% on input line 44.
 \MPscratchCnt=\count94
 \MPscratchDim=\dimen108
 \MPnumerator=\count95
-\makeMPintoPDFobject=\count96
 \everyMPtoPDFconversion=\toks25
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-<imagenes/logodc.jpg, id=1, 215.6055pt x 83.5923pt>
+) <imagenes/logodc.jpg, id=1, 215.6055pt x 83.5923pt>
 File: imagenes/logodc.jpg Graphic file (type jpg)
- <use imagenes/logodc.jpg>
-Package pdftex.def Info: imagenes/logodc.jpg used on input line 55.
-(pdftex.def)             Requested size: 215.60497pt x 83.59207pt.
+
+<use imagenes/logodc.jpg>
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 55.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -466,9 +405,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 File: imagenes/logouba.jpg Graphic file (type jpg)
 
 <use imagenes/logouba.jpg>
-Package pdftex.def Info: imagenes/logouba.jpg used on input line 55.
-(pdftex.def)             Requested size: 225.48184pt x 231.74522pt.
-
 
 LaTeX Font Warning: Font shape `OT1/cmss/b/n' undefined
 (Font)              using `OT1/cmss/m/n' instead on input line 55.
@@ -486,10 +422,7 @@ Overfull \hbox (22.76358pt too wide) in paragraph at lines 55--55
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/logodc.jpg> <./
-imagenes/logouba.jpg>] (./informe.toc
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
-)
+imagenes/logouba.jpg>] (./informe.toc)
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
@@ -502,190 +435,93 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 34.
-LaTeX Info: Redefining \. on input line 70.
-LaTeX Info: Redefining \% on input line 70.
-[3]
 Missing character: There is no Ã in font cmtt8!
 Missing character: There is no ­ in font cmtt8!
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
- [4]
-LaTeX Info: Redefining \. on input line 201.
-LaTeX Info: Redefining \% on input line 201.
- [5])
-LaTeX Info: Redefining \. on input line 93.
-LaTeX Info: Redefining \% on input line 93.
- [6]
-LaTeX Info: Redefining \. on input line 114.
-LaTeX Info: Redefining \% on input line 114.
- [7] <Graficos1.4/1.3/PCO.png, id=41, 584.1825pt x 341.275pt>
+[3] [4] [5]) [6] [7] <Graficos1.4/1.3/PCO.png, id=40, 584.1825pt x 341.275pt>
 File: Graficos1.4/1.3/PCO.png Graphic file (type png)
 
 <use Graficos1.4/1.3/PCO.png>
-Package pdftex.def Info: Graficos1.4/1.3/PCO.png used on input line 124.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-
-<Graficos1.4/1.3/VCO.png, id=42, 584.1825pt x 341.275pt>
+<Graficos1.4/1.3/VCO.png, id=41, 584.1825pt x 341.275pt>
 File: Graficos1.4/1.3/VCO.png Graphic file (type png)
 
-<use Graficos1.4/1.3/VCO.png>
-Package pdftex.def Info: Graficos1.4/1.3/VCO.png used on input line 133.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-LaTeX Info: Redefining \. on input line 142.
-LaTeX Info: Redefining \% on input line 142.
- [8 <./Graficos1.4/1.3/PCO.png (PNG copy)> <./Graficos1.4/1.3/VCO.png (PNG copy
-)>]
-<Graficos1.4/1.3/PSO.png, id=46, 584.1825pt x 341.275pt>
+<use Graficos1.4/1.3/VCO.png> [8 <./Graficos1.4/1.3/PCO.png (PNG copy)> <./Graf
+icos1.4/1.3/VCO.png (PNG copy)>]
+<Graficos1.4/1.3/PSO.png, id=45, 584.1825pt x 341.275pt>
 File: Graficos1.4/1.3/PSO.png Graphic file (type png)
 
 <use Graficos1.4/1.3/PSO.png>
-Package pdftex.def Info: Graficos1.4/1.3/PSO.png used on input line 146.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-
-<Graficos1.4/1.3/VSO.png, id=47, 584.1825pt x 341.275pt>
+<Graficos1.4/1.3/VSO.png, id=46, 584.1825pt x 341.275pt>
 File: Graficos1.4/1.3/VSO.png Graphic file (type png)
 
-<use Graficos1.4/1.3/VSO.png>
-Package pdftex.def Info: Graficos1.4/1.3/VSO.png used on input line 155.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-LaTeX Info: Redefining \. on input line 164.
-LaTeX Info: Redefining \% on input line 164.
- [9 <./Graficos1.4/1.3/PSO.png (PNG copy)> <./Graficos1.4/1.3/VSO.png (PNG copy
-)>]
-<Graficos1.4/crop/per.png, id=51, 584.1825pt x 338.26375pt>
+<use Graficos1.4/1.3/VSO.png> [9 <./Graficos1.4/1.3/PSO.png (PNG copy)> <./Graf
+icos1.4/1.3/VSO.png (PNG copy)>]
+<Graficos1.4/crop/per.png, id=50, 584.1825pt x 338.26375pt>
 File: Graficos1.4/crop/per.png Graphic file (type png)
 
-<use Graficos1.4/crop/per.png>
-Package pdftex.def Info: Graficos1.4/crop/per.png used on input line 179.
-(pdftex.def)             Requested size: 385.56163pt x 223.25475pt.
-LaTeX Info: Redefining \. on input line 184.
-LaTeX Info: Redefining \% on input line 184.
- [10 <./Graficos1.4/crop/per.png (PNG copy)>]
-<Graficos1.4/crop/var.png, id=55, 584.1825pt x 338.26375pt>
+<use Graficos1.4/crop/per.png> [10 <./Graficos1.4/crop/per.png (PNG copy)>]
+<Graficos1.4/crop/var.png, id=54, 584.1825pt x 338.26375pt>
 File: Graficos1.4/crop/var.png Graphic file (type png)
 
-<use Graficos1.4/crop/var.png>
-Package pdftex.def Info: Graficos1.4/crop/var.png used on input line 189.
-(pdftex.def)             Requested size: 385.56163pt x 223.25475pt.
-LaTeX Info: Redefining \. on input line 196.
-LaTeX Info: Redefining \% on input line 196.
- [11 <./Graficos1.4/crop/var.png (PNG copy)>]
-<Graficos1.5/crop/per.png, id=59, 585.18625pt x 341.275pt>
+<use Graficos1.4/crop/var.png> [11 <./Graficos1.4/crop/var.png (PNG copy)>]
+<Graficos1.5/crop/per.png, id=58, 585.18625pt x 341.275pt>
 File: Graficos1.5/crop/per.png Graphic file (type png)
 
 <use Graficos1.5/crop/per.png>
-Package pdftex.def Info: Graficos1.5/crop/per.png used on input line 210.
-(pdftex.def)             Requested size: 386.2241pt x 225.24219pt.
-
-<Graficos1.5/crop/var.png, id=60, 455.45157pt x 255.95625pt>
+<Graficos1.5/crop/var.png, id=59, 455.45157pt x 255.95625pt>
 File: Graficos1.5/crop/var.png Graphic file (type png)
 
-<use Graficos1.5/crop/var.png>
-Package pdftex.def Info: Graficos1.5/crop/var.png used on input line 217.
-(pdftex.def)             Requested size: 300.59895pt x 168.93164pt.
-LaTeX Info: Redefining \. on input line 224.
-LaTeX Info: Redefining \% on input line 224.
- [12 <./Graficos1.5/crop/per.png (PNG copy)> <./Graficos1.5/crop/var.png (PNG c
-opy)>]
-<Graficos1.4/sie/per.png, id=64, 583.17876pt x 338.26375pt>
+<use Graficos1.5/crop/var.png> [12 <./Graficos1.5/crop/per.png (PNG copy)> <./G
+raficos1.5/crop/var.png (PNG copy)>]
+<Graficos1.4/sie/per.png, id=63, 583.17876pt x 338.26375pt>
 File: Graficos1.4/sie/per.png Graphic file (type png)
 
 <use Graficos1.4/sie/per.png>
-Package pdftex.def Info: Graficos1.4/sie/per.png used on input line 252.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 257.
-LaTeX Info: Redefining \% on input line 257.
-[13] <Graficos1.4/sie/var.png, id=69, 583.17876pt x 338.26375pt>
+[13] <Graficos1.4/sie/var.png, id=68, 583.17876pt x 338.26375pt>
 File: Graficos1.4/sie/var.png Graphic file (type png)
 
-<use Graficos1.4/sie/var.png>
-Package pdftex.def Info: Graficos1.4/sie/var.png used on input line 263.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
-LaTeX Info: Redefining \. on input line 270.
-LaTeX Info: Redefining \% on input line 270.
- [14 <./Graficos1.4/sie/per.png (PNG copy)> <./Graficos1.4/sie/var.png (PNG cop
-y)>]
-<Graficos1.5/sie/per.png, id=73, 587.19376pt x 341.275pt>
+<use Graficos1.4/sie/var.png> [14 <./Graficos1.4/sie/per.png (PNG copy)> <./Gra
+ficos1.4/sie/var.png (PNG copy)>]
+<Graficos1.5/sie/per.png, id=72, 587.19376pt x 341.275pt>
 File: Graficos1.5/sie/per.png Graphic file (type png)
 
 <use Graficos1.5/sie/per.png>
-Package pdftex.def Info: Graficos1.5/sie/per.png used on input line 279.
-(pdftex.def)             Requested size: 387.54907pt x 225.24219pt.
-
-<Graficos1.5/sie/var.png, id=74, 587.19376pt x 341.275pt>
+<Graficos1.5/sie/var.png, id=73, 587.19376pt x 341.275pt>
 File: Graficos1.5/sie/var.png Graphic file (type png)
 
-<use Graficos1.5/sie/var.png>
-Package pdftex.def Info: Graficos1.5/sie/var.png used on input line 286.
-(pdftex.def)             Requested size: 387.54907pt x 225.24219pt.
-LaTeX Info: Redefining \. on input line 293.
-LaTeX Info: Redefining \% on input line 293.
- [15 <./Graficos1.5/sie/per.png (PNG copy)> <./Graficos1.5/sie/var.png (PNG cop
-y)>]
-Overfull \hbox (9.80513pt too wide) in paragraph at lines 296--301
-\OT1/bch/m/n/10 El se-gun-do pro-ble-ma ser[]a com-pa-rar es-tos va-lo-res ob-t
-e-ni-dos en la su-ma de una ma-ne-ra efi-cien-te. Querr[]^^Pamos
+<use Graficos1.5/sie/var.png> [15 <./Graficos1.5/sie/per.png (PNG copy)> <./Gra
+ficos1.5/sie/var.png (PNG copy)>]
+Overfull \hbox (9.80513pt too wide) in paragraph at lines 298--303
+\OT1/bch/m/n/10 El se-gun-do prob-le-ma ser[]a com-parar es-tos val-ores obteni
+dos en la suma de una man-era efi-ciente. Querr[]^^Pamos
  []
 
-<Graficos1.4/ban/per.png, id=78, 583.17876pt x 338.26375pt>
+<Graficos1.4/ban/per.png, id=77, 583.17876pt x 338.26375pt>
 File: Graficos1.4/ban/per.png Graphic file (type png)
 
-<use Graficos1.4/ban/per.png>
-Package pdftex.def Info: Graficos1.4/ban/per.png used on input line 320.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
-LaTeX Info: Redefining \. on input line 325.
-LaTeX Info: Redefining \% on input line 325.
- [16 <./Graficos1.4/ban/per.png (PNG copy)>]
-<Graficos1.4/ban/var.png, id=82, 583.17876pt x 338.26375pt>
+<use Graficos1.4/ban/per.png> [16 <./Graficos1.4/ban/per.png (PNG copy)>]
+<Graficos1.4/ban/var.png, id=81, 583.17876pt x 338.26375pt>
 File: Graficos1.4/ban/var.png Graphic file (type png)
 
-<use Graficos1.4/ban/var.png>
-Package pdftex.def Info: Graficos1.4/ban/var.png used on input line 330.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
-LaTeX Info: Redefining \. on input line 337.
-LaTeX Info: Redefining \% on input line 337.
- [17 <./Graficos1.4/ban/var.png (PNG copy)>]
-<Graficos3.1/per.png, id=86, 584.1825pt x 341.275pt>
+<use Graficos1.4/ban/var.png> [17 <./Graficos1.4/ban/var.png (PNG copy)>]
+<Graficos3.1/per.png, id=85, 584.1825pt x 341.275pt>
 File: Graficos3.1/per.png Graphic file (type png)
  <use Graficos3.1/per.png>
-Package pdftex.def Info: Graficos3.1/per.png used on input line 344.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-
-<Graficos3.1/var.png, id=87, 584.1825pt x 341.275pt>
+<Graficos3.1/var.png, id=86, 584.1825pt x 341.275pt>
 File: Graficos3.1/var.png Graphic file (type png)
  <use Graficos3.1/var.png>
-Package pdftex.def Info: Graficos3.1/var.png used on input line 351.
-(pdftex.def)             Requested size: 385.56163pt x 225.24219pt.
-LaTeX Info: Redefining \. on input line 358.
-LaTeX Info: Redefining \% on input line 358.
-
 [18 <./Graficos3.1/per.png (PNG copy)> <./Graficos3.1/var.png (PNG copy)>]
 File: Graficos1.4/ban/per.png Graphic file (type png)
 
 <use Graficos1.4/ban/per.png>
-Package pdftex.def Info: Graficos1.4/ban/per.png used on input line 383.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
 File: Graficos1.4/ban/var.png Graphic file (type png)
  <use Graficos1.4/ban/var.png>
-Package pdftex.def Info: Graficos1.4/ban/var.png used on input line 392.
-(pdftex.def)             Requested size: 384.89917pt x 223.25475pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-LaTeX Info: Redefining \. on input line 404.
-LaTeX Info: Redefining \% on input line 404.
-[19]
-LaTeX Info: Redefining \. on input line 404.
-LaTeX Info: Redefining \% on input line 404.
- [20] (./informe.aux
-LaTeX Info: Redefining \. on input line 7.
-LaTeX Info: Redefining \% on input line 7.
-)
+[19] [20] (./informe.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -694,31 +530,29 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3191 strings out of 493304
- 43096 string characters out of 6139871
- 113427 words of memory out of 5000000
- 6551 multiletter control sequences out of 15000+600000
- 31070 words of font info for 52 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 38i,13n,43p,705b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/bitstrea/charter/bchbi8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/bitstrea/charter/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on informe.pdf (20 pages, 766847 bytes).
+ 2539 strings out of 495061
+ 31690 string characters out of 1182621
+ 92182 words of memory out of 3000000
+ 5658 multiletter control sequences out of 15000+50000
+ 31070 words of font info for 52 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 31i,13n,43p,705b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texmf-texlive/fonts/type
+1/bitstrea/charter/bchbi8a.pfb></usr/share/texmf-texlive/fonts/type1/bitstrea/c
+harter/bchr8a.pfb></usr/share/texmf-texlive/fonts/type1/bitstrea/charter/bchri8
+a.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on informe.pdf (20 pages, 781221 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

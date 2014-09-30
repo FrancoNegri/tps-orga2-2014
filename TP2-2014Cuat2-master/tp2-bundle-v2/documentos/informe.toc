@@ -5,6 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Filtro cropflip}{3}
 \contentsline {subsection}{\numberline {2.3}Mediciones}{3}
 \contentsline {subsection}{\numberline {2.4}Desensamblado de c\IeC {\'o}digo C y Optimizaci\IeC {\'o}n}{7}
+\contentsline {subsubsection}{\numberline {2.4.1}Experimentos $1.1$ y $1.2$}{7}
 \contentsline {subsection}{\numberline {2.5}Calidad de las Mediciones}{8}
 \contentsline {section}{\numberline {3}Cropflip}{10}
 \contentsline {subsection}{\numberline {3.1}Diferencias de performance en Cropflip}{10}
