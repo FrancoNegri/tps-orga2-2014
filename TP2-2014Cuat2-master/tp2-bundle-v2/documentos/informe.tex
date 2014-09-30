@@ -353,6 +353,8 @@ En este experimento veremos como afectan los saltos condicionales a la performan
   \end{center}
 \end{figure}
 
+Como se puede ver en el gráfico del promedio, la versión de una sola banda tardó mucho menos con respecto a la versión original. Creemos que esta disminución en el tiempo de ejecución tiene que ver con la predicción de saltos del procesador. Esto se debe a que cuando hay un salto condicional, en principio el procesador no sabe a qué posición de memoria deberá dirigirse. Al haber removido estos saltos, tiene sentido que la performance se haya visto impactada de manera positiva. Con respecto a la varianza se ve que en la versión sin saltos es mucho menor respecto al original, es decir, los valores de la muestra se encuentran relativamente más cercanos al promedio.
+
 \newpage
 \subsection{Motion Blur}
 \subsection{Diferencias de performance en Motion Blur}
@@ -370,7 +372,8 @@ Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 \item  Luego de realizar las sumas, desempaquetamos a dwords para así poder convertir a punto flotante.
 \item  Con la conversión ya hecha, podemos multiplicar cada valor por $0.2$.
 \item  Convertimos a entero nuevamente y empaquetamos de dword a word y de word a byte.
-\item  Finalmente, copiamos los 4 pixels resultantes al destino.
+\item  Finalmente, copiamos los 4 pixels resultantes al destino. 
+\item  Cada vez que termino de recorrer una fila, pongo en negro los siguientes 4 pixels, y las dos primeras y últimas filas las pongo en negro aparte, fuera del ciclo.
 \end{itemize}
 
 Al realizar el testing se obtuvieron los siguientes resultados:
