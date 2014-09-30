@@ -1,3 +1,0 @@
-bandas tiene varias bandas comentadas.
-todos los filtros asm, tienen cosas de los tests en los loops
-Hay que sacar todo eso

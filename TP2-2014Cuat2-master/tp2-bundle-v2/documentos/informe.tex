@@ -49,8 +49,9 @@
 \submateria{Segundo Cuatrimestre de 2014}
 \titulo{Trabajo Práctico II}
 \subtitulo{subtitulo del trabajo}
-\integrante{Nombre}{XXX/XX}{mail}
-\integrante{Nombre}{XXX/XX}{mail}
+\integrante{Alejandro Mignanelli}{609/11}{minga_titere@hotmail.com}
+\integrante{Franco Negri}{893/13}{franconegri2004@hotmail.com}
+\integrante{Federico Suárez}{610/11}{elgeniofederico@gmail.com}
 
 \maketitle
 \newpage
@@ -118,7 +119,7 @@ Para este experimento vamos a ver cómo se pueden ver afectados nuestros algorit
 
 Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
 
-Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. Lo que se obtiene es el siguiente gráfico:
+Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. La medida de tiempo será a partir de este momento y para siempre la cantidad de ciclos de clock del procesador. Lo que se obtiene es el siguiente gráfico:
 \\
 \begin{figure}[h!]
   \begin{center}
@@ -136,6 +137,8 @@ Realizamos un cálculo de la varianza para ver qué tan precisos son los resulta
   \end{center}
 \end{figure}
 
+Lo que se observa aquí es que al correr las pruebas con loops en segundo plano, la performance se ve afectada de forma negativa aumentando el tiempo de ejecución. Además podemos ver que los outliers cuando hay ruido tienen un mayor impacto en el rendimiento mientras que cuando no hay loops de fondo, su impacto es apenas notable. También se puede apreciar que la optimización -O1 es la que más se ve perjudicada por el ruido de los loops. Con respecto a la varianza, se puede percibir fácilmente que el ruido la dispara considerablemente, es decir, aumenta abismalmente la dispersión de los datos. Por otro lado, se ve que los outliers tuvieron una mayor repercusión en la varianza de los casos sin loops.
+
 \newpage
 \section{Cropflip}
 \subsection{Diferencias de performance en Cropflip}
@@ -145,7 +148,7 @@ El algoritmo de Cropflip en assembler es muy sencillo. Simplemente movemos 128-b
 
 Dado que la cantidad de columnas es siempre múltiplo de 4, o sea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
 
-Las pruebas de performance, realizadas de la misma manera en que concluimos la anterior sección, se realizaron corriendo 4 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
+Las pruebas de performance, realizadas de la misma manera en que concluímos la anterior sección, se realizaron corriendo 4 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
 
 Lo obtenido en los tests puede verse en el siguiente gráfico:
 
@@ -166,7 +169,7 @@ Y las varianzas son:
   \end{center}
 \end{figure}
 
-De aquí puede verse que la implementación en assembler es tan buena como la implementación en C con el máximo grado de optimización.
+En este caso la performance de nuestro algoritmo es ligeramente menor al código de mayor grado de optimización de C. Creemos que esto se debe a que al ser un código muy simple, el cual sólo mueve datos de un lugar a otro, el tiempo de ejecución de ambos es muy similar y la diferencia se la atribuimos al ruido. La varianza de mayor nivel es la optimización O0, mientras que las demás tienen un nivel relativamente bajo de dispersión. Observamos que sin embargo, la nuestra es la mayor de las restantes, lo que favorece nuestra proposición sobre el ruido.
 
 \newpage
 
@@ -174,7 +177,7 @@ De aquí puede verse que la implementación en assembler es tan buena como la im
 
 Para este experimento lo que hicimos fue agregar instrucciones aritméticas y ver como esto influía en el tiempo de ejecución.
 
-Tambien hicimos lo mismo pero con instucciones de lectura-escritura en memoria. 
+También hicimos lo mismo pero con instucciones de lectura-escritura en memoria. 
 
 Probamos agregando $4$, $8$ y $16$ instrucciones de cada una por separado y comparamos las performance entre sí y con la versión original.
 
@@ -240,10 +243,10 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización.
+Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización. Y las varianzas son similares a excepción de la optimización O0 que es un poco mayor.
 
 \newpage
-\subsection{cpu vs. bus de memoria en Sierpinski}
+\subsection{CPU vs. Bus de memoria en Sierpinski}
 
 Realizamos el mismo experimento que hicimos para cropflip, es decir, agregando instrucciones aritmeticas y de lectura escritura y comparando las performances.
 
@@ -263,8 +266,7 @@ Graficando lo obtenido:
   \end{center}
 \end{figure}
 
-==CONCLUSIÓN==
-
+Se puede ver que Sierpinski disminuye su performance de una manera similar cuando se le agregan más operaciones aritméticas o de lectura/escritura de memoria. Viendo la varianza, se observa que las instrucciones aritméticas generan un leve aumento de la misma mientras que las operaciones de lectura/escritura producen una mayor dispersión de los datos.
 \newpage
 \section{Bandas}
 \subsection{Diferencias de performance en Bandas}
@@ -307,10 +309,10 @@ Y la varianza:
   \end{center}
 \end{figure}
 
-Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optimizar, y una performance casi idéntica al del código C con el mayor grado de optimización.
+Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optimizar, y una performance un poco mejor al del código C con el mayor grado de optimización. Y con respecto a la varianza, todos tienen una dispersión de datos relativamente baja salvo la optimización O0 cuyo nivel es muy alto.
 
 \newpage
-\subsection{saltos condicionales}
+\subsection{Saltos condicionales}
 
 En este experimento veremos como afectan los saltos condicionales a la performance del codigo C compilado con -O1. Para ello lo que haremos es quitar los IFs del codigo dejando solo una banda, luego medir la performance y compararla con la version con saltos.
 
@@ -355,24 +357,27 @@ Al realizar el testing se obtuvieron los siguientes resultados:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/ban/per.png}
+  \includegraphics[scale=0.66]{Graficos1.4/mbl/per.png}
   \label{nombreparareferenciar11}
   \end{center}
 \end{figure}
 
+\newpage
 Y la varianza:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/ban/var.png}
+  \includegraphics[scale=0.66]{Graficos1.4/mbl/var.png}
   \label{nombreparareferenciar12}
   \end{center}
 \end{figure}
 
-En este caso nuestro algoritmo supera ampliamente incluso al código C con mayor grado de optimización.
+En este caso nuestro algoritmo supera ampliamente incluso al código C con mayor grado de optimización. De la varianza se ve que nuestro algoritmo tiene una dispersión de datos parecida a la de la optimización O3, mientrás que la optimización O1 es la que más dispersa los datos.
 
-
+\newpage
 \section{Conclusiones y trabajo futuro}
+
+SIMD es una herramienta muy útil para mejorar la performance a la hora de manejar grandes cantidades de datos que requieren un mismo procesamiento, como imágenes o videos, y esto se vio reflejado ampliamente en los resultados de los experimentos realizados en este trabajo. Sin embargo si lo único que necesitamos realizar es un mero movimiento de datos, las diferencias se vuelven imperceptibles con respecto al grado de mayor optimización de C. Sin embargo, un gran poder conlleva una gran responsabilidad y un error de empaquetado o desempaquetado puede resultar en muchas horas de debugging, como por ejemplo desempaquetar dos veces la parte alta de un registro, en vez de desempaquetar la parte baja también.
 
 
 

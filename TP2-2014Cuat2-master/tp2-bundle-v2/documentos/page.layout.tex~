@@ -6,6 +6,11 @@
 
 \fancyhf{}
 
+
+\integrante{}{609/11}{minga_titere@hotmail.com}
+\integrante{{893/13}{franconegri2004@hotmail.com}
+\integrante{Federico Suárez}{610/11}{elgeniofederico@gmail.com}
+
 \fancyhead[LO]{Sección \rightmark} % \thesection\ 
 \fancyfoot[LO]{\small{Alejandro Mignanelli, Franco Negri, Federico Suárez}}
 \fancyfoot[RO]{\thepage}
