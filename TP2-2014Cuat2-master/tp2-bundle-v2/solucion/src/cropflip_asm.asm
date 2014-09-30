@@ -66,24 +66,14 @@ cropflip_asm:
     movdqu xmm0, [src]
     movdqu [dst], xmm0
 
-  ;instucciones para limite de performance ram
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-  push rax
-  pop rax
-;instucciones para limite de performance ram
+;instucciones para limite de performance logico
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+
+
+;instucciones para limite de performance logico
 
 
     add src, 16
