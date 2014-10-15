@@ -48,10 +48,10 @@ sierpinski_asm:
    .loop:
 
 ;instucciones para limite de performance logico
- ;   PUSH rax
-  ;  POP rax
-  ;  PUSH rax
-  ;  POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
 ;instucciones para limite de performance logico
 
 
