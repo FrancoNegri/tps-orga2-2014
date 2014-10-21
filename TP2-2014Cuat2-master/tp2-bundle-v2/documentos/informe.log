@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.9.30)  30 SEP 2014 16:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.16)  21 OCT 2014 17:11
 entering extended mode
  %&-line parsing enabled.
 **informe.tex
 (./informe.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
+yphenation, spanish, galician, catalan, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size10.clo
@@ -34,12 +34,6 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Spanish'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@spanish = a dialect from \language0
 \es@datefmt=\count88
 \es@quottoks=\toks14
 \es@quotdepth=\count89
@@ -47,7 +41,8 @@ Package babel Info: Making " an active character on input line 492.
 Package babel Info: Making . an active character on input line 585.
 Package babel Info: Making < an active character on input line 630.
 Package babel Info: Making > an active character on input line 630.
-)) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
@@ -352,15 +347,6 @@ LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
 
 LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
 
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
-
-LaTeX Warning: Label `nombreparareferenciar1' multiply defined.
-
 )
 \openout1 = `informe.aux'.
 
@@ -426,101 +412,70 @@ imagenes/logouba.jpg>] (./informe.toc)
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
- [2] (./enunciado.tex
-Overfull \hbox (6.0pt too wide) in paragraph at lines 18--18
- [][][][][][] 
- []
+ [2]
+<Graficos1.4/1.3/per.jpg, id=14, 816.04875pt x 513.92pt>
+File: Graficos1.4/1.3/per.jpg Graphic file (type jpg)
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 34.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 34.
-Missing character: There is no Ã in font cmtt8!
-Missing character: There is no ­ in font cmtt8!
-[3] [4] [5]) [6] [7] <Graficos1.4/1.3/per.png, id=40, 698.61pt x 340.27126pt>
-File: Graficos1.4/1.3/per.png Graphic file (type png)
-
-<use Graficos1.4/1.3/per.png>
-Overfull \hbox (5.83995pt too wide) in paragraph at lines 126--128
+<use Graficos1.4/1.3/per.jpg>
+Overfull \hbox (83.34976pt too wide) in paragraph at lines 99--101
  [] 
  []
 
-<Graficos1.4/1.3/var.png, id=41, 730.73pt x 341.275pt>
-File: Graficos1.4/1.3/var.png Graphic file (type png)
 
-<use Graficos1.4/1.3/var.png>
-Overfull \hbox (27.03922pt too wide) in paragraph at lines 135--137
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 95--104
+
  []
 
-[8 <./Graficos1.4/1.3/per.png (PNG copy)> <./Graficos1.4/1.3/var.png (PNG copy)
->] [9] <Graficos1.4/crop/per.png, id=48, 584.1825pt x 338.26375pt>
-File: Graficos1.4/crop/per.png Graphic file (type png)
-
-<use Graficos1.4/crop/per.png> [10 <./Graficos1.4/crop/per.png (PNG copy)>]
-<Graficos1.4/crop/var.png, id=52, 584.1825pt x 338.26375pt>
-File: Graficos1.4/crop/var.png Graphic file (type png)
-
-<use Graficos1.4/crop/var.png> [11 <./Graficos1.4/crop/var.png (PNG copy)>]
-<Graficos1.5/crop/per.png, id=56, 585.18625pt x 341.275pt>
-File: Graficos1.5/crop/per.png Graphic file (type png)
-
-<use Graficos1.5/crop/per.png>
-<Graficos1.5/crop/var.png, id=57, 585.18625pt x 341.275pt>
-File: Graficos1.5/crop/var.png Graphic file (type png)
-
-<use Graficos1.5/crop/var.png> [12 <./Graficos1.5/crop/per.png (PNG copy)> <./G
-raficos1.5/crop/var.png (PNG copy)>]
-<Graficos1.4/sie/per.png, id=61, 583.17876pt x 338.26375pt>
-File: Graficos1.4/sie/per.png Graphic file (type png)
-
-<use Graficos1.4/sie/per.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13] <Graficos1.4/sie/var.png, id=66, 583.17876pt x 338.26375pt>
-File: Graficos1.4/sie/var.png Graphic file (type png)
+[3] [4 <./Graficos1.4/1.3/per.jpg>]
+<Graficos1.4/crop/per.jpg, id=21, 700.6175pt x 341.275pt>
+File: Graficos1.4/crop/per.jpg Graphic file (type jpg)
 
-<use Graficos1.4/sie/var.png> [14 <./Graficos1.4/sie/per.png (PNG copy)> <./Gra
-ficos1.4/sie/var.png (PNG copy)>]
-<Graficos1.5/sie/per.png, id=70, 587.19376pt x 341.275pt>
-File: Graficos1.5/sie/per.png Graphic file (type png)
-
-<use Graficos1.5/sie/per.png>
-<Graficos1.5/sie/var.png, id=71, 607.26875pt x 342.27875pt>
-File: Graficos1.5/sie/var.png Graphic file (type png)
-
-<use Graficos1.5/sie/var.png> [15 <./Graficos1.5/sie/per.png (PNG copy)> <./Gra
-ficos1.5/sie/var.png>]
-Overfull \hbox (9.80513pt too wide) in paragraph at lines 273--278
-\OT1/bch/m/n/10 El se-gun-do prob-le-ma ser[]a com-parar es-tos val-ores obteni
-dos en la suma de una man-era efi-ciente. Querr[]^^Pamos
+<use Graficos1.4/crop/per.jpg>
+Overfull \hbox (7.1649pt too wide) in paragraph at lines 148--150
+ [] 
  []
 
-<Graficos1.4/ban/per.png, id=75, 583.17876pt x 338.26375pt>
-File: Graficos1.4/ban/per.png Graphic file (type png)
+[5 <./Graficos1.4/crop/per.jpg>]
+<Graficos1.5/crop/per.jpg, id=25, 586.19pt x 342.27875pt>
+File: Graficos1.5/crop/per.jpg Graphic file (type jpg)
 
-<use Graficos1.4/ban/per.png> [16 <./Graficos1.4/ban/per.png (PNG copy)>]
-<Graficos1.4/ban/var.png, id=79, 583.17876pt x 338.26375pt>
-File: Graficos1.4/ban/var.png Graphic file (type png)
+<use Graficos1.5/crop/per.jpg> [6 <./Graficos1.5/crop/per.jpg>]
+<Graficos1.4/sie/per.jpg, id=30, 585.18625pt x 340.27126pt>
+File: Graficos1.4/sie/per.jpg Graphic file (type jpg)
 
-<use Graficos1.4/ban/var.png> [17 <./Graficos1.4/ban/var.png (PNG copy)>]
-<Graficos3.1/per.png, id=83, 584.1825pt x 341.275pt>
-File: Graficos3.1/per.png Graphic file (type png)
- <use Graficos3.1/per.png>
-<Graficos3.1/var.png, id=84, 584.1825pt x 341.275pt>
-File: Graficos3.1/var.png Graphic file (type png)
- <use Graficos3.1/var.png>
-[18 <./Graficos3.1/per.png (PNG copy)> <./Graficos3.1/var.png (PNG copy)>]
-<Graficos1.4/mbl/per.png, id=88, 583.17876pt x 338.26375pt>
-File: Graficos1.4/mbl/per.png Graphic file (type png)
+<use Graficos1.4/sie/per.jpg>
 
-<use Graficos1.4/mbl/per.png> [19 <./Graficos1.4/mbl/per.png (PNG copy)>]
-<Graficos1.4/mbl/var.png, id=93, 584.1825pt x 338.26375pt>
-File: Graficos1.4/mbl/var.png Graphic file (type png)
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<use Graficos1.4/mbl/var.png> [20 <./Graficos1.4/mbl/var.png (PNG copy)>]
-[21] (./informe.aux)
+[7] [8 <./Graficos1.4/sie/per.jpg>]
+<Graficos1.5/sie/per.jpg, id=38, 588.1975pt x 342.27875pt>
+File: Graficos1.5/sie/per.jpg Graphic file (type jpg)
+
+<use Graficos1.5/sie/per.jpg> [9 <./Graficos1.5/sie/per.jpg>]
+Overfull \hbox (9.80513pt too wide) in paragraph at lines 235--240
+\OT1/bch/m/n/10 El se-gun-do pro-ble-ma ser[]a com-pa-rar es-tos va-lo-res ob-t
+e-ni-dos en la su-ma de una ma-ne-ra efi-cien-te. Querr[]^^Pamos
+ []
+
+<Graficos1.4/ban/per.jpg, id=42, 585.18625pt x 340.27126pt>
+File: Graficos1.4/ban/per.jpg Graphic file (type jpg)
+
+<use Graficos1.4/ban/per.jpg>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10] <Graficos3.1/per.jpg, id=47, 585.18625pt x 342.27875pt>
+File: Graficos3.1/per.jpg Graphic file (type jpg)
+
+<use Graficos3.1/per.jpg> [11 <./Graficos1.4/ban/per.jpg> <./Graficos3.1/per.jp
+g>] <Graficos1.4/mbl/per.jpg, id=51, 585.18625pt x 340.27126pt>
+File: Graficos1.4/mbl/per.jpg Graphic file (type jpg)
+
+<use Graficos1.4/mbl/per.jpg> [12 <./Graficos1.4/mbl/per.jpg>] [13]
+(./informe.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -529,29 +484,23 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2533 strings out of 495061
- 31638 string characters out of 1182621
- 92165 words of memory out of 3000000
- 5655 multiletter control sequences out of 15000+50000
- 31070 words of font info for 52 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
- 28i,13n,43p,741b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 2458 strings out of 494999
+ 30235 string characters out of 1180816
+ 90135 words of memory out of 3000000
+ 5608 multiletter control sequences out of 15000+50000
+ 21286 words of font info for 35 fonts, out of 3000000 for 9000
+ 54 hyphenation exceptions out of 8191
+ 28i,12n,43p,741b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texmf-texlive/fonts/type
-1/bitstrea/charter/bchbi8a.pfb></usr/share/texmf-texlive/fonts/type1/bitstrea/c
-harter/bchr8a.pfb></usr/share/texmf-texlive/fonts/type1/bitstrea/charter/bchri8
-a.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on informe.pdf (21 pages, 826853 bytes).
+1/bitstrea/charter/bchr8a.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on informe.pdf (13 pages, 638120 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
+ 84 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,20 +1,21 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Objetivos generales}{3}
-\contentsline {section}{\numberline {2}Enunciado y soluci\IeC {\'o}n}{3}
-\contentsline {subsection}{\numberline {2.1}Enunciado}{3}
-\contentsline {subsection}{\numberline {2.2}Filtro cropflip}{3}
-\contentsline {subsection}{\numberline {2.3}Mediciones}{3}
-\contentsline {subsection}{\numberline {2.4}Desensamblado de c\IeC {\'o}digo C y Optimizaci\IeC {\'o}n}{7}
-\contentsline {subsection}{\numberline {2.5}Calidad de las Mediciones}{8}
-\contentsline {section}{\numberline {3}Cropflip}{10}
-\contentsline {subsection}{\numberline {3.1}Diferencias de performance en Cropflip}{10}
-\contentsline {subsection}{\numberline {3.2}cpu vs. bus de memoria en Cropflip}{12}
-\contentsline {section}{\numberline {4}Sierpinski}{13}
-\contentsline {subsection}{\numberline {4.1}Diferencias de performance en Sierpinski}{13}
-\contentsline {subsection}{\numberline {4.2}CPU vs. Bus de memoria en Sierpinski}{15}
-\contentsline {section}{\numberline {5}Bandas}{16}
-\contentsline {subsection}{\numberline {5.1}Diferencias de performance en Bandas}{16}
-\contentsline {subsection}{\numberline {5.2}Saltos condicionales}{18}
-\contentsline {subsection}{\numberline {5.3}Motion Blur}{19}
-\contentsline {subsection}{\numberline {5.4}Diferencias de performance en Motion Blur}{19}
-\contentsline {section}{\numberline {6}Conclusiones y trabajo futuro}{21}
+\contentsline {section}{\numberline {2}Preambulo}{3}
+\contentsline {subsection}{\numberline {2.1}Calidad de las Mediciones}{3}
+\contentsline {section}{\numberline {3}Experimentaci\IeC {\'o}n}{4}
+\contentsline {subsection}{\numberline {3.1}Desensamblado de c\IeC {\'o}digo C y Optimizaci\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {4}Cropflip}{5}
+\contentsline {subsection}{\numberline {4.1}Diferencias de performance en Cropflip}{5}
+\contentsline {subsection}{\numberline {4.2}cpu vs. bus de memoria en Cropflip}{6}
+\contentsline {section}{\numberline {5}Sierpinski}{7}
+\contentsline {subsection}{\numberline {5.1}Idea general del algoritmo}{7}
+\contentsline {subsection}{\numberline {5.2}Diferencias de performance en Sierpinski}{7}
+\contentsline {subsection}{\numberline {5.3}CPU vs. Bus de memoria en Sierpinski}{9}
+\contentsline {section}{\numberline {6}Bandas}{10}
+\contentsline {subsection}{\numberline {6.1}Idea general del algoritmo}{10}
+\contentsline {subsection}{\numberline {6.2}Diferencias de performance en Bandas}{10}
+\contentsline {subsection}{\numberline {6.3}Saltos condicionales}{11}
+\contentsline {subsection}{\numberline {6.4}Motion Blur}{12}
+\contentsline {subsection}{\numberline {6.5}Idea general del algoritmo}{12}
+\contentsline {subsection}{\numberline {6.6}Diferencias de performance en Motion Blur}{12}
+\contentsline {section}{\numberline {7}Conclusiones y trabajo futuro}{13}
