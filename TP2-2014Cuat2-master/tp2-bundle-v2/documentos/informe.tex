@@ -77,21 +77,36 @@ En el presente trabajo se describe la problemática de procesar información de 
 
 \section{Objetivos generales}
 
-El objetivo de este Trabajo Práctico es mostrar las variaciones en la performance que suceden al utilizar instrucciones SIMD en comparación con código C con diversos grados de optimización realizados por el compilador.
+El objetivo de este Trabajo Práctico es mostrar las variaciones en la performance que suceden al utilizar instrucciones SIMD en comparación con código C con diversos grados de optimización realizados por el compilador cuando se manejan grandes volúmenes de datos que requieren un procesamiento similar.
 
-Para ello se realizarán cuatro filtros de fotos, Cropflip, Bandas, Sierpinski y Motion Blur, tanto en código assembler, que aproveche las instrucciones SSE brindadas para los procesadores de arquitectura Intel, como en código C, al que se le aplicarán los distintos flags de optimización -O0 (predeterminado), -O1, -O2 y -O3.
+Para ello se realizarán distintos experimentos sobre cuatro filtros de fotos, Cropflip, Bandas, Sierpinski y Motion Blur, tanto en código assembler, que aproveche las instrucciones SSE brindadas para los procesadores de arquitectura Intel, como en código C, al que se le aplicarán los distintos flags de optimización -O0 (predeterminado), -O1, -O2 y -O3.
 
 El primer filtro, Cropflip, se utilizará para mostrar cuanto mejora la performance al utilizar los registros XMM para transferir grandes cantidades de información.
 
 El segundo, tercer y cuarto filtro, se centrarán en la variación de performance (en comparación al código en C) al utilizar instrucciones SIMD, no sólo para transferir grandes volúmenes de datos sino también para procesarlos en forma paralela, es decir, realizar diversos cálculos (sumas, multiplicaciones, divisiones) tanto en representación de enteros como punto flotante.
 
-\section{Enunciado y solución} 
+\section{Preambulo}
 
-\subsection{Enunciado}
+\subsection{Calidad de las Mediciones}
+Para este experimento vamos a ver cómo se pueden ver afectados nuestros algoritmos frente a diversos factores de ruido e interferencias que podrían alterar nuestras mediciones.
 
-\input{enunciado}
-\
+Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
+
+Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. La medida de tiempo será a partir de este momento y para siempre la cantidad de ciclos de clock del procesador. Lo que se obtiene es el siguiente gráfico:
+\\
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[scale=0.66]{Graficos1.4/1.3/per.jpg}
+  \label{nombreparareferenciar1}
+  \end{center}
+\end{figure}
+\\
+
+Lo que se observa aquí es que al correr las pruebas con loops en segundo plano, la performance se ve afectada de forma negativa aumentando el tiempo de ejecución. Además podemos ver que los outliers cuando hay ruido tienen un mayor impacto en el rendimiento mientras que cuando no hay loops de fondo, su impacto es apenas notable. También se puede apreciar que la optimización -O1 es la que más se ve perjudicada por el ruido de los loops. Con respecto a la varianza, se puede percibir fácilmente que el ruido la dispara considerablemente, es decir, aumenta abismalmente la dispersión de los datos. Por otro lado, se ve que los outliers tuvieron una mayor repercusión en la varianza de los casos sin loops.
+
 \newpage
+
+\section{Experimentación}
 
 \subsection{Desensamblado de código C y Optimización}
 
@@ -114,33 +129,9 @@ Los otros flags de optimización son -O2, -O3, -Og, -Os, -Ofast. También podemo
 Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants .
 
 \newpage
-\subsection{Calidad de las Mediciones}
-Para este experimento vamos a ver cómo se pueden ver afectados nuestros algoritmos frente a diversos factores de ruido e interferencias que podrían alterar nuestras mediciones.
 
-Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
-
-Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. La medida de tiempo será a partir de este momento y para siempre la cantidad de ciclos de clock del procesador. Lo que se obtiene es el siguiente gráfico:
-\\
-\begin{figure}[h!]
-  \begin{center}
-	\includegraphics[scale=0.66]{Graficos1.4/1.3/per.png}
-	\label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-\\
-Realizamos un cálculo de la varianza para ver qué tan precisos son los resultados y se obtiene esto:
-
-\begin{figure}[h!]
-  \begin{center}
-	\includegraphics[scale=0.66]{Graficos1.4/1.3/var.png}
-	\label{nombreparareferenciar2}
-  \end{center}
-\end{figure}
-
-Lo que se observa aquí es que al correr las pruebas con loops en segundo plano, la performance se ve afectada de forma negativa aumentando el tiempo de ejecución. Además podemos ver que los outliers cuando hay ruido tienen un mayor impacto en el rendimiento mientras que cuando no hay loops de fondo, su impacto es apenas notable. También se puede apreciar que la optimización -O1 es la que más se ve perjudicada por el ruido de los loops. Con respecto a la varianza, se puede percibir fácilmente que el ruido la dispara considerablemente, es decir, aumenta abismalmente la dispersión de los datos. Por otro lado, se ve que los outliers tuvieron una mayor repercusión en la varianza de los casos sin loops.
-
-\newpage
 \section{Cropflip}
+
 \subsection{Diferencias de performance en Cropflip}
 En el siguiente experimento se medirán las performances tanto de nuestro algoritmo en assembler, implementado para sacar provecho de las instrucciones SSE de Intel, como una versión alternativa hecha en C con diversos grados de optimización a cargo del compilador.
 
@@ -154,18 +145,8 @@ Lo obtenido en los tests puede verse en el siguiente gráfico:
 
 \begin{figure}[h!]
   \begin{center}
-	\includegraphics[scale=0.66]{Graficos1.4/crop/per.png}
+	\includegraphics[scale=0.66]{Graficos1.4/crop/per.jpg}
 	\label{nombreparareferenciar5}
-  \end{center}
-\end{figure}
-
-\newpage
-Y las varianzas son:
-
-\begin{figure}[h!]
-  \begin{center}
-	\includegraphics[scale=0.66]{Graficos1.4/crop/var.png}
-	\label{nombreparareferenciar6}
   \end{center}
 \end{figure}
 
@@ -185,14 +166,7 @@ Lo que obtuvimos fue lo siguiente:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/per.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/crop/var.png}
+  \includegraphics[scale=0.66]{Graficos1.5/crop/per.jpg}
   \label{nombreparareferenciar1}
   \end{center}
 \end{figure}
@@ -201,7 +175,9 @@ Lo que obtuvimos fue lo siguiente:
 
 \newpage
 \section{Sierpinski}
-\subsection{Diferencias de performance en Sierpinski}
+
+\subsection{Idea general del algoritmo}
+
 Ahora analizamos el algoritmo del Sierpinski. En este caso, el algoritmo ya es un poco más complejo. Necesitamos calcular para cada píxel un coeficiente diferente, que dependerá de la posición (i,j) de cada píxel.
 \\
 Luego para poder paralelizar de alguna manera el algoritmo en C y sacar provecho a los registros xmm, es necesario calcular 4 coeficientes a la vez y multiplicárselos a sus respectivos píxels.
@@ -223,25 +199,18 @@ Luego la idea del algoritmo será algo así:
 \item Y finalmente movemos los píxels procesados al destino.
 \end{itemize}
 
+\subsection{Diferencias de performance en Sierpinski}
+
 Los resultados comparativos de performance para este algoritmo comparado con uno desarrollado en C fueron los siguientes:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/sie/per.png}
+  \includegraphics[scale=0.66]{Graficos1.4/sie/per.jpg}
   \label{nombreparareferenciar7}
   \end{center}
 \end{figure}
 
 \newpage
-
-Y la varianza:
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/sie/var.png}
-  \label{nombreparareferenciar8}
-  \end{center}
-\end{figure}
 
 Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización. Y las varianzas son similares a excepción de la optimización O0 que es un poco mayor.
 
@@ -254,14 +223,7 @@ Graficando lo obtenido:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/sie/per.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.5/sie/var.png}
+  \includegraphics[scale=0.66]{Graficos1.5/sie/per.jpg}
   \label{nombreparareferenciar1}
   \end{center}
 \end{figure}
@@ -269,7 +231,7 @@ Graficando lo obtenido:
 Se puede ver que Sierpinski disminuye su performance de una manera similar cuando se le agregan más operaciones aritméticas o de lectura/escritura de memoria. Viendo la varianza, se observa que las instrucciones aritméticas generan un leve aumento de la misma mientras que las operaciones de lectura/escritura producen una mayor dispersión de los datos.
 \newpage
 \section{Bandas}
-\subsection{Diferencias de performance en Bandas}
+\subsection{Idea general del algoritmo}
 Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tres colores de la imagen(r,g,b), sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 \\
 Para resolver la primera problemática usaremos las instrucciones $phaddw$, que nos permitirá a través de una suma horizontal, sumar los valores r,g,b de manera cómoda solamente utilizando dos registros.
@@ -289,23 +251,14 @@ El segundo problema será comparar estos valores obtenidos en la suma de una man
 \item  Finalmente, empaquetamos estos valores para volver a byte y los shuffleamos para dejarlos en los lugares correspondiente y lo asignamos en el destino.
 \end{itemize}
 
+\subsection{Diferencias de performance en Bandas}
 
 Los resultados de los tiempos comparativos son los siguientes:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/ban/per.png}
+  \includegraphics[scale=0.66]{Graficos1.4/ban/per.jpg}
   \label{nombreparareferenciar9}
-  \end{center}
-\end{figure}
-
-\newpage
-Y la varianza:
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/ban/var.png}
-  \label{nombreparareferenciar10}
   \end{center}
 \end{figure}
 
@@ -318,14 +271,7 @@ En este experimento veremos como afectan los saltos condicionales a la performan
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos3.1/per.png}
-  \label{nombreparareferenciar1}
-  \end{center}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos3.1/var.png}
+  \includegraphics[scale=0.66]{Graficos3.1/per.jpg}
   \label{nombreparareferenciar1}
   \end{center}
 \end{figure}
@@ -334,7 +280,7 @@ Como se puede ver en el gráfico del promedio, la versión de una sola banda tar
 
 \newpage
 \subsection{Motion Blur}
-\subsection{Diferencias de performance en Motion Blur}
+\subsection{Idea general del algoritmo}
 Para este algoritmo por cada píxel se deben tomar 5 píxels, multiplicar cada uno de los colores por $0.2$ y luego sumarlos.
 \\
 Para ello debemos tener cuidado de tomar correctamente los casos borde y no aplicar motion blur donde no corresponde.
@@ -353,22 +299,14 @@ Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 \item  Cada vez que termino de recorrer una fila, pongo en negro los siguientes 4 píxels, y las dos primeras y últimas filas las pongo en negro aparte, fuera del ciclo.
 \end{itemize}
 
+\subsection{Diferencias de performance en Motion Blur}
+
 Al realizar el testing se obtuvieron los siguientes resultados:
 
 \begin{figure}[h!]
   \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/mbl/per.png}
+  \includegraphics[scale=0.66]{Graficos1.4/mbl/per.jpg}
   \label{nombreparareferenciar11}
-  \end{center}
-\end{figure}
-
-\newpage
-Y la varianza:
-
-\begin{figure}[h!]
-  \begin{center}
-  \includegraphics[scale=0.66]{Graficos1.4/mbl/var.png}
-  \label{nombreparareferenciar12}
   \end{center}
 \end{figure}
 
