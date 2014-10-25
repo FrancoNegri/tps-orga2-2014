@@ -1,0 +1,6 @@
+1000 muestras
+400 outliers
+1.6 ghz fijo
+deshabilitado el frecuency scaling
+las rayitas negras son el desvio estandar (raiz cuadrada de la varianza
+)
