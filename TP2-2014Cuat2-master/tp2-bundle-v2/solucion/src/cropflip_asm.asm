@@ -67,10 +67,41 @@ cropflip_asm:
     movdqu [dst], xmm0
 
 ;instucciones para limite de performance logico
-   ; PUSH rax
-    ;POP rax
-    ;PUSH rax
-    ;POP rax
+
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+    PUSH rax
+    POP rax
+
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+    ; add rax, rbx
+    ; sub rax, rbx
+
 
 
 ;instucciones para limite de performance logico
