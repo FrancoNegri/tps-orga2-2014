@@ -92,7 +92,7 @@ Para este experimento vamos a ver cómo se pueden ver afectados nuestros algorit
 
 Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
 
-Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. La medida de tiempo será a partir de este momento y para siempre la cantidad de ciclos de clock del procesador. Lo que se obtiene es el siguiente gráfico:
+Procedimos a tomar 1000 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos. La medida de tiempo será a partir de este momento y a lo largo de todo el informe, la cantidad de ciclos de clock del procesador. Lo que se obtiene es el siguiente gráfico:
 \\
 \begin{figure}[h!]
   \begin{center}
@@ -102,7 +102,8 @@ Procedimos a tomar 10 mediciones para cada una de las versiones del cropflip, ta
 \end{figure}
 \\
 
-Lo que se observa aquí es que al correr las pruebas con loops en segundo plano, la performance se ve afectada de forma negativa aumentando el tiempo de ejecución. Además podemos ver que los outliers cuando hay ruido tienen un mayor impacto en el rendimiento mientras que cuando no hay loops de fondo, su impacto es apenas notable. También se puede apreciar que la optimización -O1 es la que más se ve perjudicada por el ruido de los loops. Con respecto a la varianza, se puede percibir fácilmente que el ruido la dispara considerablemente, es decir, aumenta abismalmente la dispersión de los datos. Por otro lado, se ve que los outliers tuvieron una mayor repercusión en la varianza de los casos sin loops.
+Lo que se observa aquí es que al correr las pruebas con loops en segundo plano, la performance se ve afectada de forma negativa aumentando el tiempo de ejecución en por lo menos un 300 por ciento(como se ponia el simbolito?(ALE)). Con respecto a la varianza, se puede percibir fácilmente que el ruido la dispara considerablemente, es decir, aumenta abismalmente la dispersión de los datos, causando que estos sean menos fiables.
+Por los observado en este experimento, se ha tomada la decisión de que para cada experimento en el presente informe, se tomaran 1000 mediciones sin loops de fondo y quitando .(Es una buena justificacion porque hace que mis experimentos se vean mas chotos??(ALE))
 
 \newpage
 
@@ -139,8 +140,6 @@ El algoritmo de Cropflip en assembler es muy sencillo. Simplemente movemos 128-b
 
 Dado que la cantidad de columnas es siempre múltiplo de 4, o sea, siempre tenemos 4 bytes para tomar, no es necesario chequear otros casos borde.
 
-Las pruebas de performance, realizadas de la misma manera en que concluímos la anterior sección, se realizaron corriendo 4 loops en paralelo junto con los algoritmos de manera de minimizar el ruido y luego quitando los outliers.
-
 Lo obtenido en los tests puede verse en el siguiente gráfico:
 
 \begin{figure}[h!]
@@ -150,7 +149,12 @@ Lo obtenido en los tests puede verse en el siguiente gráfico:
   \end{center}
 \end{figure}
 
-En este caso la performance de nuestro algoritmo es ligeramente menor al código de mayor grado de optimización de C. Creemos que esto se debe a que al ser un código muy simple, el cual sólo mueve datos de un lugar a otro, el tiempo de ejecución de ambos es muy similar y la diferencia se la atribuimos al ruido. La varianza de mayor nivel es la optimización O0, mientras que las demás tienen un nivel relativamente bajo de dispersión. Observamos que sin embargo, la nuestra es la mayor de las restantes, lo que favorece nuestra proposición sobre el ruido.
+\subsubsection{Resultados}
+
+Se percibe en el gráfico que la version SIMD del algoritmo de cropflip  y la version C con mayor grado de optimización son muy parecidas en promedio, aunque la varianza del segundo es mayor la del primero. Por otro lado, el programa SIMD tiene una mayor performance a las optimizaciones O1 y O2, y la comparación con O0 muestra que en promedio, es más de 8 veces más rápido.
+
+\subsubsection{Conclusiones}
+Creemos que la gran similitud de tiempos entre el programa versión SIMD y versión C con O3 se debe a que es un código muy simple, el cual sólo mueve datos de un lugar a otro. Sin embargo, la diferencia en la dispersión de datos de ambas tienden a hacer pensar que la versión SIMD es un poco más confiable en términos de performance.
 
 \newpage
 
@@ -171,8 +175,13 @@ Lo que obtuvimos fue lo siguiente:
   \end{center}
 \end{figure}
 
-==conculsión!!!==
+\subsubsection{Resultados}
+\subsubsection{Conclusiones}
 
+==conculsión!!!==
+(Lo que obtuvimos fue que en general, las operaciones de lectura producen una menor performance, mientras que en gral agregar operaciones aritmeticas mejora la performance. No se observa una dispersion de datos muy significativa(ALE))
+(Conclusiones: No se me ocurre un motivo logico para las operaciones aritmeticas, las operaciones de memoria tienen mas sentido, el caso 8 dios sabe... la unica herramienta que conozco es la cache, y no se como usarla para un argumento a favor... recomiendo poner que no tenemos idea porque sucedio esto(ALE))
+(ACAAAAAAAAAAAAAAAAAAAAAAA... dejo esto en blanco por si encontramos un mejor grafico, sino de ultima despues hago lo que puedo...)
 \newpage
 \section{Sierpinski}
 
@@ -211,8 +220,11 @@ Los resultados comparativos de performance para este algoritmo comparado con uno
 \end{figure}
 
 \newpage
+\subsubsection{Resultados}
+Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD tiene una mejor performance que los demás. Es aproximadamente dos veces más rápido que la versión de C con O3, más de tres veces más rápido que O2 y O1 y más de 7 veces más veloz que O0, todo esto en promedio. Las varianzas son similares, y muy pequeñas.
+\subsubsection{Conclusiones}
 
-Puede verse que en este caso nuestro modelo que toma y calcula de a 4 píxels utilizando instrucciones SIMD es incluso mejor que la versión de C con mayor grado de optimización. Y las varianzas son similares a excepción de la optimización O0 que es un poco mayor.
+En base a los resultados, parecería que nuestro programa es claramente una mejor opción ante las implementaciones de C.
 
 \newpage
 \subsection{CPU vs. Bus de memoria en Sierpinski}
@@ -228,7 +240,14 @@ Graficando lo obtenido:
   \end{center}
 \end{figure}
 
-Se puede ver que Sierpinski disminuye su performance de una manera similar cuando se le agregan más operaciones aritméticas o de lectura/escritura de memoria. Viendo la varianza, se observa que las instrucciones aritméticas generan un leve aumento de la misma mientras que las operaciones de lectura/escritura producen una mayor dispersión de los datos.
+\subsubsection{Resultados}
+Se observa que las operaciones aritmeticas y de memoria, provocan una disminucion de performance, y esta disminucion es mayor cuantas mas operaciones se agregan. Respecto a la varianza, estas son similares.
+
+\subsubsection{Conclusiones}
+
+Se puede ver que Sierpinski disminuye su performance de una manera similar cuando se le agregan más operaciones aritméticas o de lectura/escritura de memoria. Sin embargo, tomando como base lo que tarda el algoritmo por si mismo, pareciera que las operaciones de memoria lo afectan más en cuanto a tiempo que las operaciones aritmeticas.
+(CUIDADOOOOOOOOOOO. podría estar bueno rehacer este gráfico, sino tengo que poner chamuyo para el caso memoria = 8. el chamuyo sería el siguiente bicho, pero quisiera evitar ponerlo."Se observa que al insertar ocho operaciones de memoria, el tiempo da un poco menor que en el caso de 4. Esto se lo atribuimos al ruido, puesto que al tener una diferencia de tiempos tan pequeña(menor al 0.1 por ciento), este factor puede tomar gran importancia"... o algo asi.)
+
 \newpage
 \section{Bandas}
 \subsection{Idea general del algoritmo}
@@ -262,7 +281,11 @@ Los resultados de los tiempos comparativos son los siguientes:
   \end{center}
 \end{figure}
 
-Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optimizar, y una performance un poco mejor al del código C con el mayor grado de optimización. Y con respecto a la varianza, todos tienen una dispersión de datos relativamente baja salvo la optimización O0 cuyo nivel es muy alto.
+\subsubsection{Resultados}
+En el gráfico se aprecia que el programa de ASM con SIMD tarda, en promedio, un poco menos de la mitad de tiempo que la implementación de C con O3. Tambien se observa que O2 y O3 son muy similares. Se ve que SIMD es tiene una mayor performance que O1 (poco menos de 3 veces), y nuevamente, es varias veces más veloz en promedio que O0. En cuanto a las varianzas, son similares y muy pequeñas.
+
+\subsubsection{Conclusiones}
+Nuestro algoritmo obtiene una performance mucho mayor a la del código sin optimizar, y una performance un poco mejor al del código C con el mayor grado de optimización. Las diferencias no son tan claras como en Sierpinski, sin embargo, siguen siendo rotundas.
 
 \newpage
 \subsection{Saltos condicionales}
@@ -276,7 +299,12 @@ En este experimento veremos como afectan los saltos condicionales a la performan
   \end{center}
 \end{figure}
 
-Como se puede ver en el gráfico del promedio, la versión de una sola banda tardó mucho menos con respecto a la versión original. Creemos que esta disminución en el tiempo de ejecución tiene que ver con la predicción de saltos del procesador. Esto se debe a que cuando hay un salto condicional, en principio el procesador no sabe a qué posición de memoria deberá dirigirse. Al haber removido estos saltos, tiene sentido que la performance se haya visto impactada de manera positiva. Con respecto a la varianza se ve que en la versión sin saltos es mucho menor respecto al original, es decir, los valores de la muestra se encuentran relativamente más cercanos al promedio.
+\subsubsection{Resultados}
+Como se puede ver en el gráfico del promedio, la versión de una sola banda tardó poco más de la mitad de tiempo con respecto a la versión original.(Esto esta hecho con 1000 mediciones=S?? (ALE))
+
+\subsubsection{Conclusiones}
+
+ Al ver que la version de una sola banda tardo en promedio menos que la version original, creemos que esta disminución en el tiempo de ejecución tiene que ver con la predicción de saltos del procesador. Esto se debe a que cuando hay un salto condicional, en principio el procesador no sabe a qué posición de memoria deberá dirigirse. Al haber removido estos saltos, tiene sentido que la performance se haya visto impactada de manera positiva
 
 \newpage
 \subsection{Motion Blur}
@@ -310,14 +338,19 @@ Al realizar el testing se obtuvieron los siguientes resultados:
   \end{center}
 \end{figure}
 
-En este caso nuestro algoritmo supera ampliamente incluso al código C con mayor grado de optimización. De la varianza se ve que nuestro algoritmo tiene una dispersión de datos parecida a la de la optimización O3, mientrás que la optimización O1 es la que más dispersa los datos.
+\subsubsection{Resultados}
+Se aprecia en el gráfico que el código ASM con SIMD tiene un promedio de tiempo de ejecucion aproximadamente tres veces menor a la mayor optimización de C, y varias veces menor que O0. También se observa que O1, como O2 y O3 dan promedios de tiempo muy parecidos. Las varianzas son similares y muy pequeñas.
+
+\subsubsection{Conclusiones}
+
+En este caso nuestro algoritmo supera ampliamente incluso al código C con mayor grado de optimización, lo que hace pensar que es una mejor opción entre las propuestas.
 
 \newpage
 \section{Conclusiones y trabajo futuro}
 
 SIMD es una herramienta muy útil para mejorar la performance a la hora de manejar grandes cantidades de datos que requieren un mismo procesamiento, como imágenes o videos, y esto se vio reflejado ampliamente en los resultados de los experimentos realizados en este trabajo. Sin embargo si lo único que necesitamos realizar es un mero movimiento de datos, las diferencias se vuelven imperceptibles con respecto al grado de mayor optimización de C. Sin embargo, un gran poder conlleva una gran responsabilidad y un error de empaquetado o desempaquetado puede resultar en muchas horas de debugging, como por ejemplo desempaquetar dos veces la parte alta de un registro, en vez de desempaquetar la parte baja también.
 
-
+(ACLARACIONES GENEALES:4.2 cropflip rehacer el grafico hasta que de algo coherente, fijarse lo que dijo el chabon de la practica de ver que realmente este yendo a 1.6GHZ, en 5.3 sierpinski, solo si hay tiempo volver a hacer el grafico, asi no tenemos que tirarle culpas al ruido por las 8 operaciones de memoria, explicar los algoritmos, y el tp creo que ya estaria listo..)
 
 \end{document}
 
