@@ -162,16 +162,16 @@ mblur_asm:
 	punpcklbw xmm1, xmm14 ; en xmm1 dejo la parte baja de p2
 
 	movdqu xmm7, xmm2
-	punpckhbw xmm7, xmm14 ; en xmm6 dejo 
-	punpcklbw xmm2, xmm14
+	punpckhbw xmm7, xmm14 ; en xmm7 dejo la parte alta de p3
+	punpcklbw xmm2, xmm14 ; en xmm2 dejo la parte baja de p3
 	
 	movdqu xmm8, xmm3
-	punpckhbw xmm8, xmm14
-	punpcklbw xmm3, xmm14
+	punpckhbw xmm8, xmm14 ; en xmm8 dejo la parte alta de p4
+	punpcklbw xmm3, xmm14 ; en xmm3 dejo la parte baja de p4
 
 	movdqu xmm9, xmm4
-	punpckhbw xmm9, xmm14
-	punpcklbw xmm4, xmm14
+	punpckhbw xmm9, xmm14 ; en xmm9 dejo la parte alta de p5
+	punpcklbw xmm4, xmm14 ; en xmm4 dejo la parte baja de p5
 
 	paddw xmm5,xmm6
 	paddw xmm0,xmm1
@@ -196,8 +196,8 @@ mblur_asm:
 	punpcklwd xmm0, xmm14; la parte baja de la parte baja, pixel 1
 
 	movdqu xmm6, xmm5
-	punpckhwd xmm6, xmm14; pixel 4
-	punpcklwd xmm5, xmm14; pixel 3
+	punpckhwd xmm6, xmm14; la parte alta de la parte alta, pixel 4
+	punpcklwd xmm5, xmm14; la parte baja de la parte alta, pixel 3
 
 	cvtdq2ps xmm0, xmm0
 	cvtdq2ps xmm1, xmm1
@@ -216,7 +216,7 @@ mblur_asm:
 
 	packssdw xmm0,xmm1; p1 p2
 	packssdw xmm5,xmm6; p3 p4
-	packuswb xmm0,xmm5
+	packuswb xmm0,xmm5; p1,p2 p3,p4
 
 	pand xmm0, xmm12
 	paddb xmm0, xmm10
