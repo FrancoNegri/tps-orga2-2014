@@ -85,6 +85,7 @@ El primer filtro, Cropflip, se utilizará para mostrar cuanto mejora la performa
 
 El segundo, tercer y cuarto filtro, se centrarán en la variación de performance (en comparación al código en C) al utilizar instrucciones SIMD, no sólo para transferir grandes volúmenes de datos sino también para procesarlos en forma paralela, es decir, realizar diversos cálculos (sumas, multiplicaciones, divisiones) tanto en representación de enteros como punto flotante.
 
+\newpage
 \section{Preambulo}
 
 \subsection{Calidad de las Mediciones}
@@ -95,17 +96,15 @@ Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 
 Procedimos a tomar 1000 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos y los promediamos para obtener un valor aproximado de cuanto tarda en correr cada uno de los algoritmos.
 
 Lo que se obtiene son los siguientes resultados:
-
-\newpage
-
+\begin{center}
   \includegraphics[scale=0.66]{Graficos1.4/1.3/perConOut.png}
-
+\end{center}
 Vemos que con loops, el desvío estandar se vuelve incontrolable, a tal punto que sería imposible sacar ninguna conclución de los datos obtenidos. Ahora para intentar mejorar un poco las mediciones, quitamos los $200$ valores mas grandes y los $200$ valores mas chicos (estos van a ser nuestros outliers).
 
 Volvemos a graficar:
-
+\begin{center}
   \includegraphics[scale=0.66]{Graficos1.4/1.3/perSinOut.png}
-
+\end{center}
 De esta manera logramos obtener valores mucho mas razonables para el desvío estandar.
 
 De este ultimo grafico ademas podemos observar que los loops afectan de manera diferente a los algoritmos, el codigo de C sin optimizar aumenta su tiempo de ejecución en un 25 \%, mientras que el codigo de assambler no varía en lo mas minimo.
@@ -134,13 +133,9 @@ Luego de esto, procedemos a compilar el código utilizando el flag -O1, y nuevam
 
 Los otros flags de optimización son -O2, -O3, -Og, -Os, -Ofast. También podemos encontrar los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no utilizó instrucciones SIMD.
 
-Tres nombres de optimizaciones son: -foptimize-sibling-calls, -finline-small-functions, -fmerge-constants.
+De las muchas optimizaciones que C puede realizar, tomamos tres para ejemplifiacar: -foptimize-sibling-calls, -finline-small-functions, -fmerge-constants.
 
-El flag -foptimize-sibling-calls, sirve para optimizar las funciones con recurcion a la cola.
-
--finline-small-functions integra funciones a las funciones que las llaman cuando el cuerpo de la función es menor que la cantidad de instrucciones necesarias para llararla, resultando en un codigo de menor tamaño.
-
--fmerge-constants intenta mergear constantes identicas entre las distintas unidades de compilación.
+La optimizacion -foptimize-sibling-calls, sirve para optimizar las funciones con recurcion a la cola.Por otra parte -finline-small-functions integra funciones a las funciones que las llaman cuando el cuerpo de la función es menor que la cantidad de instrucciones necesarias para llararla, resultando en un codigo de menor tamaño. Por ultimo -fmerge-constants intenta mergear constantes identicas entre las distintas unidades de compilación.
 
 \newpage
 
@@ -167,7 +162,7 @@ Lo obtenido en los tests puede verse en el siguiente gráfico:
 Se percibe en el gráfico que la version SIMD del algoritmo de cropflip  y la version C con mayor grado de optimización son muy parecidas en promedio, aunque la varianza del codigo C es levemente mayor la del primero. Por otro lado, el programa SIMD tiene una mayor performance a las optimizaciones O1 y O2, y la comparación con O0 muestra que en promedio, es más de 8 veces más rápido.
 
 \subsubsection{Conclusiones}
-Una de las razones por las que el codigo optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag conocido como "-fipa-cp-clone" que permite hacer algo llamado interprocedural constant propagation, que segun entendemos intenta paralelizar el codigo, o alguna otra optimización del codigo que lo hace extremadamente performante incluso sin utilizar SIMD. Aun asi, prestandole mas atención al desvio estandar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en asambler, asi que aun asi, nuestro codigo pareciera tener alguna ventaja sobre el creado en C.
+Una de las razones por las que el codigo optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag "-fipa-cp-clone" que permite hacer algo llamado interprocedural constant propagation, que segun entendemos intenta paralelizar el codigo, o alguna otra optimización del codigo que lo hace extremadamente performante incluso sin utilizar SIMD. Aun asi, prestandole mas atención al desvio estandar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en asambler, asi que aun asi, nuestro codigo pareciera tener alguna ventaja sobre el creado en C.
 
 \newpage
 
@@ -206,9 +201,9 @@ Luego la idea del algoritmo será algo así:
 
 Al comenzar el ciclo, leemos 4 píxels y los guardamos en un registro xmm. Luego, calculamos el coeficiente para cada píxel de forma paralela como se muestra en el dibujo.
 
-
-\includegraphics[scale=0.23]{Dibujos/S1.jpg}
-
+\begin{center}
+\includegraphics[scale=0.75]{Dibujos/S1.jpg}
+\end{center}
 
 Una vez obtenidos los coeficientes, sólo nos resta multiplicar a cada uno por el píxel correspondiente. Como debemos multiplicar dicho coeficiente por cada byte de cada píxel, primero deberemos desempaquetar los datos de tal manera que nos queden 4 registros xmm, uno para cada píxel, que cada uno contenga todos los bytes del píxel asociado en el orden original. A continuación, nos toca convertir todo a punto flotante para poder realizar la multiplicación. Además necesitaremos brodcastear el coeficiente de cada píxel en un registro xmm para así efectivamente multiplicarlo por cada componente del píxel.[ACÁ NO SÉ SI IRÍA DIBUJO DE CÓMO SE HARÍA ESTA MULTIPLICACIÓN, Y EN ESE CASO NO SÉ SI ESTARÍA DE MÁS DEJAR LA ANTERIOR EXPLICACIÓN] Después de terminar con las multiplicaciones, convertimos a entero nuevamente y empaquetamos todo para finalmente moverlo al destino.
 
@@ -280,8 +275,9 @@ El segundo problema será comparar estos valores obtenidos en la suma de una man
 
 Como primer paso, leemos los 4 píxels y los guardamos en un xmm. Luego, desempaquetamos los datos de byte a word para poder realizar la suma de las componentes de cada píxel sin salirnos de la representación. La suma se hace a través de dos instrucciones de suma horizontal, como mencionamos anteriormente, de tal manera que nos quedan los $b$ de cada píxel en las cuatro words de la parte baja de un xmm. A continuación realizamos unas comparaciones utilizando máscaras predefinidas para determinar el valor que tendrá cada píxel en cada una de sus componentes. Después de realizadas estas comparaciones, nos queda en las word de la parte baja de un xmm los 4 valores que se asignarán a cada componente de cada píxel. Luego, empaquetamos estos valores pasandolos de word a byte y aplicamos un shuffle que los deja en el los lugares que corresponden para finalmente copiarlos al destino. 
 
+\begin{center}
 \includegraphics[scale=0.66]{Dibujos/B1.jpg}
-
+\end{center}
 
 \begin{itemize}
 \item  En la sección data tenemos mascaras y constantes brodcasteadas que utilizaremos para hacer las comparaciones.
@@ -345,7 +341,9 @@ Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 
 Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también leeremos píxeles de las filas vecinas ya que para procesar un píxel $(i,j)$ necesitaremos además los 4 píxels de las filas $i-2$, $i-1$, $i+1$ e $i+2$ en las columnas $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente. Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación. Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxels, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
 
+\begin{center}
 \includegraphics[scale=0.66]{Dibujos/MB1.jpg}
+\end{center}
 
 \begin{itemize}
 \item  Tenemos, en la sección datos, el valor $0.2$ brodcasteado que utilizaremos para realizar la multiplicación.
@@ -377,7 +375,7 @@ Se aprecia en el gráfico que el código ASM con SIMD tiene un promedio de tiemp
 
 \subsubsection{Conclusiones}
 
-En este caso podemos concluir nuevamente que la opcion en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización.
+En este caso podemos concluir nuevamente que la opcion en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización es posible lograr una mejora del 66 \%.
 
 \newpage
 \section{Conclusiones y trabajo futuro}

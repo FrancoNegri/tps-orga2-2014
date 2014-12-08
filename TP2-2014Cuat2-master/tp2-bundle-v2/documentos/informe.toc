@@ -1,7 +1,7 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Objetivos generales}{3}
-\contentsline {section}{\numberline {2}Preambulo}{3}
-\contentsline {subsection}{\numberline {2.1}Calidad de las Mediciones}{3}
+\contentsline {section}{\numberline {2}Preambulo}{4}
+\contentsline {subsection}{\numberline {2.1}Calidad de las Mediciones}{4}
 \contentsline {section}{\numberline {3}Experimentaci\IeC {\'o}n}{5}
 \contentsline {subsection}{\numberline {3.1}Desensamblado de c\IeC {\'o}digo C y Optimizaci\IeC {\'o}n}{5}
 \contentsline {section}{\numberline {4}Cropflip}{6}
