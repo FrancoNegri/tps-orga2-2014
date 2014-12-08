@@ -29,7 +29,7 @@
 \contentsline {subsubsection}{\numberline {6.3.2}Conclusiones}{15}
 \contentsline {subsection}{\numberline {6.4}Motion Blur}{16}
 \contentsline {subsection}{\numberline {6.5}Idea general del algoritmo}{16}
-\contentsline {subsection}{\numberline {6.6}Diferencias de performance en Motion Blur}{17}
-\contentsline {subsubsection}{\numberline {6.6.1}Resultados}{18}
-\contentsline {subsubsection}{\numberline {6.6.2}Conclusiones}{18}
-\contentsline {section}{\numberline {7}Conclusiones y trabajo futuro}{19}
+\contentsline {subsection}{\numberline {6.6}Diferencias de performance en Motion Blur}{16}
+\contentsline {subsubsection}{\numberline {6.6.1}Resultados}{17}
+\contentsline {subsubsection}{\numberline {6.6.2}Conclusiones}{17}
+\contentsline {section}{\numberline {7}Conclusiones y trabajo futuro}{18}
