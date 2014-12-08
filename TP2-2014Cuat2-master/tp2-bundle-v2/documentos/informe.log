@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  6 DEC 2014 15:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  8 DEC 2014 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,41 +485,36 @@ LaTeX Info: Redefining \% on input line 1.
 \openout4 = `informe.toc'.
 
  [2]
-<Graficos1.4/1.3/per.jpg, id=15, 816.04875pt x 513.92pt>
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
+ [3]
+<Graficos1.4/1.3/per.jpg, id=18, 816.04875pt x 513.92pt>
 File: Graficos1.4/1.3/per.jpg Graphic file (type jpg)
 
 <use Graficos1.4/1.3/per.jpg>
-Package pdftex.def Info: Graficos1.4/1.3/per.jpg used on input line 99.
+Package pdftex.def Info: Graficos1.4/1.3/per.jpg used on input line 102.
 (pdftex.def)             Requested size: 538.59384pt x 339.18823pt.
 
-Overfull \hbox (83.34976pt too wide) in paragraph at lines 99--101
+Overfull \hbox (83.34976pt too wide) in paragraph at lines 102--104
  [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--104
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Info: Redefining \. on input line 108.
-LaTeX Info: Redefining \% on input line 108.
-[3]
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
- [4 <./Graficos1.4/1.3/per.jpg>]
-<Graficos1.4/crop/per.jpg, id=22, 454.69875pt x 255.95625pt>
+LaTeX Info: Redefining \. on input line 110.
+LaTeX Info: Redefining \% on input line 110.
+[4 <./Graficos1.4/1.3/per.jpg>]
+LaTeX Info: Redefining \. on input line 134.
+LaTeX Info: Redefining \% on input line 134.
+ [5]
+<Graficos1.4/crop/per.jpg, id=25, 454.69875pt x 255.95625pt>
 File: Graficos1.4/crop/per.jpg Graphic file (type jpg)
 
 <use Graficos1.4/crop/per.jpg>
-Package pdftex.def Info: Graficos1.4/crop/per.jpg used on input line 147.
+Package pdftex.def Info: Graficos1.4/crop/per.jpg used on input line 149.
 (pdftex.def)             Requested size: 300.1021pt x 168.93164pt.
-LaTeX Info: Redefining \. on input line 159.
-LaTeX Info: Redefining \% on input line 159.
- [5 <./Graficos1.4/crop/per.jpg (PNG copy)>]
-<Graficos1.5/crop/per.png, id=26, 585.18625pt x 341.275pt>
+LaTeX Info: Redefining \. on input line 161.
+LaTeX Info: Redefining \% on input line 161.
+ [6 <./Graficos1.4/crop/per.jpg (PNG copy)>]
+<Graficos1.5/crop/per.png, id=29, 585.18625pt x 341.275pt>
 File: Graficos1.5/crop/per.png Graphic file (type png)
 
 <use Graficos1.5/crop/per.png>
@@ -527,72 +522,69 @@ Package pdftex.def Info: Graficos1.5/crop/per.png used on input line 173.
 (pdftex.def)             Requested size: 386.2241pt x 225.24219pt.
 LaTeX Info: Redefining \. on input line 185.
 LaTeX Info: Redefining \% on input line 185.
- [6 <./Graficos1.5/crop/per.png (PNG copy)>]
-<Graficos1.4/sie/per.jpg, id=31, 455.45157pt x 255.95625pt>
+ [7 <./Graficos1.5/crop/per.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 218.
+LaTeX Info: Redefining \% on input line 218.
+
+[8] <Graficos1.4/sie/per.jpg, id=39, 455.45157pt x 255.95625pt>
 File: Graficos1.4/sie/per.jpg Graphic file (type jpg)
 
 <use Graficos1.4/sie/per.jpg>
-Package pdftex.def Info: Graficos1.4/sie/per.jpg used on input line 217.
+Package pdftex.def Info: Graficos1.4/sie/per.jpg used on input line 222.
 (pdftex.def)             Requested size: 300.59895pt x 168.93164pt.
-LaTeX Info: Redefining \. on input line 222.
-LaTeX Info: Redefining \% on input line 222.
- [7 <./Graficos1.4/sie/per.jpg (PNG copy)>]
-LaTeX Info: Redefining \. on input line 229.
-LaTeX Info: Redefining \% on input line 229.
-
-[8] <Graficos1.5/sie/per.png, id=39, 585.18625pt x 341.275pt>
+LaTeX Info: Redefining \. on input line 233.
+LaTeX Info: Redefining \% on input line 233.
+ [9 <./Graficos1.4/sie/per.jpg (PNG copy)>]
+<Graficos1.5/sie/per.png, id=43, 585.18625pt x 341.275pt>
 File: Graficos1.5/sie/per.png Graphic file (type png)
 
 <use Graficos1.5/sie/per.png>
-Package pdftex.def Info: Graficos1.5/sie/per.png used on input line 238.
+Package pdftex.def Info: Graficos1.5/sie/per.png used on input line 242.
 (pdftex.def)             Requested size: 386.2241pt x 225.24219pt.
-LaTeX Info: Redefining \. on input line 251.
-LaTeX Info: Redefining \% on input line 251.
- [9 <./Graficos1.5/sie/per.png (PNG copy)>]
-Overfull \hbox (9.80513pt too wide) in paragraph at lines 254--259
+LaTeX Info: Redefining \. on input line 256.
+LaTeX Info: Redefining \% on input line 256.
+ [10 <./Graficos1.5/sie/per.png (PNG copy)>]
+Overfull \hbox (9.80513pt too wide) in paragraph at lines 259--264
 \OT1/bch/m/n/10 El se-gun-do pro-ble-ma ser[]a com-pa-rar es-tos va-lo-res ob-t
 e-ni-dos en la su-ma de una ma-ne-ra efi-cien-te. Querr[]^^Pamos
  []
 
-<Graficos1.4/ban/per.jpg, id=43, 673.51625pt x 388.45125pt>
+LaTeX Info: Redefining \. on input line 284.
+LaTeX Info: Redefining \% on input line 284.
+[11] <Graficos1.4/ban/per.jpg, id=50, 673.51625pt x 388.45125pt>
 File: Graficos1.4/ban/per.jpg Graphic file (type jpg)
 
 <use Graficos1.4/ban/per.jpg>
-Package pdftex.def Info: Graficos1.4/ban/per.jpg used on input line 279.
+Package pdftex.def Info: Graficos1.4/ban/per.jpg used on input line 288.
 (pdftex.def)             Requested size: 444.5221pt x 256.3786pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Info: Redefining \. on input line 290.
-LaTeX Info: Redefining \% on input line 290.
-[10] <Graficos3.1/per.jpg, id=48, 585.18625pt x 342.27875pt>
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+ [12 <./Graficos1.4/ban/per.jpg (PNG copy)>]
+<Graficos3.1/per.jpg, id=54, 585.18625pt x 342.27875pt>
 File: Graficos3.1/per.jpg Graphic file (type jpg)
 
 <use Graficos3.1/per.jpg>
-Package pdftex.def Info: Graficos3.1/per.jpg used on input line 297.
+Package pdftex.def Info: Graficos3.1/per.jpg used on input line 307.
 (pdftex.def)             Requested size: 386.2241pt x 225.90465pt.
-LaTeX Info: Redefining \. on input line 308.
-LaTeX Info: Redefining \% on input line 308.
- [11 <./Graficos1.4/ban/per.jpg (PNG copy)> <./Graficos3.1/per.jpg>]
-LaTeX Info: Redefining \. on input line 309.
-LaTeX Info: Redefining \% on input line 309.
- [12] <Graficos1.4/mbl/per.jpg, id=55, 493.0922pt x 337.26pt>
+LaTeX Info: Redefining \. on input line 319.
+LaTeX Info: Redefining \% on input line 319.
+ [13 <./Graficos3.1/per.jpg>]
+LaTeX Info: Redefining \. on input line 346.
+LaTeX Info: Redefining \% on input line 346.
+ [14]
+<Graficos1.4/mbl/per.jpg, id=63, 493.0922pt x 337.26pt>
 File: Graficos1.4/mbl/per.jpg Graphic file (type jpg)
 
 <use Graficos1.4/mbl/per.jpg>
-Package pdftex.def Info: Graficos1.4/mbl/per.jpg used on input line 336.
+Package pdftex.def Info: Graficos1.4/mbl/per.jpg used on input line 350.
 (pdftex.def)             Requested size: 325.44185pt x 222.59229pt.
-LaTeX Info: Redefining \. on input line 344.
-LaTeX Info: Redefining \% on input line 344.
- [13 <./Graficos1.4/mbl/per.jpg (PNG copy)>]
-LaTeX Info: Redefining \. on input line 348.
-LaTeX Info: Redefining \% on input line 348.
+LaTeX Info: Redefining \. on input line 362.
+LaTeX Info: Redefining \% on input line 362.
+ [15 <./Graficos1.4/mbl/per.jpg (PNG copy)>]
+LaTeX Info: Redefining \. on input line 371.
+LaTeX Info: Redefining \% on input line 371.
 
-[14]
-LaTeX Info: Redefining \. on input line 355.
-LaTeX Info: Redefining \% on input line 355.
- [15] (./informe.aux
+[16] (./informe.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
@@ -604,13 +596,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3121 strings out of 493304
- 41772 string characters out of 6139871
- 111354 words of memory out of 5000000
- 6503 multiletter control sequences out of 15000+600000
+ 3123 strings out of 493304
+ 41781 string characters out of 6139871
+ 112354 words of memory out of 5000000
+ 6505 multiletter control sequences out of 15000+600000
  21286 words of font info for 35 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,12n,43p,741b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,43p,1028b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fon
@@ -619,10 +611,10 @@ e1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb>
-Output written on informe.pdf (15 pages, 594626 bytes).
+Output written on informe.pdf (16 pages, 600887 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
