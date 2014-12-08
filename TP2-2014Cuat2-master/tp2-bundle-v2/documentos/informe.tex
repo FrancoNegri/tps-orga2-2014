@@ -129,7 +129,13 @@ Luego de esto, procedemos a compilar el código utilizando el flag -O1, y nuevam
 
 Los otros flags de optimización son -O2, -O3, -Og, -Os, -Ofast. También podemos encontrar los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que gcc no utilizó instrucciones SIMD.
 
-Tres nombres de optimizaciones son: -fipa-profile, -fipa-reference ,-fmerge-constants .
+Tres nombres de optimizaciones son: -foptimize-sibling-calls, -finline-small-functions, -fmerge-constants.
+
+El flag -foptimize-sibling-calls, sirve para optimizar las funciones con recurcion a la cola.
+
+-finline-small-functions integra funciones a las funciones que las llaman cuando el cuerpo de la función es menor que la cantidad de instrucciones necesarias para llararla, resultando en un codigo de menor tamaño.
+
+-fmerge-constants intenta mergear constantes identicas entre las distintas unidades de compilación.
 
 \newpage
 
