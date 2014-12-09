@@ -322,7 +322,7 @@ Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también le
 Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación.Teniendo todo en muchos xmm de a words, separados en parte alta y baja, se empezaran a sumar lo correspondiente a cada pixel(el original y sus vecinos) con sumas verticales, que funcionan de la siguiente manera(la siguiente imagen es una suma vertical de a words):
 
 \begin{center}
-\includegraphics[scale=0.66]{Dibujos/sv.jpg}
+\includegraphics[width=0.9\textwidth]{Dibujos/sv.jpg}
 \end{center}
 
 Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxels, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
