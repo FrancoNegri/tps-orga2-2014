@@ -251,13 +251,13 @@ Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando
 \subsection{Idea general del algoritmo}
 Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tres colores de la imagen $(r,g,b)$, sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 
-Dado este problema tan particular buscamos en el manual de intel aluna instrucción que nos pueda ayudar a realizar esto de manera facil. Descubrimos que tenemos a dispocición la instrucción PADD que suma de manera horizontal como se muestra en el siguiente grafico:
+Dado este problema tan particular buscamos en el manual de intel aluna instrucción que nos pueda ayudar a realizar esto de manera facil. Descubrimos que tenemos a dispocición las instrucciónes de "Packed Horizontal Add" que suma de manera horizontal como se muestra en el siguiente grafico:
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/SH.jpg}
 \end{center}
 
-Si bien en el dibujo se muestra la instruccion para un registro de 256 bits, existe una que funciona de manera similar para un XMM de 128 bits, que es la que utilizaremos nosotros.
+Si bien en el dibujo se muestra la instruccion para un registro de 256 bits, existe una que funciona de manera similar para un XMM de 128 bits, PHADDW que es la que utilizaremos nosotros.
 
 Teniendo esto en cuenta, la idea del algoritmo es la siguiente:
 
@@ -332,8 +332,6 @@ Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora
 \subsection{Diferencias de performance en Motion Blur}
 
 Al realizar el testing se obtuvieron los siguientes resultados:
-
-%\newpage
 
 \begin{figure}[h!]
   \begin{center}
