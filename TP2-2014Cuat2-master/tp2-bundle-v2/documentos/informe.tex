@@ -61,7 +61,7 @@
 \begin{abstract}
 En el presente trabajo se describe la problemática de procesar información de manera eficiente cuando los mismos requieren:
 \begin{enumerate}
-\item Transferir grandes volumenes de datos.
+\item Transferir grandes volímenes de datos.
 \item Realizar las mismas instrucciones sobre un set de datos importante.
 \end{enumerate}
 \end{abstract}
@@ -88,7 +88,7 @@ El segundo, tercer y cuarto filtro, se centrarán en testear la variación de pe
 
 \subsection{Calidad de las Mediciones}
 
-Antes de comenzar a medir los tiempos de los algoritmos y intentar sacar concluciones de los mismos, debemos plantear un modelo mas o menos claro de como realizar esto mismo.  
+Antes de comenzar a medir los tiempos de los algoritmos y intentar sacar concluciones de los mismos, debemos plantear un modelo más o menos claro de como realizar esto mismo.  
 
 Por lo tanto este experimento vamos a ver cómo se ven afectados nuestros algoritmos frente a diversos factores de ruido e interferencias que podrían alterar nuestras mediciones.
 
@@ -96,15 +96,15 @@ Para toda la experimentación se utilizará un procesador Intel Atom, de 2 núcl
 
 El software utilizado será Ubuntu 14.04, GCC 4.8.2, y nasm 2.10.09.
 
-Para ver como se veían afectados los resultados procedemos a tomar 1000 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo (uno por cada core logico) como sin los mismos.
+Para ver como se veían afectados los resultados procedemos a tomar 1000 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo (uno por cada core lógico) como sin los mismos.
 
-A los datos obtenidos tomamos el promedio para obtener un valor aproximado de cuanto tarda en correr cada uno de los algoritmos y calculamos el desvío estandar para ver cuanto se desvían de la media las mediciones. Los resultados pueden verse en este grafico:
+A los datos obtenidos tomamos el promedio para obtener un valor aproximado de cuanto tarda en correr cada uno de los algoritmos y calculamos el desvío estándar para ver cuanto se desvían de la media las mediciones. Los resultados pueden verse en este gráfico:
 
 \begin{center}
   \includegraphics[scale=0.66]{Graficos1.4/1.3/perConOut.png}
 \end{center}
 
-Vemos que con loops, los datos se dispersan de una manera incontrolable, a tal punto que es imposible sacar ninguna conclusión de los mismos. Ahora para intentar obtener un desvío estandar un poco mejor, consideramos los $200$ valores más grandes y los $200$ valores más chicos como outliers y los quitamos tanto del promedio como del desvío estandar.
+Vemos que con loops, los datos se dispersan de una manera incontrolable, a tal punto que es imposible sacar ninguna conclusión de los mismos. Ahora para intentar obtener un desvío estandar un poco mejor, consideramos los $200$ valores más grandes y los $200$ valores más chicos como outliers y los quitamos tanto del promedio como del desvío estándar.
 
 Volviendo a graficar:
 
@@ -112,11 +112,11 @@ Volviendo a graficar:
   \includegraphics[scale=0.66]{Graficos1.4/1.3/perSinOut.png}
 \end{center}
 
-De esta manera logramos obtener valores mucho mas razonables para el desvío estandar en ambos casos.
+De esta manera logramos obtener valores mucho mas razonables para el desvío estándar en ambos casos.
 
 De este último gráfico además podemos observar que los loops afectan de manera diferente a los algoritmos, el código de C sin optimizar aumenta su tiempo de ejecución en un 25 \%, mientras que el código de assambler no varía en lo mas mínimo.
 
-Finalmente, para intentar mantener el desvío estandar en un valor lo mas pequeño posible y para evitar este aumento no proporcional en el tiempo de ejecución de los algoritmos, se determina que para cada experimento en el presente informe, se tomaran 1000 mediciones sin loops corriendo en simultaneo y quitando los outliers antes mencionados.
+Finalmente, para intentar mantener el desvío estándar en un valor lo mas pequeño posible y para evitar este aumento no proporcional en el tiempo de ejecución de los algoritmos, se determina que para cada experimento en el presente informe, se tomaran 1000 mediciones sin loops corriendo en simultaneo y quitando los outliers antes mencionados.
 
 \newpage
 
@@ -124,25 +124,25 @@ Finalmente, para intentar mantener el desvío estandar en un valor lo mas peque�
 
 \subsection{Desensamblado de código C y Optimización}
 
-Ahora en esta sección procedemos a analizar el código de generado por GCC para intentar dilucidar como genera los binarios. Para eso realizamos un objdump del codigo del Cropflip sin ningun grado de optimización.
+Ahora en esta sección procedemos a analizar el código de generado por GCC para intentar dilucidar como genera los binarios. Para eso realizamos un objdump del código del Cropflip sin ningun grado de optimización.
 
 Este algoritmo básicamente mueve datos de un lugar de la RAM a otros, sin afectar mayormente los valores de la imagen.
 
 Al desensamblar el código podemos observar, primero que nada, que GCC guarda todos los parámetros en la pila y además está escribiendo en memoria todas las variables locales utilizadas, lo cual es innecesario ya que pueden ser almacenadas en registros.
 
-También puede observarse que el compilador genera codigo con saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de predicción de saltos.
+También puede observarse que el compilador genera código con saltos incondicionales, lo que puede sugerir que intenta sacar provecho al sistema de predicción de saltos.
 
-Ademas GCC genera, luego de la función, un montón de secciones que comienzan con debug_xxx. Estas secciones segun lo que encontramos en internet, sirven para ser interpretadas por GDB u otros debuggers y ayudar al programador en el momento de testeo.
+Ademas GCC genera, luego de la función, un montón de secciones que comienzan con debug_xxx. Estas secciones, sirven para ser interpretadas por GDB u otros debuggers y ayudar al programador en el momento de testeo.
 
 Como ya dijimos, el código podría optimizarse para no realizar tantos accesos a memoria innecesarios guardando variables locales por ejemplo en registros, lo cual disminuiría el tiempo de ejecución.
 
-Ahora procedemos a compilar el código utilizando el flag -O1, y nuevamente realizamos un objdump para observar los cambios en el codigo. Se observa que ahora el mismo solo realiza los accesos a memoria mínimos indispensables, utilizando los registros para guardar los datos. Además el código es más compacto, y resulta mas claro de leer. Asimismo precalcula los valores que serán utilizados muchas veces, lo que seguramente aumenta la performance, principalmente en casos de instancias grandes.
+Ahora procedemos a compilar el código utilizando el flag -O1, y nuevamente realizamos un objdump para observar los cambios en el código. Se observa que ahora el mismo solo realiza los accesos a memoria mínimos indispensables, utilizando los registros para guardar los datos. Además el código es más compacto, y resulta mas claro de leer. Asimismo precalcula los valores que serán utilizados muchas veces, lo que seguramente aumenta la performance, principalmente en casos de instancias grandes.
 
 Los otros flags de optimización disponibles en GCC son -O2, -O3, -Og, -Os, -Ofast. También podemos encontrar los flags -msse, -msse2, -msse3, -mmmx, -m3dnow, pero al intentar compilar con varios de ellos vimos que el compilador no utilizó instrucciones SIMD.
 
 De las muchas optimizaciones que el compilador puede realizar, tomamos tres para ejemplifiacar: -foptimize-sibling-calls, -finline-small-functions, -fmerge-constants.
 
-La optimizacion -foptimize-sibling-calls, sirve para optimizar las funciones con recurcion a la cola.Por otra parte -finline-small-functions integra funciones a las funciones que las llaman cuando el cuerpo de la función es menor que la cantidad de instrucciones necesarias para llararla, resultando en un codigo de menor tamaño. Por ultimo -fmerge-constants intenta mergear constantes identicas entre las distintas unidades de compilación.
+La optimización -foptimize-sibling-calls, sirve para optimizar las funciones con recursión a la cola.Por otra parte -finline-small-functions integra funciones a las funciones que las llaman cuando el cuerpo de la función es menor que la cantidad de instrucciones necesarias para llamarla, resultando en un código de menor tamaño. Por último -fmerge-constants intenta mergear constantes idénticas entre las distintas unidades de compilación.
 
 \newpage
 
@@ -166,18 +166,18 @@ Como acordamos en el apartado de calidad de mediciones, tomamos 1000 muestras, q
 
 \subsubsection{Resultados}
 
-En el gráfico puede verse que la version SIMD del algoritmo de cropflip  y la version C con mayor grado de optimización son muy parecidas en cuanto a performance, aunque el desvío estandar del codigo C es levemente mayor a la del primero ($52367$ del codigo en asambler contra $75973$ del codigo en C). Por otro lado, el codigo desarrollado en ensamblador tiene una mayor performance comparado con los codigos en C con optimizaciones O1 y O2, y en comparacion con el codigo generado con el flag -O0 el codigo asm es 8 veces más rápido.
+En el gráfico puede verse que la version SIMD del algoritmo de cropflip  y la version C con mayor grado de optimización son muy parecidas en cuanto a performance, aunque el desvío estandar del codigo C es levemente mayor a la del primero ($52367$ del codigo en asambler contra $75973$ del codigo en C). Por otro lado, el codigo desarrollado en ensamblador tiene una mayor performance comparado con los códigos en C con optimizaciones O1 y O2, y en comparacion con el codigo generado con el flag -O0 el codigo asm es 8 veces más rápido.
 
 \subsubsection{Conclusiones}
-Una de las razones por las que el código optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag (-fipa-cp-clone) que permite hacer algo llamado interprocedural constant propagation, que según entendemos intenta paralelizar el código, o alguna otra optimización del codigo que lo hace extremadamente performante incluso sin utilizar SIMD. Aún así, prestándole más atención al desvío estándar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en asambler, asi que igualmente, nuestro código pareciera tener alguna ventaja sobre el codigo generado en C.
+Una de las razones por las que el código optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag (-fipa-cp-clone) que permite hacer algo llamado interprocedural constant propagation, que según entendemos intenta paralelizar el código, o alguna otra optimización del codigo que lo hace extremadamente performante incluso sin utilizar SIMD. Aún así, prestándole más atención al desvío estándar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en assembler, así que igualmente, nuestro código pareciera tener alguna ventaja sobre el código generado en C.
 
 \newpage
 
 \subsection{cpu vs. bus de memoria en Cropflip}
 
-En este experimento lo que hicimos fue agregar instrucciones aritméticas por un lado y instrucciones de lectura-escritura por otro para ver como influía esto en el tiempo de ejecución del codigo en assambler.
+En este experimento lo que hicimos fue agregar instrucciones aritméticas por un lado y instrucciones de lectura-escritura por otro para ver como influía esto en el tiempo de ejecución del código en assembler.
 
-Para eso agregamos $4$, $8$ y $16$ instrucciones de lectura-escritura por un lado y $4$, $8$ y $16$ instrucciones aritméticas entre registros en el loop principal del código assambler y comparamos las performance entre sí y con la versión original.
+Para eso agregamos $4$, $8$ y $16$ instrucciones de lectura-escritura por un lado y $4$, $8$ y $16$ instrucciones aritméticas entre registros en el loop principal del código assembler y comparamos las performance entre sí y con la versión original.
 
 Lo que obtuvimos puede verse aquí:
 
@@ -187,7 +187,7 @@ Lo que obtuvimos puede verse aquí:
 
 
 \subsubsection{Resultados}
-Lo que vemos en el gráfico es que al agregar tanto operaciones aritméticas como operaciones de memoria, el tiempo aumenta. Por otro lado, se observa que agregar n accesos a memoria (con n= $4$, $8$ o $16$), tarda más tiempo que agregar las mismas n operaciones aritméticas.
+Lo que vemos en el gráfico es que al agregar tanto operaciones aritméticas como operaciones de memoria, el tiempo aumenta. Por otro lado, se observa que agregar n accesos a memoria (con n= $4$, $8$ o $16$), tarda más tiempo que agregar n operaciones aritméticas.
 
 \subsubsection{Conclusiones}
 
@@ -221,10 +221,10 @@ Los resultados comparativos de performance para este algoritmo comparado con uno
   \end{center}
 
 \subsubsection{Resultados}
-En el gráfico puede notarse que el codigo en ensamblador es aproximadamente dos veces más rápido que la versión de C optimizada con O3, más de tres veces más rápido que el optimizado con O2 y O1 y más de 7 veces más veloz que el codigo C sin optimizar. El desvío estándar en este caso es tan pequeño que casi no puede verse en el gráfico (Dos ordenes de magnitud menor que el promedio en todos los casos).
+En el gráfico puede notarse que el código en assembler es aproximadamente dos veces más rápido que la versión de C optimizada con O3, más de tres veces más rápido que el optimizado con O2 y O1 y más de 7 veces más veloz que el código C sin optimizar. El desvío estándar en este caso es tan pequeño que casi no puede verse en el gráfico (Dos ordenes de magnitud menor que el promedio en todos los casos).
 \subsubsection{Conclusiones}
 
-De lo que podemos observar, concluímos que en este caso, paralelizar los datos y operar sobre ellos resulta en un incremento de la performance incluso superior al codigo en C con mayor grado de optimización. Esto se ve respaldado por los bajos desvíos estandards, ya que le dan mayor confiabilidad a nuestros resultados.
+De lo que podemos observar, concluímos que en este caso, paralelizar los datos y operar sobre ellos resulta en un incremento de la performance incluso superior al código en C con mayor grado de optimización. Esto se ve respaldado por los bajos desvíos estandards, ya que le dan mayor confiabilidad a nuestros resultados.
 
 \newpage
 \subsection{CPU vs. Bus de memoria en Sierpinski}
@@ -238,11 +238,11 @@ Tomando el promedio y graficando los valores obtenidos:
   \end{center}
 
 \subsubsection{Resultados}
-Se observa que al agregar operaciones, tanto aritméticas como de lectura-escritura, el tiempo de ejecución aumenta. Tambien, como en el caso anterior, agregar un numero de operaciones aritméticas y agregar el mismo número de operaciones de lectura-escritura, estas últimas repercuten en un mayor tiempo de ejecución.
+Se observa que al agregar operaciones, tanto aritméticas como de lectura-escritura, el tiempo de ejecución aumenta. También, como en el caso anterior, agregar un número de operaciones aritméticas y agregar el mismo número de operaciones de lectura-escritura, estas últimas repercuten en un mayor tiempo de ejecución.
 
 \subsubsection{Conclusiones}
 
-Nuevamente podemos llegar a la misma conclusión que antes, el cuello de botella se encuentra en el tiempo que el procesador tarda en buscar datos a memoria. Incluso implementando técnicas abanzadas como caché y ejecución fuera de orden, la caida en performance es notable.
+Nuevamente podemos llegar a la misma conclusión que antes, el cuello de botella se encuentra en el tiempo que el procesador tarda en buscar datos a memoria. Incluso implementando técnicas avanzadas como caché y ejecución fuera de orden, la caida en performance es notable.
 
 Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando un uso exaustivo a la ALU y agregar más operaciones aritméticas resulta mas costoso aquí que en el caso del cropflip, donde la ALU no era mayormente utilizada.
 
@@ -251,13 +251,13 @@ Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando
 \subsection{Idea general del algoritmo}
 Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tres colores de la imagen $(r,g,b)$, sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 
-Dado este problema tan particular buscamos en el manual de intel aluna instrucción que nos pueda ayudar a realizar esto de manera facil. Descubrimos que tenemos a dispocición las instrucciónes de "Packed Horizontal Add" que suma de manera horizontal como se muestra en el siguiente grafico:
+Dado este problema tan particular buscamos en el manual de intel alguna instrucción que nos pueda ayudar a realizar esto de manera fácil. Descubrimos que tenemos a dispocición las instrucciónes de "Packed Horizontal Add" que suma de manera horizontal como se muestra en el siguiente grafico:
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/SH.jpg}
 \end{center}
 
-Si bien en el dibujo se muestra la instruccion para un registro de 256 bits, existe una que funciona de manera similar para un XMM de 128 bits, PHADDW que es la que utilizaremos nosotros.
+Si bien en el dibujo se muestra la instrucción para un registro de 256 bits, existe una que funciona de manera similar para un XMM de 128 bits, PHADDW que es la que utilizaremos nosotros.
 
 Teniendo esto en cuenta, la idea del algoritmo es la siguiente:
 
@@ -281,9 +281,7 @@ Realizamos un testeo similar para este algoritmo y obtenemos lo siguiente:
   \end{center}
 
 \subsubsection{Resultados}
-Se puede observar que el algoritmo en asm con SIMD tarda casi la mitad de tiempo que C con optimización O3 y O2. Tambien es aproximadamente tres veces más veloz que la optimización O1, y 7 veces más rápido que O0.
-
-El desvío estandar es muy pequeño.
+Se puede observar que el algoritmo en asm con SIMD tarda casi la mitad de tiempo que C con optimización O3 y O2. Tambien es aproximadamente tres veces más veloz que la optimización O1, y 7 veces más rápido que O0. El desvío estándar es muy pequeño.
 
 \subsubsection{Conclusiones}
 
@@ -292,7 +290,7 @@ Nuevamente podemos concluir que resulta ventajoso utilizar instrucciones vectori
 \newpage
 \subsection{Saltos condicionales}
 
-En este experimento veremos como afectan los saltos condicionales a la performance del codigo C compilado con -O1. Para ello lo que haremos es quitar los IFs del código dejando solo una banda, luego medir la performance y compararla con la versión con saltos.
+En este experimento veremos como afectan los saltos condicionales a la performance del código C compilado con -O1. Para ello lo que haremos es quitar los IFs del código dejando solo una banda, luego medir la performance y compararla con la versión con saltos.
 
 
   \begin{center}
@@ -304,7 +302,7 @@ En el gráfico puede observarse una gran diferencia entre el código que tiene s
 
 \subsubsection{Conclusiones}
 
-La variación de tiempos ocurre posiblemente debido a que en el caso del código con saltos, el procesador para no perder tiempo esperando que la condición sea resuelta y poder seguir ejecutando fuera de orden, toma todas las posibles ramas de la ejecución. Esto sin duda causará que el procesador este más ocupado realizando cálculos en todas las ramas y aumente el tiempo de ejecución. Esto también explicaría por que los datos estan mas dispersos en el caso del codigo con saltos, ya que el CPU se vuelve menos predecible.
+La variación de tiempos ocurre posiblemente debido a que en el caso del código con saltos, el procesador para no perder tiempo esperando que la condición sea resuelta y poder seguir ejecutando fuera de orden, toma todas las posibles ramas de la ejecución. Esto sin duda causará que el procesador este más ocupado realizando cálculos en todas las ramas y aumente el tiempo de ejecución. Esto también explicaría por que los datos estan mas dispersos en el caso del código con saltos, ya que el CPU se vuelve menos predecible.
 
 \newpage
 \section{Motion Blur}
@@ -341,18 +339,18 @@ Al realizar el testing se obtuvieron los siguientes resultados:
 \end{figure}
 
 \subsubsection{Resultados}
-Se aprecia en el gráfico que el código ASM con SIMD tiene un promedio de tiempo de ejecucion aproximadamente tres veces menor a la mayor optimización de C, y varias veces menor que O0. También se observa que O1, como O2 y O3 dan promedios de tiempo muy parecidos. Las varianzas son similares y muy pequeñas.
+Se aprecia en el gráfico que el código ASM con SIMD tiene un promedio de tiempo de ejecución aproximadamente tres veces menor a la mayor optimización de C, y varias veces menor que O0. También se observa que O1, como O2 y O3 dan promedios de tiempo muy parecidos. Los desvíos estándar son similares y muy pequeños.
 
 \subsubsection{Conclusiones}
 
-En este caso podemos concluir nuevamente que la opcion en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización es posible lograr una mejora del 66 \% aproximadamente.
+En este caso podemos concluir nuevamente que la opción en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización es posible lograr una mejora del 66 \% aproximadamente.
 
 \newpage
 \section{Conclusiones y trabajo futuro}
 
-Como primera conclución de este trabajo practico podemos decir la gran ventaja que reperesenta la utilización de operaciones vectoriales a la hora de realizar operaciones paralelizables sobre un gran volumen de datos. También podemos concluir que esto no resulta de la misma manera en el caso de transferir información de un lugar de la memoria RAM a otro, ahí, la opción de implementar código C optimizado es tan buena como la de implementarlo con SIMD, con la ventaja de que en C el código es más facilmente mantenible y claro.
+Como primera conclusión de este trabajo práctico podemos decir la gran ventaja que reperesenta la utilización de operaciones vectoriales a la hora de realizar operaciones paralelizables sobre un gran volumen de datos. También podemos concluir que esto no resulta de la misma manera en el caso de transferir información de un lugar de la memoria RAM a otro, ahí, la opción de implementar código C optimizado es tan buena como la de implementarlo con SIMD, con la ventaja de que en C el código es más fácilmente mantenible y claro.
 
-Otras concluciones son, que la comprobación de manera empirica que el acceso a RAM presenta una mayor caída de performance que las operaciones aritméticas. Y que el branch prediction tambien representa una mayor caída en la performance, por lo que utilizar otras opciones que no requieran saltos condicionales es una buena opción de mejorar los tiempos de un algoritmo dado.
+Otras conclusiones son, que la comprobación de manera empírica que el acceso a RAM presenta una mayor caída de performance que las operaciones aritméticas. Y que el branch prediction tambien representa una mayor caída en la performance, por lo que utilizar otras opciones que no requieran saltos condicionales es una buena opción de mejorar los tiempos de un algoritmo dado.
 
 Como trabajo futuro, una idea interesante a desarollar, podría ser construir o plantear un compilador de C que tome la mejor parte de los compiladores actuales, esto es, las diversas optimizaciones que realiza, y las integre con SIMD. De esta manera se podría, en teoría, obtener mejores resultados que los aquí mostrados.
 
