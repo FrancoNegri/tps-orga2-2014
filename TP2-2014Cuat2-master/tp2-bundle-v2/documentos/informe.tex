@@ -48,7 +48,7 @@
 \materia{Organización del Computador II}
 \submateria{Segundo Cuatrimestre de 2014}
 \titulo{Trabajo Práctico II}
-\subtitulo{subtitulo del trabajo}
+\subtitulo{SIMD}
 \integrante{Alejandro Mignanelli}{609/11}{minga_titere@hotmail.com}
 \integrante{Franco Negri}{893/13}{franconegri2004@hotmail.com}
 \integrante{Federico Suárez}{610/11}{elgeniofederico@gmail.com}
@@ -86,12 +86,12 @@ El primer filtro, Cropflip, se utilizará para mostrar cuanto mejora la performa
 El segundo, tercer y cuarto filtro, se centrarán en la variación de performance (en comparación al código en C) al utilizar instrucciones SIMD, no sólo para transferir grandes volúmenes de datos sino también para procesarlos en forma paralela, es decir, realizar diversos cálculos (sumas, multiplicaciones, divisiones) tanto en representación de enteros como punto flotante.
 
 \newpage
-\section{Preambulo}
+\section{Preámbulo}
 
 \subsection{Calidad de las Mediciones}
 Para este experimento vamos a ver cómo se pueden ver afectados nuestros algoritmos frente a diversos factores de ruido e interferencias que podrían alterar nuestras mediciones.
 
-Para este experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
+A lo largo del experimento se utilizó un procesador Intel Atom, de 2 núcleos a 1.6 GHZ con Hyper-Threading, por lo que la cantidad de núcleos lógicos asciende a 4. Por otro lado, para que las pruebas sean mas concisas y exactas, se deshabilitó el scaling dinamico del CPU, ya que esto podría generar ruido innecesario en nuestras mediciones.
 
 Procedimos a tomar 1000 mediciones para cada una de las versiones del cropflip, tanto con 4 loops corriendo en paralelo como sin los mismos y los promediamos para obtener un valor aproximado de cuanto tarda en correr cada uno de los algoritmos.
 
@@ -99,7 +99,7 @@ Lo que se obtiene son los siguientes resultados:
 \begin{center}
   \includegraphics[scale=0.66]{Graficos1.4/1.3/perConOut.png}
 \end{center}
-Vemos que con loops, el desvío estandar se vuelve incontrolable, a tal punto que sería imposible sacar ninguna conclución de los datos obtenidos. Ahora para intentar mejorar un poco las mediciones, quitamos los $200$ valores mas grandes y los $200$ valores mas chicos (estos van a ser nuestros outliers).
+Vemos que con loops, el desvío estándar se vuelve incontrolable, a tal punto que sería imposible sacar ninguna conclusión de los datos obtenidos. Ahora para intentar mejorar un poco las mediciones, quitamos los $200$ valores más grandes y los $200$ valores más chicos (estos van a ser nuestros outliers).
 
 Volvemos a graficar:
 \begin{center}
@@ -107,7 +107,7 @@ Volvemos a graficar:
 \end{center}
 De esta manera logramos obtener valores mucho mas razonables para el desvío estandar.
 
-De este ultimo grafico ademas podemos observar que los loops afectan de manera diferente a los algoritmos, el codigo de C sin optimizar aumenta su tiempo de ejecución en un 25 \%, mientras que el codigo de assambler no varía en lo mas minimo.
+De este último gráfico además podemos observar que los loops afectan de manera diferente a los algoritmos, el código de C sin optimizar aumenta su tiempo de ejecución en un 25 \%, mientras que el código de assambler no varía en lo mas mínimo.
 
 Finalmente se determina que para cada experimento en el presente informe, se tomaran 1000 mediciones sin loops corriendo y quitando los outliers antes mencionados.
 
@@ -162,7 +162,7 @@ Lo obtenido en los tests puede verse en el siguiente gráfico:
 Se percibe en el gráfico que la version SIMD del algoritmo de cropflip  y la version C con mayor grado de optimización son muy parecidas en promedio, aunque la varianza del codigo C es levemente mayor la del primero. Por otro lado, el programa SIMD tiene una mayor performance a las optimizaciones O1 y O2, y la comparación con O0 muestra que en promedio, es más de 8 veces más rápido.
 
 \subsubsection{Conclusiones}
-Una de las razones por las que el codigo optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag "-fipa-cp-clone" que permite hacer algo llamado interprocedural constant propagation, que segun entendemos intenta paralelizar el codigo, o alguna otra optimización del codigo que lo hace extremadamente performante incluso sin utilizar SIMD. Aun asi, prestandole mas atención al desvio estandar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en asambler, asi que aun asi, nuestro codigo pareciera tener alguna ventaja sobre el creado en C.
+Una de las razones por las que el código optimizado a nivel 3 puede obtener tan buenos resultados como los de SIMD, es que al optimizar con este nivel se activa un flag (-fipa-cp-clone) que permite hacer algo llamado interprocedural constant propagation, que según entendemos intenta paralelizar el código, o alguna otra optimización del codigo que lo hace extremadamente performante(ESTA PALABRA EXISTE?? (ALE)) incluso sin utilizar SIMD. Aún así, prestándole más atención al desvío estándar, pareciera que este codigo tiene una mayor variabilidad que nuestro codigo en asambler, asi que igualmente, nuestro código pareciera tener alguna ventaja sobre el creado en C.
 
 \newpage
 
@@ -170,9 +170,9 @@ Una de las razones por las que el codigo optimizado a nivel 3 puede obtener tan 
 
 Para este experimento lo que hicimos fue agregar instrucciones aritméticas por un lado y instrucciones de lectura-escritura por otro para ver como influía esto en el tiempo de ejecución de nuestro codigo en assambler.
 
-Para eso agregamos $4$, $8$ y $16$ instrucciones de lectura-escritura por un lado y $4$, $8$ y $16$ instrucciones aritmeticas entre registros en el loop principal del codigo assambler y comparamos las performance entre sí y con la versión original.
+Para eso agregamos $4$, $8$ y $16$ instrucciones de lectura-escritura por un lado y $4$, $8$ y $16$ instrucciones aritméticas entre registros en el loop principal del código assambler y comparamos las performance entre sí y con la versión original.
 
-Lo que obtuvimos puede verse en el siguiente grafico:
+Lo que obtuvimos puede verse en el siguiente gráfico:
 
 \begin{figure}[h!]
   \begin{center}
@@ -182,11 +182,11 @@ Lo que obtuvimos puede verse en el siguiente grafico:
 \end{figure}
 
 \subsubsection{Resultados}
-Lo que vemos en este grafico es que, si bien al agregar tanto operaciones aritmeticas como operaciones de memoria, el tiempo aumenta, al comparar la misma cantidad de operaciones aritmeticas contra operaciones de lectura-escritura(Mas notoriamente si se comparan entre si el codigo con $16$ operaciones aritmeticas contra el codigo con $16$ operaciones de lectura escritura), las segundas producen un mayor incremento en el tiempo de ejecución del algoritmo.
+Lo que vemos en este gráfico es que al agregar tanto operaciones aritméticas como operaciones de memoria, el tiempo aumenta. Por otro lado, se observa que agregar n accesos a memoria (con n= $4$, $8$ o $16$), tarda más tiempo que agregar n operaciones aritméticas.
 
 \subsubsection{Conclusiones}
 
-Lo obtenido en los resultados era de esperar ya que es sabido que el cuello de botella del modelo Bon-Newman y en las arquitecturas modernas, ocurre con los accesos a memoria. En otras palabras, de aquí se puede comprobar de manera empirica que para el procesador es mas costoso acceder a memoria que realizar operaciones logicas, de ahí la diferencia de tiempos que puede observarse. 
+Lo obtenido en los resultados era de esperar ya que es sabido que el cuello de botella del modelo Bon-Newman y en las arquitecturas modernas, ocurre con los accesos a memoria(me encanto este chamuyo, solo dos cosas, esta mal redactado, y no se como ponerlo bien, e introducir el cuello de botella mereceria una pequeña explicación, yo personalmente no tengo la más puta idea que es(ALE)). En otras palabras, de aquí se puede comprobar de manera empírica que para el procesador es más costoso acceder a memoria que realizar operaciones lógicas, de ahí la diferencia de tiempos que puede observarse. 
 
 \newpage
 \section{Sierpinski}
@@ -221,17 +221,17 @@ Los resultados comparativos de performance para este algoritmo comparado con uno
 \end{figure}
 
 \subsubsection{Resultados}
-Puede verse que en este caso, nuestro codigo en assambler, que toma y calcula de a 4 píxels utilizando instrucciones SIMD tiene, en promedio, una mejor performance que los demás. En el grafico puede notarse que este codigo es aproximadamente dos veces más rápido que la versión de C con O3, más de tres veces más rápido que O2 y O1 y más de 7 veces más veloz que O0, todo esto en promedio. El desvio estandar en este caso es tan pequeño que casi no puede verse en el grafico.
+En el gráfico puede notarse que este código es aproximadamente dos veces más rápido que la versión de C con O3, más de tres veces más rápido que O2 y O1 y más de 7 veces más veloz que O0, todo esto en promedio. El desvío estándar en este caso es tan pequeño que casi no puede verse en el gráfico.
 \subsubsection{Conclusiones}
 
-De lo que podemos observar, concluímos que en este caso, paralelizar los datos y operar sobre ellos resulta en un incremento de la performance incluso superior al codigo en C con mayor grado de optimización-
+De lo que podemos observar, concluímos que en este caso, paralelizar los datos y operar sobre ellos resulta en un incremento de la performance incluso superior al codigo en C con mayor grado de optimización. Esto se ve respaldado por los bajos desvíos estandards, ya que le dan mayor confiabilidad a nuestros resultados.
 
 \newpage
 \subsection{CPU vs. Bus de memoria en Sierpinski}
 
-Realizamos el mismo experimento que hicimos para cropflip, es decir, agregamos instrucciones aritmeticas y de lectura escritura al codigo assambler para medir su desempeño.
+Realizamos el mismo experimento que hicimos para cropflip, es decir, agregamos instrucciones aritméticas y de lectura escritura al código assambler para medir su desempeño.
 
-Tomando el primedio y graficando los valores obtenidos:
+Tomando el promedio y graficando los valores obtenidos:
 
 \begin{figure}[h!]
   \begin{center}
@@ -241,13 +241,13 @@ Tomando el primedio y graficando los valores obtenidos:
 \end{figure}
 
 \subsubsection{Resultados}
-Nuevamente, como es de esperar al agregar operaciones, tanto aritmeticas como de lectura-escritura, el tiempo de ejecución aumenta. Tambien, como en el caso anterior, al comparar entre agregar un numero de operaciones aritmeticas y agregar el mismo numero de operaciones de lectura-escritura, las operaciones de lectura escritura, son mas caras para el procesador.
+Se observa que al agregar operaciones, tanto aritméticas como de lectura-escritura, el tiempo de ejecución aumenta. Tambien, como en el caso anterior, agregar un numero de operaciones aritméticas y agregar el mismo número de operaciones de lectura-escritura, estas últimas causan un mayor tiempo de ejecución.
 
 \subsubsection{Conclusiones}
 
-Nuevamente podemos llegar a la misma conclución que antes, el cuello de botella se encuentra en el tiempo que el procesador tarda en buscar datos a memoria. Incluso implementando tecnicas abanzadas como caché y ejecución fuera de orden, puede notarse la diferencia. 
+Nuevamente podemos llegar a la misma conclusión que antes, el cuello de botella se encuentra en el tiempo que el procesador tarda en buscar datos a memoria. Incluso implementando técnicas abanzadas como caché y ejecución fuera de orden, puede notarse la diferencia. 
 
-Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando un uso exaustivo a la ALU y agregar mas operaciones aritmeticas resulta mas costoso aquí que en el caso del cropflip, donde la ALU no era mayormente utilizada.
+Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando un uso exaustivo a la ALU y agregar más operaciones aritméticas resulta mas costoso aquí que en el caso del cropflip, donde la ALU no era mayormente utilizada.
 
 \newpage
 \section{Bandas}
@@ -256,14 +256,14 @@ Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tre
 \\
 Teniendo esto en cuenta, la idea del algoritmo es la siguiente:
 
-Como primer paso, leemos los 4 píxels y los guardamos en un xmm. Luego, desempaquetamos los datos de byte a word para poder realizar la suma de las componentes de cada píxel sin salirnos de la representación. La suma se hace a través de dos instrucciones de suma horizontal, de tal manera que nos quedan los $b$ de cada píxel en las cuatro words de la parte baja de un xmm. A continuación realizamos unas comparaciones utilizando máscaras predefinidas para determinar el valor que tendrá cada píxel en cada una de sus componentes.Para asignar dicho valor, se tomara un xmm que viene seteado en 255 de a words en la parte baja, en donde se irá guardando el resultado. Luego, por como fue implementado el algoritmo, y tomando como p un word del xmm que viene seteado con 255 en la parte baja, y como v el word correspondiente que tiene la suma de r+g+b, cada word independientemente del resto seguira el siguiente esquema:
+Como primer paso, leemos los 4 píxels y los guardamos en un xmm. Luego, desempaquetamos los datos de byte a word para poder realizar la suma de las componentes de cada píxel sin salirnos de la representación. La suma se hace a través de dos instrucciones de suma horizontal, de tal manera que nos quedan los $b$ de cada píxel en las cuatro words de la parte baja de un xmm. A continuación realizamos unas comparaciones utilizando máscaras predefinidas para determinar el valor que tendrá cada píxel en cada una de sus componentes.Para asignar dicho valor, se tomará un xmm que viene seteado en 255 de a words en la parte baja, en donde se irá guardando el resultado. Luego, por como fue implementado el algoritmo, y tomando como p un word del xmm que viene seteado con 255 en la parte baja, y como v el word correspondiente que tiene la suma de r+g+b, cada word independientemente del resto seguirá el siguiente esquema:
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/B1.jpg}
 \end{center}
 
 
- Después de realizadas estas comparaciones, nos queda en las word de la parte baja del xmm que guardaba el resultado los 4 valores que se asignarán a cada componente de cada píxel. Luego, empaquetamos estos valores pasandolos de word a byte y aplicamos un shuffle que los deja en el los lugares que corresponden para finalmente copiarlos al destino. 
+ Después de realizadas estas comparaciones, nos queda en las word de la parte baja del xmm que guardaba el resultado, los 4 valores que se asignarán a cada componente de cada píxel. Luego, empaquetamos estos valores pasandolos de word a byte y aplicamos un shuffle que los deja en el los lugares que corresponden para finalmente copiarlos al destino. 
 
 \subsection{Diferencias de performance en Bandas}
 
@@ -279,16 +279,17 @@ Los resultados de los tiempos comparativos son los siguientes:
 \end{figure}
 
 \subsubsection{Resultados}
-Otra vez puede observarse que en promedio el algoritmo en assambler que se vale de instrucciones vectoriales es superior a su contraparte en C. Incluso con el mayor grado de optimización nuestro algoritmo logra ser casi un 50 \% mejor que el codigo en C con mayor grado de optimización. Para esta escala el desvío estandar no es apreciable ya que es un orden de magnitud menor.
+Se puede observar que el algoritmo en asm con SIMD tarda casi la mitad de tiempo que C con optimización O3 y O2,es aproximadamente tres veces más veloz que la optimización O1, y más de 7 veces más rápido que O0.
+Casi no se observa desvío estándar.
 
 \subsubsection{Conclusiones}
 
-Nuevamente podemos concluir que resulta ventajoso utilizar instrucciones vectoriales para realizar calculos paralelizados sobre un gran volumen de datos.
+Nuevamente podemos concluir que resulta ventajoso utilizar instrucciones vectoriales para realizar cálculos paralelizados sobre un gran volumen de datos.
 
 \newpage
 \subsection{Saltos condicionales}
 
-En este experimento veremos como afectan los saltos condicionales a la performance del codigo C compilado con -O1. Para ello lo que haremos es quitar los IFs del codigo dejando solo una banda, luego medir la performance y compararla con la version con saltos.
+En este experimento veremos como afectan los saltos condicionales a la performance del codigo C compilado con -O1. Para ello lo que haremos es quitar los IFs del código dejando solo una banda, luego medir la performance y compararla con la versión con saltos.
 
 \begin{figure}[h!]
   \begin{center}
@@ -298,14 +299,14 @@ En este experimento veremos como afectan los saltos condicionales a la performan
 \end{figure}
 
 \subsubsection{Resultados}
-En el grafico puede observarse una gran diferencia entre el codigo que tiene saltos condicionales y el codigo que no los tiene. La varianza tambien es levemente diferente, $3051803$ del codigo con saltos a $2504091$ sin los mismos.
+En el gráfico puede observarse una gran diferencia entre el código que tiene saltos condicionales y el código que no los tiene. La varianza también es levemente diferente, $3051803$ del código con saltos a $2504091$ sin los mismos.
 
 \subsubsection{Conclusiones}
 
-La variación de tiempos ocurre posiblemente debido a que en el caso del codigo con saltos, el procesador intentará predecir el salto, conocido como branch prediction, tomado todas las posibles ramas de la ejecución. Esto sin duda causará que el procesador este mas ocupado realizando calculos en todas las ramas y aumente el tiempo de ejecuión. Esto también explicaría el aumento en la variabilidad, ya que el el CPU se vuelve menos predecible.
+La variación de tiempos ocurre posiblemente debido a que en el caso del código con saltos, el procesador intentará predecir el salto, conocido como branch prediction, tomado todas las posibles ramas de la ejecución. Esto sin duda causará que el procesador este más ocupado realizando cálculos en todas las ramas y aumente el tiempo de ejecución. Esto también explicaría el aumento en la variabilidad, ya que el CPU se vuelve menos predecible.
 
 \newpage
-\subsection{Motion Blur}
+\section{Motion Blur}
 \subsection{Idea general del algoritmo}
 La idea de este algoritmo es, por cada píxel del destino se deben tomar 5 píxels de la entrada, se multiplica cada uno de los colores por $0.2$ y luego se los suma. Lo que realmente haremos en el algoritmo será primero hacer la suma y luego multiplicar por $0.2$ ya que esto requiere menos registros XMM.
 \\
@@ -313,25 +314,25 @@ Para ello debemos tener cuidado de tomar correctamente los casos borde y no apli
 \\
 Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 
-Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también leeremos píxeles de las filas vecinas ya que para procesar un píxel $(i,j)$ necesitaremos además los 4 píxels de las filas $i-2$, $i-1$, $i+1$ e $i+2$ en las columnas $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente. Graficamente, tomaremos los pixeles y los vecinos de la siguiente forma(esto es un ejemplo en un caso donde recien se toman los primeros cuatro píxeles a modificarse):
+Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también leeremos píxeles de las filas vecinas ya que para procesar un píxel $(i,j)$ necesitaremos además los 4 píxels de las filas $i-2$, $i-1$, $i+1$ e $i+2$ en las columnas $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente. Gráficamente, tomaremos los píxeles y sus vecinos de la siguiente forma(esto es un ejemplo en un caso donde recien se toman los primeros cuatro píxeles a modificarse):
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/MB1.jpg}
 \end{center}
 
-Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación.Teniendo todo en muchos xmm de a words, separados en parte alta y baja, se empezaran a sumar lo correspondiente a cada pixel(el original y sus vecinos) con sumas verticales, que funcionan de la siguiente manera(la siguiente imagen es una suma vertical de a words):
+Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación.Teniendo todo en muchos xmm de a words, separados en parte alta y baja, se empezarán a sumar lo correspondiente a cada píxel(el original y sus vecinos) con sumas verticales, que funcionan de la siguiente manera(la siguiente imagen es una suma vertical de a words):
 
 \begin{center}
 \includegraphics[width=0.9\textwidth]{Dibujos/sv.jpg}
 \end{center}
 
-Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxels, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
+Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxeles, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
 
 \subsection{Diferencias de performance en Motion Blur}
 
 Al realizar el testing se obtuvieron los siguientes resultados:
 
-\newpage
+%\newpage
 
 \begin{figure}[h!]
   \begin{center}
@@ -345,16 +346,16 @@ Se aprecia en el gráfico que el código ASM con SIMD tiene un promedio de tiemp
 
 \subsubsection{Conclusiones}
 
-En este caso podemos concluir nuevamente que la opcion en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización es posible lograr una mejora del 66 \%.
+En este caso podemos concluir nuevamente que la opcion en assambler es mejor que la opción en C que no utiliza operaciones vectoriales, incluso con el mayor grado de optimización es posible lograr una mejora del 66 \% aproximadamente.
 
 \newpage
 \section{Conclusiones y trabajo futuro}
 
-Como primera conclución de este trabajo practico podemos decir la gran ventaja que reperesenta la utilización de operaciones vectoriales a la hora de realizar operaciones paralelizables sobre un gran volumen de datos. Tambien podemos concluir que esto no resulta de la misma manera en el caso de transferir información de un lugar de la memoria RAM a otro, ahí, la opción de implementar codigo C optimizado es tan buena como la de implementarlo con SIMD, con la ventaja de que en C el codigo es mas facilmente mantenible y claro.
+Como primera conclución de este trabajo practico podemos decir la gran ventaja que reperesenta la utilización de operaciones vectoriales a la hora de realizar operaciones paralelizables sobre un gran volumen de datos. También podemos concluir que esto no resulta de la misma manera en el caso de transferir información de un lugar de la memoria RAM a otro, ahí, la opción de implementar código C optimizado es tan buena como la de implementarlo con SIMD, con la ventaja de que en C el código es más facilmente mantenible y claro.
 
-Otras concluciones son, que la comprobación de manera empirica que el acceso a RAM presenta una mayor caída de performance que las operaciones aritmeticas. Y que el brunch prediction tambien representa una mayor caida en la performance, por lo que utilizar otras opciones que no requieran saltos condicionales es una buena opción de mejorar los tiempos de un algoritmo dado.
+Otras concluciones son, que la comprobación de manera empirica que el acceso a RAM presenta una mayor caída de performance que las operaciones aritméticas. Y que el branch prediction tambien representa una mayor caída en la performance, por lo que utilizar otras opciones que no requieran saltos condicionales es una buena opción de mejorar los tiempos de un algoritmo dado.
 
-Como trabajo futuro, una idea interesante a desarollar, podría ser construir o plantear un compilador de C que tome la mejor parte de los compiladores actuales, esto es, las diversas optimizaciones que realiza, y las integre con SIMD. De esta manera se podría en teoría obtenerse mejores resultados que los aquí mostrados.
+Como trabajo futuro, una idea interesante a desarollar, podría ser construir o plantear un compilador de C que tome la mejor parte de los compiladores actuales, esto es, las diversas optimizaciones que realiza, y las integre con SIMD. De esta manera se podría, en teoría, obtener mejores resultados que los aquí mostrados.
 
 \end{document}
 
