@@ -21,14 +21,14 @@
 \contentsline {subsubsection}{\numberline {5.3.2}Conclusiones}{11}
 \contentsline {section}{\numberline {6}Bandas}{12}
 \contentsline {subsection}{\numberline {6.1}Idea general del algoritmo}{12}
-\contentsline {subsection}{\numberline {6.2}Diferencias de performance en Bandas}{13}
-\contentsline {subsubsection}{\numberline {6.2.1}Resultados}{14}
-\contentsline {subsubsection}{\numberline {6.2.2}Conclusiones}{14}
-\contentsline {subsection}{\numberline {6.3}Saltos condicionales}{15}
-\contentsline {subsubsection}{\numberline {6.3.1}Resultados}{15}
-\contentsline {subsubsection}{\numberline {6.3.2}Conclusiones}{15}
-\contentsline {subsection}{\numberline {6.4}Motion Blur}{16}
-\contentsline {subsection}{\numberline {6.5}Idea general del algoritmo}{16}
+\contentsline {subsection}{\numberline {6.2}Diferencias de performance en Bandas}{12}
+\contentsline {subsubsection}{\numberline {6.2.1}Resultados}{13}
+\contentsline {subsubsection}{\numberline {6.2.2}Conclusiones}{13}
+\contentsline {subsection}{\numberline {6.3}Saltos condicionales}{14}
+\contentsline {subsubsection}{\numberline {6.3.1}Resultados}{14}
+\contentsline {subsubsection}{\numberline {6.3.2}Conclusiones}{14}
+\contentsline {subsection}{\numberline {6.4}Motion Blur}{15}
+\contentsline {subsection}{\numberline {6.5}Idea general del algoritmo}{15}
 \contentsline {subsection}{\numberline {6.6}Diferencias de performance en Motion Blur}{16}
 \contentsline {subsubsection}{\numberline {6.6.1}Resultados}{17}
 \contentsline {subsubsection}{\numberline {6.6.2}Conclusiones}{17}

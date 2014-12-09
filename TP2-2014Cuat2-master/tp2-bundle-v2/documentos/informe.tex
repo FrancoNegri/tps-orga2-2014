@@ -205,22 +205,7 @@ Al comenzar el ciclo, leemos 4 píxels y los guardamos en un registro xmm. Luego
 \includegraphics[scale=0.75]{Dibujos/S1.jpg}
 \end{center}
 
-Una vez obtenidos los coeficientes, sólo nos resta multiplicar a cada uno por el píxel correspondiente. Como debemos multiplicar dicho coeficiente por cada byte de cada píxel, primero deberemos desempaquetar los datos de tal manera que nos queden 4 registros xmm, uno para cada píxel, que cada uno contenga todos los bytes del píxel asociado en el orden original. A continuación, nos toca convertir todo a punto flotante para poder realizar la multiplicación. Además necesitaremos brodcastear el coeficiente de cada píxel en un registro xmm para así efectivamente multiplicarlo por cada componente del píxel.[ACÁ NO SÉ SI IRÍA DIBUJO DE CÓMO SE HARÍA ESTA MULTIPLICACIÓN, Y EN ESE CASO NO SÉ SI ESTARÍA DE MÁS DEJAR LA ANTERIOR EXPLICACIÓN] Después de terminar con las multiplicaciones, convertimos a entero nuevamente y empaquetamos todo para finalmente moverlo al destino.
-
-\begin{itemize}
-\item En la sección data guardamos una constante con el valor 255 brodcasteado en punto flotante.
-\item Previo al ciclo, guardamos este valor en un registro.
-\item Ya dentro del ciclo, leemos 4 píxels y los guardamos en un xmm.
-\item A continuación calculamos de manera paralela para cada píxel el coeficiente correspondiente.
-\item Primero, realizamos la división de i por la cantidad de filas y j por la cantidad de columnas, para la cual previamente pasamos de entero a punto flotante.
-\item Multiplicamos ambos valores por 255 y luego convertimos a entero con truncamiento.
-\item Realizamos un xor entre ambos y despues, volvemos a convertir a punto flotante para dividir por 255.
-\item Ya con los coeficientes calculados, solo nos resta multiplicar cada uno por el píxel correspondiente.
-\item Para ello desempaquetamos cada byte de cada píxel leido a word, y luego de word a dword, para así convertirlo a punto flotante.
-\item Una vez hecha la conversión, brodcasteamos cada coeficiente para poder multiplicarlo por el píxel correspondiente.
-\item Luego convertimos a entero nuevamente y empaquetamos todo de dword a word y de word a byte.
-\item Y finalmente movemos los píxels procesados al destino.
-\end{itemize}
+Una vez obtenidos los coeficientes, sólo nos resta multiplicar a cada uno por el píxel correspondiente. Como debemos multiplicar dicho coeficiente por cada byte de cada píxel, primero deberemos desempaquetar los datos de tal manera que nos queden 4 registros xmm, uno para cada píxel, que cada uno contenga todos los bytes del píxel asociado en el orden original. A continuación, nos toca convertir todo a punto flotante para poder realizar la multiplicación. Además necesitaremos brodcastear el coeficiente de cada píxel en un registro xmm para así efectivamente multiplicarlo por cada componente del píxel. Después de terminar con las multiplicaciones, convertimos a entero nuevamente y empaquetamos todo para finalmente moverlo al destino.
 
 \subsection{Diferencias de performance en Sierpinski}
 
@@ -269,27 +254,16 @@ Tal vez en este caso la diferencia es menos marcada porque ya se le estaba dando
 \subsection{Idea general del algoritmo}
 Para el algoritmo de bandas se nos presenta otro desafío: debemos tomar los tres colores de la imagen $(r,g,b)$, sumarlos, y luego comparar cada uno de ellos para ver si se encuentra en un rango determinado.
 \\
-Para resolver la primera problemática usaremos las instrucciones $phaddw$, que nos permitirá a través de una suma horizontal, sumar los valores r,g,b de manera cómoda solamente utilizando dos registros.
-\\
-El segundo problema será comparar estos valores obtenidos en la suma de una manera eficiente. Querríamos compararlos todos a la vez y a partir de esas comparaciones determinar que valores deberá ir en cada píxel. Esta se resolverá utilizando broadcasting. El algoritmo irá comparando en cada paso contra un valor y en caso de cumplirse una condición, restará donde corresponda.
+Teniendo esto en cuenta, la idea del algoritmo es la siguiente:
 
-Como primer paso, leemos los 4 píxels y los guardamos en un xmm. Luego, desempaquetamos los datos de byte a word para poder realizar la suma de las componentes de cada píxel sin salirnos de la representación. La suma se hace a través de dos instrucciones de suma horizontal, como mencionamos anteriormente, de tal manera que nos quedan los $b$ de cada píxel en las cuatro words de la parte baja de un xmm. A continuación realizamos unas comparaciones utilizando máscaras predefinidas para determinar el valor que tendrá cada píxel en cada una de sus componentes. Después de realizadas estas comparaciones, nos queda en las word de la parte baja de un xmm los 4 valores que se asignarán a cada componente de cada píxel. Luego, empaquetamos estos valores pasandolos de word a byte y aplicamos un shuffle que los deja en el los lugares que corresponden para finalmente copiarlos al destino. 
+Como primer paso, leemos los 4 píxels y los guardamos en un xmm. Luego, desempaquetamos los datos de byte a word para poder realizar la suma de las componentes de cada píxel sin salirnos de la representación. La suma se hace a través de dos instrucciones de suma horizontal, de tal manera que nos quedan los $b$ de cada píxel en las cuatro words de la parte baja de un xmm. A continuación realizamos unas comparaciones utilizando máscaras predefinidas para determinar el valor que tendrá cada píxel en cada una de sus componentes.Para asignar dicho valor, se tomara un xmm que viene seteado en 255 de a words en la parte baja, en donde se irá guardando el resultado. Luego, por como fue implementado el algoritmo, y tomando como p un word del xmm que viene seteado con 255 en la parte baja, y como v el word correspondiente que tiene la suma de r+g+b, cada word independientemente del resto seguira el siguiente esquema:
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/B1.jpg}
 \end{center}
 
-\begin{itemize}
-\item  En la sección data tenemos mascaras y constantes brodcasteadas que utilizaremos para hacer las comparaciones.
-\item  Ademas en esta sección tenemos una doble qword la cual usaremos para el shuffle final.
-\item  Previo al ciclo donde procesamos los píxels, movemos estos datos a registros xmm.
-\item  Ya una vez dentro del ciclo, leemos 4 píxels y los guardamos en un xmm.
-\item  Desempaquetamos los bytes a word para poder hacer la suma de las componentes de cada píxel sin irnos de la representación.
-\item  Hacemos dos sumas horizontales para obtener los cuatro valores  de b.
-\item  Luego utilizamos las mascaras para comparar en paralelo cada píxel con el b correspondiente y asignando el valor de rgb segun corresponda.
-\item  Nos queda en cada word de la parte baja de un xmm, los 4 valores que se asignaran a cada rgb de cada píxel.
-\item  Finalmente, empaquetamos estos valores para volver a byte y los shuffleamos para dejarlos en los lugares correspondiente y lo asignamos en el destino.
-\end{itemize}
+
+ Después de realizadas estas comparaciones, nos queda en las word de la parte baja del xmm que guardaba el resultado los 4 valores que se asignarán a cada componente de cada píxel. Luego, empaquetamos estos valores pasandolos de word a byte y aplicamos un shuffle que los deja en el los lugares que corresponden para finalmente copiarlos al destino. 
 
 \subsection{Diferencias de performance en Bandas}
 
@@ -339,23 +313,19 @@ Para ello debemos tener cuidado de tomar correctamente los casos borde y no apli
 \\
 Una idea general de cómo funciona el algoritmo en assembler es la siguiente:
 
-Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también leeremos píxeles de las filas vecinas ya que para procesar un píxel $(i,j)$ necesitaremos además los 4 píxels de las filas $i-2$, $i-1$, $i+1$ e $i+2$ en las columnas $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente. Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación. Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxels, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
+Al comenzar el ciclo, esta vez no sólo leeremos 4 píxels, sino que también leeremos píxeles de las filas vecinas ya que para procesar un píxel $(i,j)$ necesitaremos además los 4 píxels de las filas $i-2$, $i-1$, $i+1$ e $i+2$ en las columnas $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente. Graficamente, tomaremos los pixeles y los vecinos de la siguiente forma(esto es un ejemplo en un caso donde recien se toman los primeros cuatro píxeles a modificarse):
 
 \begin{center}
 \includegraphics[scale=0.66]{Dibujos/MB1.jpg}
 \end{center}
 
-\begin{itemize}
-\item  Tenemos, en la sección datos, el valor $0.2$ brodcasteado que utilizaremos para realizar la multiplicación.
-\item  Previo al procesamiento de datos, guardamos en un xmm este valor.
-\item  Dentro del ciclo, para procesar el píxel (i,j) tomamos los 4 píxels de las filas $i-2$, $i-1$, $i$, $i+1$ e $i+2$ a partir de la columna $j-2$, $j-1$, $j$, $j+1$ y $j+2$, respectivamente, y almacenamos todo en registros.
-\item  Desempaquetamos todo a word para poder hacer la suma sin desbordar.
-\item  Luego de realizar las sumas, desempaquetamos a dwords para así poder convertir a punto flotante.
-\item  Con la conversión ya hecha, podemos multiplicar cada valor por $0.2$.
-\item  Convertimos a entero nuevamente y empaquetamos de dword a word y de word a byte.
-\item  Finalmente, copiamos los 4 píxels resultantes al destino. 
-\item  Cada vez que termino de recorrer una fila, pongo en negro los siguientes 4 píxels, y las dos primeras y últimas filas las pongo en negro aparte, fuera del ciclo.
-\end{itemize}
+Luego, desempaquetamos todo a word para realizar la sumas sin irnos de la representación.Teniendo todo en muchos xmm de a words, separados en parte alta y baja, se empezaran a sumar lo correspondiente a cada pixel(el original y sus vecinos) con sumas verticales, que funcionan de la siguiente manera(la siguiente imagen es una suma vertical de a words):
+
+\begin{center}
+\includegraphics[scale=0.66]{Dibujos/sv.jpg}
+\end{center}
+
+Cuando ya hemos sumado lo que necesitamos, desempaquetamos nuevamente pero ahora a dword para poder convertir a punto flotante y así luego multiplicar por $0.2$. Una vez realizada la multiplicación, convertimos a entero nuevamente y empaquetamos todo de dword a word, y de word a byte. Finalmente, copiamos los 4 píxels procesados al destino. Además de todo esto, cada vez que terminamos de recorrer una fila, ponemos en negro los siguientes 4 píxels, y las dos primeras y últimas filas las ponemos en negro aparte, fuera del ciclo.
 
 \subsection{Diferencias de performance en Motion Blur}
 
